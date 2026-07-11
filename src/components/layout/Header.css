@@ -1,0 +1,395 @@
+/* ============================================
+   UVAGAI FOUNDATION HEADER - Production Level
+   Unique Class Names • Larger Logo • Enterprise
+   ============================================ */
+
+/* ============================================
+   CSS VARIABLES
+   ============================================ */
+:root {
+  --uf-brand-navy: #203A64;
+  --uf-brand-blue: #0857A1;
+  --uf-brand-green: #1AA64C;
+  --uf-white: #F2F4F6;
+  --uf-pure-white: #FFFFFF;
+  --uf-gray-50: #F8FAFC;
+  --uf-gray-100: #F1F5F9;
+  --uf-gray-200: #E2E8F0;
+  --uf-gray-300: #CBD5E1;
+  --uf-gray-400: #94A3B8;
+  --uf-gray-500: #64748B;
+  --uf-gray-600: #475569;
+  --uf-gray-700: #334155;
+  --uf-gray-800: #1E293B;
+  --uf-gray-900: #0F172A;
+  --uf-font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --uf-font-mono: 'JetBrains Mono', 'SF Mono', monospace;
+  --uf-ease-smooth: cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+/* ============================================
+   RESET
+   ============================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+img { max-width: 100%; display: block; }
+a { text-decoration: none; color: inherit; }
+button { cursor: pointer; font-family: inherit; border: none; background: none; }
+
+/* ============================================
+   HEADER
+   ============================================ */
+.uf-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  font-family: var(--uf-font-sans);
+  transition: all 0.35s var(--uf-ease-smooth);
+  background: transparent;
+}
+
+.uf-header.uf-sticky {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 1px 3px rgba(32, 58, 100, 0.06);
+  border-bottom: 1px solid rgba(8, 87, 161, 0.08);
+}
+
+.uf-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.uf-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 90px;
+  transition: height 0.35s var(--uf-ease-smooth);
+}
+
+.uf-header.uf-sticky .uf-header-row {
+  height: 72px;
+}
+
+/* ============================================
+   LOGO - Made Bigger
+   ============================================ */
+.uf-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  flex-shrink: 0;
+  z-index: 10;
+}
+
+.uf-logo-icon {
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0;
+  transition: width 0.35s var(--uf-ease-smooth), height 0.35s var(--uf-ease-smooth);
+}
+
+.uf-header.uf-sticky .uf-logo-icon {
+  width: 36px;
+  height: 36px;
+}
+
+.uf-logo-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.uf-logo-name {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--uf-brand-navy);
+  letter-spacing: 2.5px;
+  font-family: var(--uf-font-mono);
+  transition: font-size 0.35s var(--uf-ease-smooth);
+}
+
+.uf-header.uf-sticky .uf-logo-name {
+  font-size: 19px;
+}
+
+.uf-logo-tag {
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--uf-gray-400);
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  font-family: var(--uf-font-mono);
+  transition: font-size 0.35s var(--uf-ease-smooth);
+}
+
+.uf-header.uf-sticky .uf-logo-tag {
+  font-size: 9px;
+}
+
+/* ============================================
+   DESKTOP NAVIGATION
+   ============================================ */
+.uf-nav {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.uf-nav-link {
+  padding: 10px 18px;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--uf-gray-700);
+  text-decoration: none;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  letter-spacing: -0.1px;
+}
+
+.uf-nav-link:hover {
+  color: var(--uf-brand-blue);
+  background: rgba(8, 87, 161, 0.05);
+}
+
+.uf-nav-link.active {
+  color: var(--uf-brand-blue);
+  background: rgba(8, 87, 161, 0.08);
+  font-weight: 600;
+}
+
+/* When header is transparent (hero section), make nav links white */
+.uf-header:not(.uf-sticky) .uf-nav-link {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.uf-header:not(.uf-sticky) .uf-nav-link:hover {
+  color: #FFFFFF;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.uf-header:not(.uf-sticky) .uf-nav-link.active {
+  color: #FFFFFF;
+  background: rgba(255, 255, 255, 0.12);
+  font-weight: 600;
+}
+
+/* ============================================
+   HEADER RIGHT
+   ============================================ */
+.uf-header-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  z-index: 10;
+}
+
+/* CTA Button */
+.uf-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 22px;
+  background: var(--uf-brand-blue);
+  color: var(--uf-white);
+  text-decoration: none;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: -0.1px;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.uf-btn:hover {
+  background: #064A89;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(8, 87, 161, 0.25);
+}
+
+.uf-btn svg {
+  transition: transform 0.2s ease;
+}
+
+.uf-btn:hover svg {
+  transform: translateX(2px);
+}
+
+/* ============================================
+   MOBILE MENU BUTTON
+   ============================================ */
+.uf-menu-btn {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 8px;
+  color: var(--uf-gray-700);
+  transition: all 0.2s ease;
+}
+
+.uf-header:not(.uf-sticky) .uf-menu-btn {
+  color: #FFFFFF;
+}
+
+.uf-menu-btn:hover {
+  background: rgba(8, 87, 161, 0.06);
+}
+
+.uf-header:not(.uf-sticky) .uf-menu-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* ============================================
+   MOBILE OVERLAY
+   ============================================ */
+.uf-mobile-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.5);
+  z-index: 998;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.uf-mobile-overlay.uf-active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* ============================================
+   MOBILE MENU
+   ============================================ */
+.uf-mobile-menu {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 100%;
+  max-width: 380px;
+  height: 100vh;
+  background: var(--uf-pure-white);
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  transition: right 0.4s var(--uf-ease-smooth);
+  box-shadow: -8px 0 30px rgba(0, 0, 0, 0.06);
+}
+
+.uf-mobile-menu.uf-active {
+  right: 0;
+}
+
+.uf-mobile-menu-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 28px;
+  border-bottom: 1px solid var(--uf-gray-100);
+}
+
+.uf-menu-close {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--uf-gray-100);
+  border-radius: 10px;
+  color: var(--uf-gray-500);
+  transition: all 0.2s ease;
+}
+
+.uf-menu-close:hover {
+  background: var(--uf-gray-200);
+  color: var(--uf-gray-700);
+}
+
+.uf-mobile-nav {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.uf-mobile-link {
+  padding: 15px 18px;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--uf-gray-700);
+  text-decoration: none;
+  border-radius: 10px;
+  transition: all 0.2s ease;
+  letter-spacing: -0.1px;
+}
+
+.uf-mobile-link:hover {
+  background: rgba(8, 87, 161, 0.04);
+  color: var(--uf-brand-blue);
+}
+
+.uf-mobile-link.active {
+  background: rgba(8, 87, 161, 0.06);
+  color: var(--uf-brand-blue);
+  font-weight: 600;
+}
+
+.uf-mobile-menu-bottom {
+  padding: 24px 28px;
+  border-top: 1px solid var(--uf-gray-100);
+}
+
+.uf-btn-full {
+  width: 100%;
+  justify-content: center;
+  padding: 15px 24px;
+  font-size: 15px;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 1024px) {
+  .uf-nav { display: none; }
+  .uf-menu-btn { display: flex; }
+  .uf-header-right .uf-btn { display: none; }
+}
+
+@media (max-width: 768px) {
+  .uf-container { padding: 0 24px; }
+  .uf-header-row { height: 78px; }
+  .uf-header.uf-sticky .uf-header-row { height: 64px; }
+  .uf-mobile-menu { max-width: 100%; }
+  .uf-logo-icon { width: 38px; height: 38px; }
+  .uf-logo-name { font-size: 20px; letter-spacing: 2px; }
+  .uf-header.uf-sticky .uf-logo-icon { width: 32px; height: 32px; }
+  .uf-header.uf-sticky .uf-logo-name { font-size: 18px; }
+}
+
+@media (max-width: 480px) {
+  .uf-container { padding: 0 18px; }
+  .uf-header-row { height: 72px; }
+  .uf-logo-icon { width: 36px; height: 36px; }
+  .uf-logo-name { font-size: 18px; letter-spacing: 1.5px; }
+  .uf-logo-tag { font-size: 9px; letter-spacing: 2px; }
+  .uf-header.uf-sticky .uf-logo-icon { width: 30px; height: 30px; }
+  .uf-header.uf-sticky .uf-logo-name { font-size: 16px; }
+  .uf-header.uf-sticky .uf-logo-tag { font-size: 8px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .uf-header,
+  .uf-logo-icon,
+  .uf-logo-name,
+  .uf-logo-tag {
+    transition: none !important;
+  }
+}
