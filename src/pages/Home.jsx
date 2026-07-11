@@ -7,7 +7,7 @@ import Hero from "../components/home/Hero";
 
 import FeaturedProducts from "../components/home/FeaturedProducts";
 // import Technologies from "../components/home/Technologies";
-import Industries from "../components/home/Industries";
+
 
 import Process from "../components/home/Process";
 import Projects from "../components/home/Projects";
@@ -16,6 +16,9 @@ import FAQ from "../components/home/FAQ";
 import ContactCTA from "../components/home/ContactCTA";
 import SolutionsPreview from "../components/home/SolutionsPreview";
 import WhyFuturemax from "../components/home/WhyFuturemax";
+import Products from "./Products";
+import Industries from "./Industries";
+import Impact from "../components/home/Impact";
 
 const Home = () => {
   return (
@@ -26,9 +29,10 @@ const Home = () => {
    
       <SolutionsPreview/>
 
-      <FeaturedProducts />
+      <Products />
 
       {/* <Technologies /> */}
+      <Impact/>
 
       <Industries />
 

@@ -1,0 +1,489 @@
+/* ============================================
+   FUTUREMAX IMPACT SECTION
+   Green & Blue Blend • Animated Counters
+   Production Level • Premium Enterprise
+   ============================================ */
+
+:root {
+  --brand-navy: #203A64;
+  --brand-blue: #0857A1;
+  --brand-blue-light: #2C7BE5;
+  --brand-green: #1AA64C;
+  --brand-green-light: #36C275;
+  --white: #F2F4F6;
+  --pure-white: #FFFFFF;
+  --gray-50: #F8FAFC;
+  --gray-100: #F1F5F9;
+  --gray-200: #E2E8F0;
+  --gray-300: #CBD5E1;
+  --gray-400: #94A3B8;
+  --gray-500: #64748B;
+  --gray-600: #475569;
+  --gray-700: #334155;
+  --gray-800: #1E293B;
+  --gray-900: #0F172A;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', 'SF Mono', monospace;
+  --ease-smooth: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+  
+  --gradient-green-blue: linear-gradient(135deg, #1AA64C 0%, #0857A1 100%);
+  --gradient-blue-green: linear-gradient(135deg, #0857A1 0%, #1AA64C 100%);
+}
+
+/* ============================================
+   GLOBAL
+   ============================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--font-sans); -webkit-font-smoothing: antialiased; }
+a { text-decoration: none; color: inherit; }
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+/* ============================================
+   SECTION
+   ============================================ */
+.impact-section {
+  position: relative;
+  padding: 100px 0;
+  background: var(--gray-50);
+  overflow: hidden;
+}
+
+.impact-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.impact-bg-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  animation: orbFloat 12s ease-in-out infinite;
+}
+
+.impact-bg-orb-1 {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(26,166,76,0.05), transparent);
+  top: -10%;
+  right: -10%;
+}
+
+.impact-bg-orb-2 {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(8,87,161,0.04), transparent);
+  bottom: -5%;
+  left: -5%;
+  animation-delay: -6s;
+}
+
+@keyframes orbFloat {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, -30px) scale(1.1); }
+  66% { transform: translate(-20px, 20px) scale(0.9); }
+}
+
+.impact-bg-grid {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(8,87,161,0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(8,87,161,0.015) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+/* ============================================
+   SECTION HEADER
+   ============================================ */
+.section-header {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto 64px;
+  position: relative;
+  z-index: 1;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s var(--ease-smooth);
+}
+
+.section-header.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.section-tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  background: var(--gradient-green-blue);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-family: var(--font-mono);
+  margin-bottom: 20px;
+}
+
+.section-title {
+  font-size: clamp(32px, 4vw, 44px);
+  font-weight: 700;
+  color: var(--gray-900);
+  line-height: 1.2;
+  letter-spacing: -1px;
+  margin: 0 0 20px;
+}
+
+.section-title-accent {
+  background: var(--gradient-blue-green);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.section-description {
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--gray-500);
+  margin: 0;
+  font-weight: 400;
+}
+
+/* ============================================
+   IMPACT GRID
+   ============================================ */
+.impact-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-bottom: 64px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ============================================
+   IMPACT CARD
+   ============================================ */
+.impact-card {
+  background: var(--pure-white);
+  border: 1px solid var(--gray-200);
+  border-radius: 20px;
+  padding: 28px;
+  transition: all 0.4s var(--ease-smooth);
+  position: relative;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+.impact-card.animate {
+  animation: cardReveal 0.7s var(--ease-smooth) forwards;
+  animation-delay: var(--delay);
+}
+
+@keyframes cardReveal {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.impact-card:hover {
+  border-color: rgba(26,166,76,0.25);
+  box-shadow: 0 20px 50px -15px rgba(8,87,161,0.1);
+  transform: translateY(-5px);
+}
+
+/* Card Header */
+.impact-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+/* Icon */
+.impact-card-icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(8,87,161,0.06);
+  border-radius: 14px;
+  color: var(--card-color, #0857A1);
+  transition: all 0.4s ease;
+}
+
+.impact-card:hover .impact-card-icon {
+  background: var(--gradient-green-blue);
+  color: var(--white);
+  transform: scale(1.08);
+  box-shadow: 0 8px 25px rgba(26,166,76,0.2);
+}
+
+/* Number */
+.impact-card-number {
+  text-align: right;
+}
+
+.impact-number-line {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--gradient-green-blue);
+  border-radius: 1px;
+  margin-left: auto;
+  margin-bottom: 8px;
+}
+
+.impact-card-number h3 {
+  font-size: 36px;
+  font-weight: 800;
+  color: var(--gray-900);
+  font-family: var(--font-mono);
+  letter-spacing: -1.5px;
+  line-height: 1;
+  display: flex;
+  align-items: baseline;
+  justify-content: flex-end;
+  gap: 2px;
+}
+
+.impact-suffix {
+  font-size: 18px;
+  font-weight: 700;
+  background: var(--gradient-green-blue);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Title */
+.impact-card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--gray-800);
+  margin: 0 0 10px;
+  letter-spacing: -0.3px;
+  transition: all 0.3s ease;
+}
+
+.impact-card:hover .impact-card-title {
+  background: var(--gradient-green-blue);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Description */
+.impact-card-desc {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--gray-500);
+  margin: 0;
+}
+
+/* Bottom Line */
+.impact-card-line {
+  position: absolute;
+  bottom: 0;
+  left: 28px;
+  right: 28px;
+  height: 3px;
+  background: var(--gradient-green-blue);
+  border-radius: 0 0 3px 3px;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s var(--ease-smooth);
+}
+
+.impact-card:hover .impact-card-line {
+  transform: scaleX(1);
+}
+
+/* ============================================
+   BOTTOM CTA
+   ============================================ */
+.impact-cta {
+  position: relative;
+  z-index: 1;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.8s var(--ease-smooth) 0.4s;
+}
+
+.impact-cta.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.impact-cta-content {
+  background: var(--pure-white);
+  border: 1px solid var(--gray-200);
+  border-radius: 20px;
+  padding: 36px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  transition: all 0.4s var(--ease-smooth);
+}
+
+.impact-cta-content:hover {
+  border-color: rgba(26,166,76,0.2);
+  box-shadow: 0 15px 40px -10px rgba(8,87,161,0.08);
+}
+
+.impact-cta-text h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--gray-800);
+  margin: 0 0 4px;
+  letter-spacing: -0.3px;
+}
+
+.impact-cta-text p {
+  font-size: 14px;
+  color: var(--gray-500);
+  margin: 0;
+}
+
+/* Button */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 28px;
+  background: var(--gradient-green-blue);
+  color: var(--white);
+  text-decoration: none;
+  border-radius: 14px;
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: -0.1px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.btn::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(26,166,76,0.3);
+}
+
+.btn:hover::after {
+  left: 100%;
+}
+
+.btn svg {
+  transition: transform 0.2s ease;
+}
+
+.btn:hover svg {
+  transform: translateX(3px);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 1024px) {
+  .impact-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 24px;
+  }
+  
+  .impact-section {
+    padding: 72px 0;
+  }
+  
+  .section-header {
+    margin-bottom: 48px;
+  }
+  
+  .section-title {
+    font-size: 28px;
+  }
+  
+  .impact-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+  
+  .impact-card {
+    padding: 24px 20px;
+  }
+  
+  .impact-card-number h3 {
+    font-size: 30px;
+  }
+  
+  .impact-cta-content {
+    flex-direction: column;
+    text-align: center;
+    padding: 28px 24px;
+    gap: 20px;
+  }
+  
+  .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 18px;
+  }
+  
+  .section-title {
+    font-size: 24px;
+  }
+  
+  .section-description {
+    font-size: 15px;
+  }
+  
+  .impact-card-icon {
+    width: 42px;
+    height: 42px;
+  }
+  
+  .impact-card-number h3 {
+    font-size: 26px;
+  }
+  
+  .impact-card-title {
+    font-size: 15px;
+  }
+  
+  .impact-cta-text h3 {
+    font-size: 18px;
+  }
+}
