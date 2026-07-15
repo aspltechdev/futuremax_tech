@@ -1,6 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
 import CountUp from "react-countup";
-import { ArrowRight, Zap, Shield, Wrench, Radio } from "lucide-react";
+import {
+  ArrowRight,
+  Zap,
+  Shield,
+  Wrench,
+  Wifi,
+} from "lucide-react";
 import "./Impact.css";
 
 const stats = [
@@ -9,7 +15,7 @@ const stats = [
     suffix: "G/5G",
     title: "Future-Ready Connectivity",
     description: "Wireless solutions designed to support modern 4G LTE and 5G mobile networks across diverse environments.",
-    icon: <Radio size={24} strokeWidth={1.5} />,
+    icon: "📡",
     color: "#1AA64C",
   },
   {
@@ -17,7 +23,7 @@ const stats = [
     suffix: "°",
     title: "End-to-End Engineering",
     description: "From RF site surveys and solution design to installation, optimization, and long-term technical support.",
-    icon: <Wrench size={24} strokeWidth={1.5} />,
+    icon: "🔧",
     color: "#0857A1",
   },
   {
@@ -25,7 +31,7 @@ const stats = [
     suffix: "/7",
     title: "Technical Assistance",
     description: "Responsive technical support and maintenance services to ensure reliable network performance.",
-    icon: <Shield size={24} strokeWidth={1.5} />,
+    icon: "🛡️",
     color: "#1AA64C",
   },
   {
@@ -33,7 +39,7 @@ const stats = [
     suffix: "%",
     title: "Customized Solutions",
     description: "Every deployment is engineered specifically for the site's coverage requirements and operational needs.",
-    icon: <Zap size={24} strokeWidth={1.5} />,
+    icon: "⚡",
     color: "#0857A1",
   },
 ];
@@ -105,16 +111,9 @@ const Impact = () => {
                 <div className="impact-card-number">
                   <span className="impact-number-line" />
                   <h3>
-                    {isVisible && (
-                      <CountUp
-                        end={item.number}
-                        duration={2.5}
-                        delay={index * 0.2}
-                        useEasing={true}
-                      />
-                    )}
-                    <span className="impact-suffix">{item.suffix}</span>
-                  </h3>
+  {item.number}
+  <span className="impact-suffix">{item.suffix}</span>
+</h3>
                 </div>
               </div>
               <h4 className="impact-card-title">{item.title}</h4>
