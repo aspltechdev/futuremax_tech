@@ -1,8 +1,15 @@
 import React, { useState } from "react";
 import "./Solutions.css";
+import heroProduct from "../assets/sixthimage.png";
+import rfEngineeringImg from "../assets/RFimage.png";
+import dasImage from "../assets/DASIMAGE.png";
+import enterpriseImage from "../assets/sixthimage.png";
+import signalBoosterImage from "../assets/signalboosters.png";
+import siteSurveyImage from "../assets/sixthimage.png";
+import amcImage from "../assets/amcsupport.png";
 
 /* ==========================================================
-   SOLUTIONS DATA
+   SOLUTIONS DATA WITH IMAGES
 ========================================================== */
 
 const solutions = [
@@ -11,24 +18,21 @@ const solutions = [
     title: "Enterprise Connectivity",
     shortDesc:
       "Reliable enterprise wireless infrastructure for businesses of every size.",
-
+    image: enterpriseImage,
     overview:
       "Futuremax Technology delivers enterprise-grade wireless connectivity solutions designed to provide seamless, secure and scalable network infrastructure for offices, campuses, industries and public facilities.",
-
     features: [
       "Enterprise Wi-Fi",
       "High-Speed Connectivity",
       "Centralized Network Management",
       "Secure Wireless Access",
     ],
-
     applications: [
       "Corporate Offices",
       "Commercial Buildings",
       "Educational Campuses",
       "Healthcare Facilities",
     ],
-
     benefits: [
       "Reliable Connectivity",
       "High Performance",
@@ -42,24 +46,21 @@ const solutions = [
     title: "RF Engineering",
     shortDesc:
       "Professional RF planning, wireless design and optimization services.",
-
+    image: rfEngineeringImg,
     overview:
       "Our RF Engineering team performs comprehensive site analysis, coverage planning and optimization to deliver maximum wireless performance with minimum interference.",
-
     features: [
       "RF Planning",
       "Coverage Analysis",
       "Heat Mapping",
       "Capacity Planning",
     ],
-
     applications: [
       "Factories",
       "Hotels",
       "Hospitals",
       "Large Campuses",
     ],
-
     benefits: [
       "Better Coverage",
       "Reduced Interference",
@@ -73,24 +74,21 @@ const solutions = [
     title: "DAS Systems",
     shortDesc:
       "Distributed Antenna Systems for superior indoor mobile coverage.",
-
+    image: dasImage,
     overview:
       "Futuremax designs and deploys Distributed Antenna Systems that improve indoor cellular coverage across large buildings and complex environments.",
-
     features: [
       "Indoor Coverage",
       "Signal Distribution",
       "Multi-Operator Support",
       "Network Integration",
     ],
-
     applications: [
       "Shopping Malls",
       "Hospitals",
       "Airports",
       "Commercial Towers",
     ],
-
     benefits: [
       "Strong Indoor Signal",
       "Reliable Voice Calls",
@@ -104,24 +102,21 @@ const solutions = [
     title: "Signal Boosters",
     shortDesc:
       "Improve weak cellular coverage with professional signal boosting solutions.",
-
+    image: signalBoosterImage,
     overview:
       "Our signal booster solutions eliminate weak signal areas by enhancing cellular reception in residential, commercial and industrial environments.",
-
     features: [
       "4G/5G Boosting",
       "Indoor Signal Enhancement",
       "Outdoor Coverage",
       "Multi-Network Support",
     ],
-
     applications: [
       "Homes",
       "Office Buildings",
       "Warehouses",
       "Remote Locations",
     ],
-
     benefits: [
       "Improved Signal",
       "Clear Voice Calls",
@@ -135,24 +130,21 @@ const solutions = [
     title: "Site Survey",
     shortDesc:
       "Professional RF surveys for accurate wireless network planning.",
-
+    image: siteSurveyImage,
     overview:
       "Futuremax conducts detailed site surveys to identify interference, dead zones and optimal equipment placement before deployment.",
-
     features: [
       "RF Analysis",
       "Coverage Survey",
       "Heat Maps",
       "Deployment Planning",
     ],
-
     applications: [
       "New Buildings",
       "Office Renovations",
       "Industrial Sites",
       "Campuses",
     ],
-
     benefits: [
       "Accurate Planning",
       "Lower Deployment Cost",
@@ -166,24 +158,21 @@ const solutions = [
     title: "AMC Support",
     shortDesc:
       "Annual Maintenance Contracts for reliable network performance.",
-
+    image: amcImage,
     overview:
       "Futuremax provides preventive maintenance, troubleshooting and continuous monitoring to keep your wireless infrastructure operating efficiently.",
-
     features: [
       "Preventive Maintenance",
       "Performance Monitoring",
       "Troubleshooting",
       "Technical Support",
     ],
-
     applications: [
       "Corporate Networks",
       "Hospitals",
       "Educational Institutions",
       "Industrial Facilities",
     ],
-
     benefits: [
       "Reduced Downtime",
       "Long-Term Reliability",
@@ -224,11 +213,10 @@ export default function Solutions() {
           </h1>
 
           <p>
-            From RF Engineering and Enterprise Connectivity to
-            DAS Systems, Signal Boosters, Site Surveys and AMC
-            Support, Futuremax Technology delivers reliable,
-            scalable and future-ready wireless solutions for
-            every business.
+            From RF Engineering and Enterprise Connectivity to DAS Systems,
+            Signal Boosters, Site Surveys and AMC Support, Futuremax Technology
+            delivers reliable, scalable and future-ready wireless solutions
+            for every business.
           </p>
 
           <div className="hero-buttons">
@@ -246,7 +234,8 @@ export default function Solutions() {
         </div>
 
       </section>
-            {/* ==========================================================
+
+      {/* ==========================================================
           OUR SOLUTIONS
       ========================================================== */}
 
@@ -303,21 +292,15 @@ export default function Solutions() {
                 </div>
 
                 <h3>
-
                   {service.title}
-
                 </h3>
 
                 <p>
-
                   {service.shortDesc}
-
                 </p>
 
                 <span className="solution-link">
-
                   View Details →
-
                 </span>
 
               </div>
@@ -341,21 +324,15 @@ export default function Solutions() {
           <div className="details-header">
 
             <span className="section-tag">
-
               SELECTED SOLUTION
-
             </span>
 
             <h2>
-
               {activeSolution.title}
-
             </h2>
 
             <p>
-
               {activeSolution.overview}
-
             </p>
 
           </div>
@@ -364,15 +341,11 @@ export default function Solutions() {
 
             <div className="details-image">
 
-              <div className="image-placeholder">
-
-                {activeSolution.title}
-
-                <br />
-
-                Image Placeholder
-
-              </div>
+              <img
+                src={activeSolution.image}
+                alt={activeSolution.title}
+                className="solution-detail-image"
+              />
 
             </div>
 
@@ -383,15 +356,14 @@ export default function Solutions() {
               </h3>
 
               <p>
-
                 {activeSolution.overview}
-
               </p>
 
             </div>
 
           </div>
-                    {/* ==========================================================
+
+          {/* ==========================================================
               FEATURES & APPLICATIONS
           ========================================================== */}
 
@@ -514,7 +486,8 @@ export default function Solutions() {
             </div>
 
           </div>
-                    {/* ==========================================================
+
+          {/* ==========================================================
               PROJECT SHOWCASE
           ========================================================== */}
 
@@ -544,7 +517,7 @@ export default function Solutions() {
 
                 <div className="project-image">
 
-                  Project Image 01
+                  <img src={activeSolution.image} alt="Project" />
 
                 </div>
 
@@ -552,14 +525,14 @@ export default function Solutions() {
 
                   <h4>
 
-                    Enterprise Deployment
+                    {activeSolution.title} Deployment
 
                   </h4>
 
                   <p>
 
-                    Office buildings, commercial towers and
-                    enterprise campuses.
+                    Professional installation and optimization
+                    for enterprise-grade wireless connectivity.
 
                   </p>
 
@@ -571,7 +544,7 @@ export default function Solutions() {
 
                 <div className="project-image">
 
-                  Project Image 02
+                  <img src={activeSolution.image} alt="Project" />
 
                 </div>
 
@@ -598,7 +571,7 @@ export default function Solutions() {
 
                 <div className="project-image">
 
-                  Project Image 03
+                  <img src={activeSolution.image} alt="Project" />
 
                 </div>
 
@@ -670,7 +643,8 @@ export default function Solutions() {
         </div>
 
       </section>
-            {/* ==========================================================
+
+      {/* ==========================================================
           OUR SOLUTION METHODOLOGY
       ========================================================== */}
 
