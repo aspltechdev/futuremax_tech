@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Solutions.css";
 import heroProduct from "../assets/sixthimage.png";
 import rfEngineeringImg from "../assets/RFimage.png";
@@ -189,6 +189,12 @@ const solutions = [
 export default function Solutions() {
 
   const [activeSolution, setActiveSolution] = useState(solutions[0]);
+  const [isHovered, setIsHovered] = useState(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
 
   return (
 
@@ -209,7 +215,7 @@ export default function Solutions() {
           <h1>
             Enterprise Wireless
             <br />
-            Connectivity Solutions
+            <span className="highlight">Connectivity Solutions</span>
           </h1>
 
           <p>
@@ -222,11 +228,14 @@ export default function Solutions() {
           <div className="hero-buttons">
 
             <button className="primary-btn">
-              Request Site Survey
+              <span>Request Site Survey</span>
+              <svg className="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
             </button>
 
             <button className="secondary-btn">
-              Contact Us
+              <span>Contact Us</span>
             </button>
 
           </div>
@@ -267,7 +276,7 @@ export default function Solutions() {
 
           <div className="solutions-grid">
 
-            {solutions.map((service) => (
+            {solutions.map((service, index) => (
 
               <div
                 key={service.id}
@@ -275,10 +284,13 @@ export default function Solutions() {
                   activeSolution.id === service.id
                     ? "active"
                     : ""
-                }`}
+                } ${isVisible ? "visible" : ""}`}
+                style={{ animationDelay: `${index * 0.1}s` }}
                 onClick={() =>
                   setActiveSolution(service)
                 }
+                onMouseEnter={() => setIsHovered(index)}
+                onMouseLeave={() => setIsHovered(null)}
               >
 
                 <div className="solution-icon">
@@ -456,6 +468,7 @@ export default function Solutions() {
                 <div
                   className="benefit-card"
                   key={index}
+                  style={{ animationDelay: `${index * 0.15}s` }}
                 >
 
                   <div className="benefit-icon">
@@ -622,19 +635,13 @@ export default function Solutions() {
 
             <div className="industry-tags">
 
-              <span>Commercial Buildings</span>
-
-              <span>Healthcare</span>
-
-              <span>Hospitality</span>
-
-              <span>Education</span>
-
-              <span>Industrial Facilities</span>
-
-              <span>Government</span>
-
-              <span>Residential</span>
+              <span>🏢 Commercial Buildings</span>
+              <span>🏥 Healthcare</span>
+              <span>🏨 Hospitality</span>
+              <span>🎓 Education</span>
+              <span>🏭 Industrial Facilities</span>
+              <span>🏛️ Government</span>
+              <span>🏠 Residential</span>
 
             </div>
 
@@ -788,7 +795,7 @@ export default function Solutions() {
           <h2>
 
             Ready To Build A
-            Reliable Wireless Network?
+            <span className="highlight"> Reliable Wireless Network?</span>
 
           </h2>
 

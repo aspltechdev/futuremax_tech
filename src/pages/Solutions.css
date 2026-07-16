@@ -1,6 +1,10 @@
 /* ==========================================================
    FUTUREMAX SOLUTIONS PAGE
-   ENHANCED PROFESSIONAL CSS
+   ULTRA PREMIUM COMPLETE CSS
+========================================================== */
+
+/* ==========================================================
+   RESET & BASE
 ========================================================== */
 
 * {
@@ -43,21 +47,29 @@ ul {
 }
 
 /* ==========================================================
-   GLASSMORPHISM & GRADIENT UTILITIES
+   CUSTOM SCROLLBAR
 ========================================================== */
 
-.glass-effect {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+::-webkit-scrollbar {
+  width: 10px;
 }
 
-.gradient-text {
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
   background: linear-gradient(135deg, #2563eb, #4ade80);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #1d4ed8;
+}
+
+::selection {
+  background: #2563eb;
+  color: white;
 }
 
 /* ==========================================================
@@ -124,59 +136,6 @@ ul {
   }
 }
 
-/* Decorative circles */
-.solutions-hero .deco-circle {
-  position: absolute;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.03);
-  z-index: 0;
-  animation: floatCircle 15s ease-in-out infinite;
-}
-
-.solutions-hero .deco-circle:nth-child(1) {
-  width: 600px;
-  height: 600px;
-  top: -300px;
-  right: -200px;
-  animation-delay: 0s;
-}
-
-.solutions-hero .deco-circle:nth-child(2) {
-  width: 400px;
-  height: 400px;
-  bottom: -200px;
-  left: -150px;
-  animation-delay: -5s;
-}
-
-.solutions-hero .deco-circle:nth-child(3) {
-  width: 200px;
-  height: 200px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  animation-delay: -10s;
-}
-
-@keyframes floatCircle {
-  0%, 100% {
-    transform: translate(0, 0) scale(1);
-    opacity: 0.3;
-  }
-  25% {
-    transform: translate(30px, -30px) scale(1.1);
-    opacity: 0.5;
-  }
-  50% {
-    transform: translate(-20px, 20px) scale(0.9);
-    opacity: 0.3;
-  }
-  75% {
-    transform: translate(20px, 30px) scale(1.05);
-    opacity: 0.4;
-  }
-}
-
 .solutions-hero .container {
   position: relative;
   z-index: 1;
@@ -238,7 +197,7 @@ ul {
 }
 
 /* ==========================================================
-   BUTTONS WITH GLOW EFFECTS
+   BUTTONS
 ========================================================== */
 
 .hero-buttons {
@@ -262,6 +221,19 @@ ul {
   position: relative;
   overflow: hidden;
   box-shadow: 0 4px 20px rgba(37, 99, 235, 0.3);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.primary-btn .btn-icon {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.3s ease;
+}
+
+.primary-btn:hover .btn-icon {
+  transform: translateX(5px);
 }
 
 .primary-btn::before {
@@ -282,6 +254,10 @@ ul {
 .primary-btn:hover {
   transform: translateY(-4px) scale(1.02);
   box-shadow: 0 8px 30px rgba(37, 99, 235, 0.4);
+}
+
+.primary-btn:active {
+  transform: scale(0.98);
 }
 
 .secondary-btn {
@@ -305,6 +281,10 @@ ul {
   transform: translateY(-4px) scale(1.02);
   box-shadow: 0 8px 30px rgba(255, 255, 255, 0.15);
   border-color: white;
+}
+
+.secondary-btn:active {
+  transform: scale(0.98);
 }
 
 /* ==========================================================
@@ -340,6 +320,18 @@ ul {
   height: 4px;
   background: linear-gradient(90deg, #2563eb, #4ade80);
   border-radius: 2px;
+  animation: underlinePulse 3s ease-in-out infinite;
+}
+
+@keyframes underlinePulse {
+  0%, 100% {
+    width: 60px;
+    opacity: 1;
+  }
+  50% {
+    width: 80px;
+    opacity: 0.7;
+  }
 }
 
 .section-heading p {
@@ -362,7 +354,7 @@ ul {
 }
 
 /* ==========================================================
-   RESPONSIVE
+   RESPONSIVE HERO
 ========================================================== */
 
 @media (max-width: 992px) {
@@ -397,6 +389,7 @@ ul {
   .secondary-btn {
     width: 100%;
     text-align: center;
+    justify-content: center;
   }
 }
 
@@ -433,6 +426,19 @@ ul {
   height: 500px;
   background: radial-gradient(circle, rgba(37, 99, 235, 0.03), transparent 70%);
   border-radius: 50%;
+  animation: floatBlob 20s ease-in-out infinite;
+}
+
+@keyframes floatBlob {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(-30px, 20px) scale(1.1);
+  }
+  66% {
+    transform: translate(20px, -30px) scale(0.9);
+  }
 }
 
 .solutions-grid {
@@ -444,7 +450,7 @@ ul {
 }
 
 /* ==========================================================
-   SOLUTION CARD - ENHANCED
+   SOLUTION CARD
 ========================================================== */
 
 .solution-card {
@@ -459,6 +465,23 @@ ul {
   position: relative;
   overflow: hidden;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+.solution-card.visible {
+  animation: slideUpFade 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes slideUpFade {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .solution-card::before {
@@ -520,7 +543,7 @@ ul {
 }
 
 /* ==========================================================
-   ICON - ENHANCED
+   ICON
 ========================================================== */
 
 .solution-icon {
@@ -543,21 +566,6 @@ ul {
   transform: rotate(-8deg) scale(1.08);
   background: linear-gradient(135deg, #2563eb, #4ade80);
   box-shadow: 0 10px 30px rgba(37, 99, 235, 0.25);
-}
-
-.solution-icon .icon-shine {
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.2), transparent 60%);
-  opacity: 0;
-  transition: 0.5s;
-}
-
-.solution-card:hover .icon-shine {
-  opacity: 1;
 }
 
 /* ==========================================================
@@ -679,6 +687,7 @@ ul {
   font-weight: 800;
   letter-spacing: -0.5px;
   position: relative;
+  animation: fadeInUp 0.6s ease;
 }
 
 .details-header h2::after {
@@ -714,7 +723,7 @@ ul {
 }
 
 /* ==========================================================
-   DETAILS IMAGE - ENHANCED
+   DETAILS IMAGE
 ========================================================== */
 
 .details-image {
@@ -758,29 +767,27 @@ ul {
   transform: scale(1.05);
 }
 
-/* Image badge */
-.details-image .image-badge {
+/* Image shimmer effect */
+.details-image::after {
+  content: "";
   position: absolute;
-  bottom: 20px;
-  right: 20px;
-  background: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  color: white;
-  padding: 8px 16px;
-  border-radius: 8px;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 1px;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  animation: shimmer 3s ease-in-out infinite;
   z-index: 2;
-  opacity: 0;
-  transform: translateY(10px);
-  transition: all 0.4s ease;
+  pointer-events: none;
 }
 
-.details-image:hover .image-badge {
-  opacity: 1;
-  transform: translateY(0);
+@keyframes shimmer {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 200%;
+  }
 }
 
 /* ==========================================================
@@ -825,7 +832,7 @@ ul {
 }
 
 /* ==========================================================
-   DETAIL CARD - ENHANCED
+   DETAIL CARD
 ========================================================== */
 
 .detail-card {
@@ -898,7 +905,7 @@ ul {
 }
 
 /* ==========================================================
-   LIST - ENHANCED
+   LIST
 ========================================================== */
 
 .detail-card ul {
@@ -941,7 +948,7 @@ ul {
 }
 
 /* ==========================================================
-   RESPONSIVE
+   RESPONSIVE DETAILS
 ========================================================== */
 
 @media (max-width: 1100px) {
@@ -997,11 +1004,11 @@ ul {
 }
 
 /* ==========================================================
-   PART 2B - BENEFITS • PROJECTS • INDUSTRIES SERVED
+   PART 2B - BENEFITS • PROJECTS • INDUSTRIES
 ========================================================== */
 
 /* ==========================================================
-   BENEFITS - ENHANCED
+   BENEFITS
 ========================================================== */
 
 .benefits-wrapper {
@@ -1023,6 +1030,9 @@ ul {
   transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   position: relative;
   overflow: hidden;
+  opacity: 0;
+  transform: translateY(40px);
+  animation: slideUpFade 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }
 
 .benefit-card::before {
@@ -1104,7 +1114,7 @@ ul {
 }
 
 /* ==========================================================
-   PROJECT SHOWCASE - ENHANCED
+   PROJECT SHOWCASE
 ========================================================== */
 
 .projects-section {
@@ -1125,6 +1135,9 @@ ul {
   border: 1px solid #e2e8f0;
   transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   position: relative;
+  opacity: 0;
+  transform: translateY(40px);
+  animation: slideUpFade 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }
 
 .project-card::before {
@@ -1166,31 +1179,6 @@ ul {
   transform: scale(1.1);
 }
 
-/* Project image overlay */
-.project-image .project-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(8, 24, 38, 0.6), transparent);
-  opacity: 0;
-  transition: 0.5s;
-  display: flex;
-  align-items: flex-end;
-  padding: 20px;
-  z-index: 2;
-}
-
-.project-card:hover .project-overlay {
-  opacity: 1;
-}
-
-.project-overlay span {
-  color: white;
-  font-weight: 600;
-  font-size: 14px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-}
-
 .project-content {
   padding: 28px;
   position: relative;
@@ -1216,7 +1204,7 @@ ul {
 }
 
 /* ==========================================================
-   INDUSTRIES SERVED - ENHANCED
+   INDUSTRIES SERVED
 ========================================================== */
 
 .industries-served {
@@ -1267,13 +1255,13 @@ ul {
   opacity: 1;
 }
 
-.industry-tags span span {
+.industry-tags span {
   position: relative;
   z-index: 1;
 }
 
 /* ==========================================================
-   RESPONSIVE
+   RESPONSIVE BENEFITS & PROJECTS
 ========================================================== */
 
 @media (max-width: 1100px) {
@@ -1328,11 +1316,11 @@ ul {
 }
 
 /* ==========================================================
-   PART 3 - METHODOLOGY • CTA • ANIMATIONS
+   PART 3 - METHODOLOGY • CTA
 ========================================================== */
 
 /* ==========================================================
-   METHODOLOGY - ENHANCED
+   METHODOLOGY
 ========================================================== */
 
 .methodology-section {
@@ -1350,6 +1338,7 @@ ul {
   height: 500px;
   background: radial-gradient(circle, rgba(74, 222, 128, 0.03), transparent 70%);
   border-radius: 50%;
+  animation: floatBlob 25s ease-in-out infinite;
 }
 
 .timeline {
@@ -1368,6 +1357,9 @@ ul {
   text-align: center;
   position: relative;
   padding: 0 15px;
+  opacity: 0;
+  transform: translateY(40px);
+  animation: slideUpFade 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }
 
 .timeline-step::before {
@@ -1470,7 +1462,7 @@ ul {
 }
 
 /* ==========================================================
-   CTA - ENHANCED
+   CTA
 ========================================================== */
 
 .solutions-cta {
@@ -1531,6 +1523,13 @@ ul {
   letter-spacing: -0.5px;
 }
 
+.solutions-cta h2 .highlight {
+  background: linear-gradient(135deg, #4ade80, #2563eb);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
 .solutions-cta p {
   max-width: 760px;
   margin: auto;
@@ -1553,84 +1552,6 @@ ul {
   border-color: white;
   color: white;
   box-shadow: none;
-}
-
-/* ==========================================================
-   PREMIUM HOVER EFFECTS
-========================================================== */
-
-.solution-card,
-.detail-card,
-.benefit-card,
-.project-card,
-.timeline-step,
-.industry-tags span {
-  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-/* ==========================================================
-   HERO LAYOUT - Hero Image (if needed)
-========================================================== */
-
-.hero-content {
-  display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  align-items: center;
-  gap: 70px;
-}
-
-.hero-text {
-  text-align: left;
-}
-
-.hero-text p {
-  margin: 0;
-  margin-top: 25px;
-}
-
-.hero-buttons {
-  justify-content: flex-start;
-}
-
-.hero-image {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.hero-image img {
-  width: 100%;
-  max-width: 500px;
-  object-fit: contain;
-  filter: drop-shadow(0 25px 45px rgba(0, 0, 0, 0.35));
-  transition: 0.4s;
-}
-
-.hero-image img:hover {
-  transform: translateY(-8px) scale(1.03);
-}
-
-@media (max-width: 992px) {
-  .hero-content {
-    grid-template-columns: 1fr;
-    text-align: center;
-  }
-
-  .hero-text {
-    text-align: center;
-  }
-
-  .hero-buttons {
-    justify-content: center;
-  }
-
-  .hero-image {
-    margin-top: 40px;
-  }
-
-  .hero-image img {
-    max-width: 360px;
-  }
 }
 
 /* ==========================================================
@@ -1702,123 +1623,18 @@ ul {
 }
 
 /* ==========================================================
-   ADDITIONAL IMAGE STYLES FOR DETAILS SECTION
+   KEYFRAME ANIMATIONS
 ========================================================== */
 
-/* Image placeholder fallback */
-.details-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-/* Smooth image loading with animation */
-.solution-detail-image {
-  animation: imageFadeIn 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-@keyframes imageFadeIn {
+@keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: scale(0.95);
+    transform: translateY(30px);
   }
   to {
     opacity: 1;
-    transform: scale(1);
+    transform: translateY(0);
   }
-}
-
-/* Image shimmer effect */
-.details-image .shimmer {
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 50%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-  animation: shimmer 3s ease-in-out infinite;
-  z-index: 1;
-  pointer-events: none;
-}
-
-@keyframes shimmer {
-  0% {
-    left: -100%;
-  }
-  100% {
-    left: 200%;
-  }
-}
-
-/* ==========================================================
-   SCROLL ANIMATIONS (Enhanced)
-========================================================== */
-
-.solution-card,
-.benefit-card,
-.project-card,
-.timeline-step {
-  opacity: 0;
-  transform: translateY(40px);
-  animation: slideUpFade 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-}
-
-.solution-card:nth-child(1) {
-  animation-delay: 0.1s;
-}
-.solution-card:nth-child(2) {
-  animation-delay: 0.2s;
-}
-.solution-card:nth-child(3) {
-  animation-delay: 0.3s;
-}
-.solution-card:nth-child(4) {
-  animation-delay: 0.4s;
-}
-.solution-card:nth-child(5) {
-  animation-delay: 0.5s;
-}
-.solution-card:nth-child(6) {
-  animation-delay: 0.6s;
-}
-
-.benefit-card:nth-child(1) {
-  animation-delay: 0.1s;
-}
-.benefit-card:nth-child(2) {
-  animation-delay: 0.2s;
-}
-.benefit-card:nth-child(3) {
-  animation-delay: 0.3s;
-}
-.benefit-card:nth-child(4) {
-  animation-delay: 0.4s;
-}
-
-.project-card:nth-child(1) {
-  animation-delay: 0.1s;
-}
-.project-card:nth-child(2) {
-  animation-delay: 0.2s;
-}
-.project-card:nth-child(3) {
-  animation-delay: 0.3s;
-}
-
-.timeline-step:nth-child(1) {
-  animation-delay: 0.1s;
-}
-.timeline-step:nth-child(3) {
-  animation-delay: 0.2s;
-}
-.timeline-step:nth-child(5) {
-  animation-delay: 0.3s;
-}
-.timeline-step:nth-child(7) {
-  animation-delay: 0.4s;
-}
-.timeline-step:nth-child(9) {
-  animation-delay: 0.5s;
 }
 
 @keyframes slideUpFade {
@@ -1832,57 +1648,70 @@ ul {
   }
 }
 
-/* Keyframe animations for hero */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
+@keyframes heroGlow {
+  0% {
+    opacity: 0.5;
+    transform: scale(1);
   }
-  to {
+  100% {
     opacity: 1;
-    transform: translateY(0);
+    transform: scale(1.05);
   }
 }
 
-/* Disable animations on mobile for performance */
-@media (max-width: 768px) {
-  .solution-card,
-  .benefit-card,
-  .project-card,
-  .timeline-step {
+@keyframes particleFloat {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-200px);
+  }
+}
+
+@keyframes floatBlob {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(-30px, 20px) scale(1.1);
+  }
+  66% {
+    transform: translate(20px, -30px) scale(0.9);
+  }
+}
+
+@keyframes floatGlow {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(30px, -30px) scale(1.1);
+  }
+}
+
+@keyframes underlinePulse {
+  0%, 100% {
+    width: 60px;
     opacity: 1;
-    transform: none;
-    animation: none;
+  }
+  50% {
+    width: 80px;
+    opacity: 0.7;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 200%;
   }
 }
 
 /* ==========================================================
    ADDITIONAL PROFESSIONAL TOUCHES
 ========================================================== */
-
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 10px;
-}
-
-::-webkit-scrollbar-track {
-  background: #f1f5f9;
-}
-
-::-webkit-scrollbar-thumb {
-  background: linear-gradient(135deg, #2563eb, #4ade80);
-  border-radius: 5px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #1d4ed8;
-}
-
-/* Selection color */
-::selection {
-  background: #2563eb;
-  color: white;
-}
 
 /* Focus styles for accessibility */
 :focus-visible {
@@ -1908,49 +1737,19 @@ a,
     radial-gradient(circle at 80% 50%, rgba(74, 222, 128, 0.02) 0%, transparent 50%);
 }
 
-/* Project card category badge */
-.project-content .category-badge {
-  display: inline-block;
-  padding: 4px 12px;
-  background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(74, 222, 128, 0.1));
-  border-radius: 50px;
-  font-size: 12px;
-  font-weight: 600;
-  color: #2563eb;
-  margin-bottom: 12px;
-  letter-spacing: 0.5px;
-}
-
-/* ==========================================================
-   IMAGE GALLERY STYLES FOR DETAILS
-========================================================== */
-
-.details-image .image-gallery {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-  margin-top: 10px;
-}
-
-.details-image .image-gallery img {
-  height: 100px;
-  object-fit: cover;
-  border-radius: 8px;
-  transition: 0.3s;
-  cursor: pointer;
-}
-
-.details-image .image-gallery img:hover {
-  transform: scale(1.05);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-}
-
-/* ==========================================================
-   RESPONSIVE IMAGE GALLERY
-========================================================== */
-
+/* Disable animations on mobile for performance */
 @media (max-width: 768px) {
-  .details-image .image-gallery {
-    grid-template-columns: 1fr;
+  .solution-card,
+  .benefit-card,
+  .project-card,
+  .timeline-step {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+  
+  .solutions-hero::after,
+  .solutions-hero::before {
+    animation: none;
   }
 }
