@@ -1,151 +1,229 @@
-import React, { useEffect, useRef, useState } from "react";
-import { MapPinned, Radio, Cpu, Building2, Wrench, ShieldCheck, ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
+import {
+  FaBroadcastTower,
+  FaTools,
+  FaUsers,
+  FaAward,
+  FaArrowRight,
+} from "react-icons/fa";
 import "./WhyFuturemax.css";
+
+import engineeringImg from "../../assets/project2.jpeg"; // Replace with your image
 
 const features = [
   {
-    icon: <MapPinned size={28} strokeWidth={1.5} />,
-    title: "Professional RF Site Survey",
-    desc: "Every project begins with a detailed RF site survey and signal analysis to design the most effective wireless coverage solution.",
-    color: "#1AA64C",
+    icon: <FaBroadcastTower />,
+    title: "Engineering Expertise",
+    description:
+      "Our experienced RF engineers design and implement reliable wireless connectivity solutions with precise planning, signal optimization, and technical excellence.",
   },
   {
-    icon: <Radio size={28} strokeWidth={1.5} />,
-    title: "RF Engineering Expertise",
-    desc: "Our experienced engineers design and deploy optimized mobile signal enhancement and Distributed Antenna System (DAS) solutions.",
-    color: "#0857A1",
+    icon: <FaTools />,
+    title: "Customized Solutions",
+    description:
+      "Every project is carefully designed according to building structure, coverage requirements, user density, and future scalability.",
   },
   {
-    icon: <Cpu size={28} strokeWidth={1.5} />,
-    title: "4G & 5G Ready Solutions",
-    desc: "Future-ready wireless infrastructure supporting multi-operator 4G LTE and 5G networks for seamless connectivity.",
-    color: "#1AA64C",
+    icon: <FaAward />,
+    title: "Industry Experience",
+    description:
+      "From commercial buildings and hospitals to hotels, industries and educational institutions, we deliver tailored RF infrastructure solutions.",
   },
   {
-    icon: <Building2 size={28} strokeWidth={1.5} />,
-    title: "Enterprise Connectivity",
-    desc: "Scalable wireless solutions for commercial buildings, hospitals, hotels, industries, educational institutions, and residential communities.",
-    color: "#0857A1",
-  },
-  {
-    icon: <Wrench size={28} strokeWidth={1.5} />,
-    title: "End-to-End Project Delivery",
-    desc: "From consultation and RF planning to installation, testing, optimization, and annual maintenance, we manage every stage of the project.",
-    color: "#1AA64C",
-  },
-  {
-    icon: <ShieldCheck size={28} strokeWidth={1.5} />,
-    title: "Reliable Performance & Support",
-    desc: "High-quality equipment, professional installation, and responsive technical support ensure long-term reliability and customer satisfaction.",
-    color: "#0857A1",
+    icon: <FaUsers />,
+    title: "Customer Satisfaction",
+    description:
+      "We focus on long-term performance, seamless connectivity, quality installation, and dedicated post-installation support.",
   },
 ];
 
 const stats = [
-  { value: "5,000+", label: "Projects Delivered" },
-  { value: "98%", label: "Client Satisfaction" },
-  { value: "15+", label: "Years Experience" },
-  { value: "24/7", label: "Technical Support" },
+  {
+    value: "250+",
+    label: "Successful Installations",
+  },
+  {
+    value: "99%",
+    label: "Customer Satisfaction",
+  },
+  {
+    value: "20+",
+    label: "Enterprise Projects",
+  },
+  {
+    value: "6+",
+    label: "Industries Served",
+  },
 ];
 
-const WhyFuturemax = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
-    };
-  }, []);
-
+export default function WhyFuturemax() {
   return (
-    <section className="why-futuremax" ref={sectionRef}>
-      {/* Background Animation */}
-      <div className="why-bg">
-        <div className="why-bg-orb why-bg-orb-1" />
-        <div className="why-bg-orb why-bg-orb-2" />
-        <div className="why-bg-grid" />
-      </div>
+    <section className="whyFuturemax">
+
+      <div className="why-bg-circle one"></div>
+      <div className="why-bg-circle two"></div>
 
       <div className="container">
-        {/* Section Header */}
-        <div className={`section-header ${isVisible ? 'animate' : ''}`}>
-          <span className="section-tag">Why Futuremax Technology</span>
-          <h2 className="section-title">
-            Engineering reliable wireless
-            <span className="section-title-accent"> connectivity with precision</span>
+
+        <motion.div
+          className="why-header"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+        >
+          <span className="section-tag">
+            WHY CHOOSE FUTUREMAX
+          </span>
+
+          <h2>
+            Engineering Excellence That
+            <span> Powers Reliable Connectivity</span>
           </h2>
-          <p className="section-description">
-            Futuremax Technology delivers intelligent wireless connectivity solutions through 
-            expert RF engineering, professional deployment, and customer-focused support. We help 
-            businesses, industries, institutions, and residential communities eliminate signal dead 
-            zones and achieve seamless communication.
+
+          <p>
+            Futuremax delivers advanced RF Engineering, Wireless Network
+            Design, Signal Enhancement and Distributed Antenna System (DAS)
+            solutions that are customized for every environment. We combine
+            technical expertise, innovation and quality execution to ensure
+            seamless connectivity across residential, commercial and enterprise
+            projects.
           </p>
+        </motion.div>
+
+        <div className="why-content">
+
+          <motion.div
+            className="why-image-section"
+            initial={{ opacity: 0, x: -70 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: .8 }}
+          >
+
+            <div className="image-wrapper">
+
+              <img
+                src={engineeringImg}
+                alt="Futuremax Engineers"
+              />
+
+              <div className="experience-box">
+
+                <h2>10+</h2>
+
+                <p>
+                  Years of Engineering
+                  <br />
+                  Excellence
+                </p>
+
+              </div>
+
+            </div>
+
+          </motion.div>
+
+          <motion.div
+            className="why-cards"
+            initial={{ opacity: 0, x: 70 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: .8 }}
+          >
+
+            {features.map((item, index) => (
+
+              <motion.div
+                key={index}
+                className="feature-card"
+                whileHover={{
+                  y: -10,
+                }}
+              >
+
+                <div className="feature-icon">
+                  {item.icon}
+                </div>
+
+                <div className="feature-text">
+
+                  <h3>{item.title}</h3>
+
+                  <p>
+                    {item.description}
+                  </p>
+
+                </div>
+
+              </motion.div>
+
+            ))}
+
+          </motion.div>
+
         </div>
 
-        {/* Stats Bar */}
-        <div className={`stats-bar ${isVisible ? 'animate' : ''}`}>
+        <motion.div
+          className="stats-section"
+          initial={{ opacity: 0, y: 60 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: .8 }}
+        >
+
           {stats.map((stat, index) => (
-            <div key={index} className="stats-item">
-              <span className="stats-value">{stat.value}</span>
-              <span className="stats-label">{stat.label}</span>
-            </div>
-          ))}
-        </div>
 
-        {/* Features Grid */}
-        <div className="why-grid">
-          {features.map((item, index) => (
-            <div 
-              className={`why-card ${isVisible ? 'animate' : ''}`} 
+            <div
+              className="stat-card"
               key={index}
-              style={{ 
-                '--delay': `${index * 0.1}s`,
-                '--card-color': item.color,
-              }}
             >
-              <div className="why-card-number">
-                {String(index + 1).padStart(2, '0')}
-              </div>
-              <div className="why-card-icon">
-                {item.icon}
-              </div>
-              <h3 className="why-card-title">{item.title}</h3>
-              <p className="why-card-desc">{item.desc}</p>
-              <div className="why-card-line" />
-            </div>
-          ))}
-        </div>
 
-        {/* Bottom CTA */}
-        <div className={`why-cta ${isVisible ? 'animate' : ''}`}>
-          <div className="why-cta-content">
-            <h3 className="why-cta-title">Ready to eliminate dead zones?</h3>
-            <p className="why-cta-desc">Let our RF engineers design the perfect solution for your space.</p>
-            <a href="/contact" className="btn">
-              <span>Get Free Site Survey</span>
-              <ArrowRight size={16} />
-            </a>
+              <h2>{stat.value}</h2>
+
+              <p>{stat.label}</p>
+
+            </div>
+
+          ))}
+
+        </motion.div>
+
+        <motion.div
+          className="why-bottom"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: .2 }}
+        >
+
+          <div>
+
+            <h3>
+              Delivering End-to-End RF Engineering Solutions
+            </h3>
+
+            <p>
+              From RF Site Surveys and Network Planning to Installation,
+              Optimization and Long-Term Support, Futuremax ensures every
+              deployment achieves maximum signal performance and operational
+              reliability.
+            </p>
+
           </div>
-        </div>
+
+          <button>
+
+            Explore Our Solutions
+
+            <FaArrowRight />
+
+          </button>
+
+        </motion.div>
+
       </div>
+
     </section>
   );
-};
-
-export default WhyFuturemax;
+}

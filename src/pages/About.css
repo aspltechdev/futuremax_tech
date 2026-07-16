@@ -1,0 +1,1486 @@
+/*============================================================
+                    ABOUT PAGE
+============================================================*/
+
+.about-page {
+    width: 100%;
+    overflow: hidden;
+    background: #ffffff;
+}
+
+.container {
+    width: 90%;
+    max-width: 1380px;
+    margin: auto;
+}
+
+section {
+    position: relative;
+    padding: 110px 0;
+}
+
+/*============================================================
+                    COMMON
+============================================================*/
+
+.section-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: #C89B3C;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    margin-bottom: 18px;
+}
+
+.section-tag::before {
+    content: "";
+    width: 45px;
+    height: 2px;
+    background: #C89B3C;
+}
+
+.section-header {
+    max-width: 760px;
+    margin: auto;
+    text-align: center;
+    margin-bottom: 75px;
+}
+
+.section-header h2 {
+    font-size: 48px;
+    font-weight: 700;
+    color: #071831;
+    line-height: 1.15;
+    margin: 18px 0;
+}
+
+.section-header p {
+    color: #667085;
+    line-height: 1.9;
+    font-size: 17px;
+}
+
+/*============================================================
+                    BUTTON
+============================================================*/
+
+.primary-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    padding: 17px 38px;
+    background: linear-gradient(135deg,#F4B400,#D69E00);
+    color: #071831;
+    text-decoration: none;
+    border-radius: 60px;
+    font-weight: 600;
+    transition: .45s;
+    position: relative;
+    overflow: hidden;
+}
+
+.primary-btn svg{
+    transition:.4s;
+}
+
+.primary-btn::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:rgba(255,255,255,.18);
+    transform:translateX(-100%);
+    transition:.6s;
+}
+
+.primary-btn:hover::before{
+    transform:translateX(100%);
+}
+
+.primary-btn:hover{
+    transform:translateY(-5px);
+    box-shadow: 0 18px 40px rgba(244,180,0,.30);
+}
+
+.primary-btn:hover svg{
+    transform:translateX(5px);
+}
+
+/*============================================================
+                        HERO - REDUCED HEIGHT
+============================================================*/
+
+.about-hero{
+    position:relative;
+    height:75vh;
+    min-height:550px;
+    display:flex;
+    align-items:center;
+    overflow:hidden;
+}
+
+.hero-bg{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transform:scale(1.08);
+}
+
+.hero-overlay{
+    position:absolute;
+    inset:0;
+    background: linear-gradient(
+        100deg,
+        rgba(7,24,49,.95) 15%,
+        rgba(7,24,49,.82) 45%,
+        rgba(7,24,49,.45) 100%
+    );
+}
+
+/* Decorative Blur - Reduced */
+.about-hero::before{
+    content:"";
+    position:absolute;
+    width:450px;
+    height:450px;
+    border-radius:50%;
+    background: rgba(244,180,0,.08);
+    right:-150px;
+    top:-150px;
+    filter:blur(20px);
+}
+
+.about-hero::after{
+    content:"";
+    position:absolute;
+    width:250px;
+    height:250px;
+    border-radius:50%;
+    background: rgba(255,255,255,.04);
+    left:-80px;
+    bottom:-80px;
+}
+
+.hero-content{
+    position:relative;
+    z-index:5;
+    max-width:720px;
+}
+
+.hero-tag{
+    display:inline-flex;
+    align-items:center;
+    gap:12px;
+    color:#F4B400;
+    font-weight:700;
+    letter-spacing:2px;
+    margin-bottom:18px;
+    font-size:13px;
+}
+
+.hero-tag::before{
+    content:"";
+    width:35px;
+    height:2px;
+    background:#F4B400;
+}
+
+.hero-content h1{
+    color:#fff;
+    font-size:56px;
+    line-height:1.08;
+    font-weight:700;
+    margin-bottom:20px;
+}
+
+.hero-content h1 span{
+    color:#F4B400;
+}
+
+.hero-content p{
+    color:rgba(255,255,255,.78);
+    font-size:16px;
+    line-height:1.8;
+    max-width:620px;
+    margin-bottom:30px;
+}
+
+/*============================================================
+                    WHO WE ARE
+============================================================*/
+
+.about-company{
+    background:#ffffff;
+    position:relative;
+    overflow:hidden;
+}
+
+/* Decorative Background */
+.about-company::before{
+    content:"";
+    position:absolute;
+    width:700px;
+    height:700px;
+    border-radius:50%;
+    background: radial-gradient(
+        rgba(244,180,0,.06),
+        transparent 70%
+    );
+    top:-250px;
+    left:-250px;
+}
+
+.about-company::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background-image:
+        linear-gradient(
+            rgba(7,24,49,.03) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(7,24,49,.03) 1px,
+            transparent 1px
+        );
+    background-size:55px 55px;
+    opacity:.4;
+    pointer-events:none;
+}
+
+.about-grid{
+    position:relative;
+    z-index:2;
+    display:grid;
+    grid-template-columns:1fr 1.05fr;
+    gap:90px;
+    align-items:center;
+}
+
+/*============================================================
+                    IMAGE
+============================================================*/
+
+.about-image{
+    position:relative;
+}
+
+.about-image img{
+    width:100%;
+    height:650px;
+    object-fit:cover;
+    border-radius:32px;
+    display:block;
+    box-shadow: 0 35px 80px rgba(7,24,49,.15);
+    transition:.6s;
+}
+
+.about-image:hover img{
+    transform:scale(1.04);
+}
+
+/* Gold Accent */
+.about-image::before{
+    content:"";
+    position:absolute;
+    width:180px;
+    height:180px;
+    border:6px solid #F4B400;
+    border-radius:26px;
+    top:-25px;
+    left:-25px;
+    z-index:-1;
+}
+
+/*============================================================
+                FLOATING INFO CARD
+============================================================*/
+
+.about-badge{
+    position:absolute;
+    right:-40px;
+    bottom:45px;
+    width:290px;
+    padding:28px;
+    border-radius:24px;
+    background: rgba(255,255,255,.90);
+    backdrop-filter:blur(18px);
+    box-shadow: 0 20px 45px rgba(7,24,49,.12);
+    border: 1px solid rgba(255,255,255,.6);
+}
+
+.about-badge h4{
+    color:#071831;
+    font-size:22px;
+    margin-bottom:12px;
+}
+
+.about-badge p{
+    color:#667085;
+    line-height:1.8;
+    font-size:15px;
+}
+
+/*============================================================
+                    CONTENT
+============================================================*/
+
+.about-content{
+    position:relative;
+}
+
+.about-content h2{
+    font-size:52px;
+    color:#071831;
+    line-height:1.15;
+    margin-bottom:28px;
+}
+
+.about-content p{
+    color:#667085;
+    line-height:2;
+    font-size:17px;
+    margin-bottom:22px;
+}
+
+/*============================================================
+                    FEATURE GRID
+============================================================*/
+
+.about-features{
+    margin-top:45px;
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:24px;
+}
+
+.feature-item{
+    display:flex;
+    align-items:flex-start;
+    gap:18px;
+    padding:18px 22px;
+    background:#ffffff;
+    border-radius:18px;
+    transition:.4s;
+    border:1px solid rgba(7,24,49,.08);
+    box-shadow: 0 10px 25px rgba(7,24,49,.04);
+}
+
+.feature-item svg{
+    color:#F4B400;
+    font-size:22px;
+    flex-shrink:0;
+    margin-top:2px;
+    transition:.4s;
+}
+
+.feature-item span{
+    color:#071831;
+    font-size:15px;
+    font-weight:600;
+    line-height:1.6;
+}
+
+.feature-item:hover{
+    transform:translateY(-8px);
+    background:#071831;
+    border-color:#071831;
+    box-shadow: 0 25px 50px rgba(7,24,49,.18);
+}
+
+.feature-item:hover span{
+    color:#ffffff;
+}
+
+.feature-item:hover svg{
+    transform:rotate(-15deg) scale(1.15);
+    color:#F4B400;
+}
+
+/*============================================================
+                    EXPERTISE PREMIUM - REDUCED SIZE
+============================================================*/
+
+.expertise-premium{
+    position:relative;
+    padding: 90px 0;
+    background: linear-gradient(
+        180deg,
+        #f8fafc 0%,
+        #ffffff 100%
+    );
+    overflow:hidden;
+}
+
+/* Background Glow - Smaller */
+.expertise-premium::before{
+    content:"";
+    position:absolute;
+    width:450px;
+    height:450px;
+    border-radius:50%;
+    background: radial-gradient(
+        rgba(244,180,0,.08),
+        transparent 70%
+    );
+    right:-180px;
+    top:-120px;
+}
+
+/* Grid */
+.expertise-layout{
+    display:grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 28px;
+    margin-top: 50px;
+}
+
+/*============================================================
+                        CARD - REDUCED SIZE
+============================================================*/
+
+.premium-card{
+    position:relative;
+    padding: 32px 30px 30px;
+    border-radius: 22px;
+    background:#ffffff;
+    overflow:hidden;
+    transition:.45s;
+    border:1px solid rgba(7,24,49,.08);
+    box-shadow: 0 15px 35px rgba(7,24,49,.05);
+    min-height: 280px;
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-start;
+}
+
+/* Large cards - Reduced */
+.large-card{
+    min-height: 320px;
+}
+
+/* Gold Line - Thinner */
+.premium-card::before{
+    content:"";
+    position:absolute;
+    left:0;
+    top:0;
+    width:100%;
+    height: 4px;
+    background:#F4B400;
+    transform:scaleX(0);
+    transform-origin:left;
+    transition:.45s;
+}
+
+/* Hover */
+.premium-card:hover{
+    transform: translateY(-10px);
+    background:#071831;
+    box-shadow: 0 25px 50px rgba(7,24,49,.18);
+}
+
+.premium-card:hover::before{
+    transform:scaleX(1);
+}
+
+/*============================================================
+                    NUMBER - SMALLER
+============================================================*/
+
+.premium-number{
+    position:absolute;
+    top: 20px;
+    right: 22px;
+    font-size: 48px;
+    font-weight:700;
+    color: rgba(7,24,49,.06);
+    transition:.4s;
+}
+
+.premium-card:hover .premium-number{
+    color: rgba(255,255,255,.08);
+}
+
+/*============================================================
+                    ICON - SMALLER
+============================================================*/
+
+.premium-icon{
+    width: 64px;
+    height: 64px;
+    border-radius: 18px;
+    background:#FFF6D7;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size: 30px;
+    margin-bottom: 24px;
+    transition:.45s;
+}
+
+.premium-card:hover .premium-icon{
+    background:#F4B400;
+    transform: rotate(-8deg) scale(1.08);
+}
+
+/*============================================================
+                    HEADING - SMALLER
+============================================================*/
+
+.premium-card h3{
+    font-size: 24px;
+    color:#071831;
+    line-height:1.2;
+    margin-bottom: 16px;
+    transition:.4s;
+}
+
+.premium-card:hover h3{
+    color:#ffffff;
+}
+
+.premium-card p{
+    color:#667085;
+    line-height: 1.8;
+    font-size: 15px;
+    transition:.4s;
+    margin-bottom: 18px;
+}
+
+.premium-card:hover p{
+    color: rgba(255,255,255,.75);
+}
+
+/*============================================================
+                    PREMIUM LINK - SMALLER
+============================================================*/
+
+.premium-link{
+    margin-top:auto;
+    display:inline-flex;
+    align-items:center;
+    gap: 10px;
+    color:#F4B400;
+    font-size: 13px;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:1.5px;
+    transition:.45s;
+}
+
+.premium-link::after{
+    content:"→";
+    font-size: 16px;
+    transition:.45s;
+}
+
+.premium-card:hover .premium-link{
+    color:#ffffff;
+    gap: 14px;
+}
+
+.premium-card:hover .premium-link::after{
+    color:#F4B400;
+    transform:translateX(8px);
+}
+
+/*============================================================
+                GOLD GLOW - SMALLER
+============================================================*/
+
+.premium-card::after{
+    content:"";
+    position:absolute;
+    width: 200px;
+    height: 200px;
+    border-radius:50%;
+    background: radial-gradient(
+        rgba(244,180,0,.18),
+        transparent 70%
+    );
+    right:-100px;
+    bottom:-100px;
+    opacity:0;
+    transition:.5s;
+}
+
+.premium-card:hover::after{
+    opacity:1;
+}
+
+/*============================================================
+                ICON BACKGROUND
+============================================================*/
+
+.premium-icon{
+    position:relative;
+    overflow:hidden;
+}
+
+.premium-icon::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background: linear-gradient(
+        135deg,
+        rgba(255,255,255,.25),
+        transparent
+    );
+    opacity:0;
+    transition:.4s;
+}
+
+.premium-card:hover .premium-icon::before{
+    opacity:1;
+}
+
+/*============================================================
+                CARD BORDER
+============================================================*/
+
+.premium-card{
+    isolation:isolate;
+}
+
+.premium-card:hover{
+    border-color: rgba(244,180,0,.45);
+}
+
+.premium-card::selection{
+    background:#F4B400;
+    color:#071831;
+}
+
+/*============================================================
+                STAGGER EFFECT WITH PADDING BETWEEN CARDS 2 & 4
+============================================================*/
+
+.premium-card:nth-child(2){
+    margin-top: 30px;
+    margin-bottom: 0;
+}
+
+.premium-card:nth-child(3){
+    margin-top: -30px;
+    margin-bottom: 0;
+}
+
+.premium-card:nth-child(4){
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+/*============================================================
+                CARDS 3 & 4 - REDUCED SIZE (Booster Accessories & Booster Antennas)
+============================================================*/
+
+/* Make cards 3 and 4 smaller */
+.premium-card:nth-child(3),
+.premium-card:nth-child(4) {
+    padding: 22px 20px 20px;
+    min-height: 240px;
+    border-radius: 18px;
+}
+
+/* Override large-card for cards 3 and 4 */
+.premium-card:nth-child(3).large-card,
+.premium-card:nth-child(4).large-card {
+    min-height: 260px;
+}
+
+/* Reduce icon size for cards 3 and 4 */
+.premium-card:nth-child(3) .premium-icon,
+.premium-card:nth-child(4) .premium-icon {
+    width: 52px;
+    height: 52px;
+    font-size: 24px;
+    margin-bottom: 16px;
+    border-radius: 14px;
+}
+
+/* Reduce heading size for cards 3 and 4 */
+.premium-card:nth-child(3) h3,
+.premium-card:nth-child(4) h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+/* Reduce paragraph size for cards 3 and 4 */
+.premium-card:nth-child(3) p,
+.premium-card:nth-child(4) p {
+    font-size: 13px;
+    line-height: 1.6;
+    margin-bottom: 12px;
+}
+
+/* Reduce number badge for cards 3 and 4 */
+.premium-card:nth-child(3) .premium-number,
+.premium-card:nth-child(4) .premium-number {
+    font-size: 38px;
+    top: 14px;
+    right: 16px;
+}
+
+/* Reduce link text for cards 3 and 4 */
+.premium-card:nth-child(3) .premium-link,
+.premium-card:nth-child(4) .premium-link {
+    font-size: 11px;
+    gap: 8px;
+}
+
+.premium-card:nth-child(3) .premium-link::after,
+.premium-card:nth-child(4) .premium-link::after {
+    font-size: 13px;
+}
+
+/* Adjust gold glow for cards 3 and 4 */
+.premium-card:nth-child(3)::after,
+.premium-card:nth-child(4)::after {
+    width: 160px;
+    height: 160px;
+    right: -80px;
+    bottom: -80px;
+}
+
+/*============================================================
+                WHY CHOOSE FUTUREMAX - REDUCED SIZE
+============================================================*/
+
+.why-premium {
+    position: relative;
+    padding: 80px 0;
+    background: #071831;
+    overflow: hidden;
+}
+
+/* Decorative Background Glow - Smaller */
+.why-premium::before {
+    content: "";
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(rgba(244, 180, 0, 0.08), transparent 70%);
+    top: -180px;
+    right: -180px;
+}
+
+.why-premium::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+    background-size: 50px 50px;
+    pointer-events: none;
+}
+
+.why-premium .section-header {
+    position: relative;
+    z-index: 2;
+    margin-bottom: 40px;
+}
+
+.why-premium .section-header h2 {
+    color: #ffffff;
+    font-size: 38px;
+    margin: 12px 0;
+}
+
+.why-premium .section-header h2 span {
+    color: #C89B3C;
+}
+
+.why-premium .section-header p {
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+/*============================================================
+                SCROLL WRAPPER
+============================================================*/
+
+.scroll-wrapper {
+    position: relative;
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: visible;
+    padding: 10px 0 20px 0;
+    margin-top: 20px;
+    cursor: grab;
+    scroll-behavior: smooth;
+}
+
+.scroll-wrapper::-webkit-scrollbar {
+    height: 5px;
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 10px;
+}
+
+.scroll-wrapper::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.scroll-wrapper::-webkit-scrollbar-thumb {
+    background: linear-gradient(90deg, #F4B400, #C89B3C);
+    border-radius: 10px;
+}
+
+.scroll-wrapper::-webkit-scrollbar-thumb:hover {
+    background: #F4B400;
+}
+
+/* Hide scrollbar for Firefox */
+.scroll-wrapper {
+    scrollbar-width: thin;
+    scrollbar-color: #F4B400 rgba(255, 255, 255, 0.06);
+}
+
+/*============================================================
+                CARDS SCROLL CONTAINER
+============================================================*/
+
+.cards-scroll {
+    display: flex;
+    gap: 18px;
+    padding: 6px 4px 14px 4px;
+    min-width: max-content;
+}
+
+/*============================================================
+                FEATURE CUBE CARDS - SMALLER
+============================================================*/
+
+.feature-cube {
+    position: relative;
+    width: 190px;
+    min-height: 210px;
+    flex-shrink: 0;
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(18px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 24px 18px 20px;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.feature-cube:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(244, 180, 0, 0.4);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+}
+
+.feature-cube::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #F4B400, transparent);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.feature-cube:hover::before {
+    opacity: 1;
+}
+
+/* Number Badge - Smaller */
+.cube-number {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    font-size: 12px;
+    font-weight: 700;
+    color: rgba(244, 180, 0, 0.3);
+    letter-spacing: 1px;
+    transition: color 0.3s ease;
+}
+
+.feature-cube:hover .cube-number {
+    color: rgba(244, 180, 0, 0.7);
+}
+
+/* Icon - Smaller */
+.cube-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: rgba(244, 180, 0, 0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    margin: 4px auto 14px;
+    transition: all 0.4s ease;
+    flex-shrink: 0;
+}
+
+.feature-cube:hover .cube-icon {
+    background: #F4B400;
+    transform: scale(1.05) rotate(-4deg);
+}
+
+/* Title - Smaller */
+.feature-cube h3 {
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    line-height: 1.3;
+    transition: color 0.3s ease;
+}
+
+/* Description - Smaller */
+.feature-cube p {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 12px;
+    line-height: 1.5;
+    transition: color 0.3s ease;
+    margin: 0;
+}
+
+.feature-cube:hover p {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/*============================================================
+                    CONTACT CTA
+============================================================*/
+
+.about-cta{
+    padding:120px 0;
+    background:#f8fafc;
+    position:relative;
+    overflow:hidden;
+}
+
+.about-cta::before{
+    content:"";
+    position:absolute;
+    width:700px;
+    height:700px;
+    border-radius:50%;
+    background: radial-gradient(
+        rgba(244,180,0,.08),
+        transparent 70%
+    );
+    right:-250px;
+    top:-250px;
+}
+
+.cta-wrapper{
+    position:relative;
+    z-index:2;
+    max-width:1100px;
+    margin:auto;
+    padding:70px 80px;
+    background:#071831;
+    border-radius:30px;
+    text-align:center;
+    overflow:hidden;
+    box-shadow: 0 35px 80px rgba(7,24,49,.18);
+}
+
+.cta-wrapper::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background: linear-gradient(
+        135deg,
+        rgba(255,255,255,.05),
+        transparent
+    );
+}
+
+.cta-wrapper .section-tag{
+    justify-content:center;
+    color:#F4B400;
+}
+
+.cta-wrapper .section-tag::before{
+    background:#F4B400;
+}
+
+.cta-wrapper h2{
+    color:#ffffff;
+    font-size:48px;
+    margin:25px 0;
+    line-height:1.2;
+}
+
+.cta-wrapper p{
+    max-width:720px;
+    margin:0 auto 40px;
+    color:rgba(255,255,255,.78);
+    font-size:17px;
+    line-height:1.9;
+}
+
+.cta-buttons{
+    display:flex;
+    justify-content:center;
+}
+
+/*============================================================
+                RESPONSIVE
+============================================================*/
+
+@media(max-width:1200px){
+    .expertise-layout{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .premium-card:nth-child(2),
+    .premium-card:nth-child(3),
+    .premium-card:nth-child(4){
+        margin-top:0;
+        margin-bottom:0;
+    }
+}
+
+@media(max-width:1024px){
+    .about-grid{
+        gap:50px;
+    }
+    
+    .about-image img{
+        height:500px;
+    }
+}
+
+@media(max-width:900px){
+    .about-grid{
+        grid-template-columns:1fr;
+        gap:40px;
+    }
+    
+    .about-image img{
+        height:400px;
+    }
+    
+    .about-image::before{
+        display:none;
+    }
+    
+    .about-content h2{
+        font-size:36px;
+    }
+    
+    .about-badge{
+        display:none;
+    }
+}
+
+@media(max-width:768px){
+    section{
+        padding:70px 0;
+    }
+    
+    .about-hero{
+        height:70vh;
+        min-height:480px;
+    }
+    
+    .hero-content h1{
+        font-size:42px;
+    }
+    
+    .hero-content p{
+        font-size:15px;
+    }
+    
+    .hero-tag{
+        font-size:11px;
+        margin-bottom:12px;
+    }
+    
+    .hero-glass{
+        display:none;
+    }
+    
+    .section-header h2{
+        font-size:32px;
+    }
+    
+    .section-header p{
+        font-size:15px;
+    }
+    
+    .about-features{
+        grid-template-columns:1fr;
+        gap:16px;
+    }
+    
+    .expertise-premium{
+        padding: 70px 0;
+    }
+    
+    .expertise-layout{
+        grid-template-columns:1fr;
+        gap:20px;
+    }
+    
+    .premium-card{
+        min-height:auto;
+        padding: 28px 24px 24px;
+    }
+    
+    .large-card{
+        min-height:auto;
+    }
+    
+    .premium-number{
+        font-size:40px;
+        top:16px;
+        right:18px;
+    }
+    
+    .premium-card h3{
+        font-size:22px;
+    }
+    
+    .premium-icon{
+        width:56px;
+        height:56px;
+        font-size:26px;
+        margin-bottom:18px;
+    }
+    
+    .premium-card p{
+        font-size:14px;
+    }
+    
+    .premium-card:nth-child(2),
+    .premium-card:nth-child(3),
+    .premium-card:nth-child(4){
+        margin-top:0;
+        margin-bottom:0;
+    }
+    
+    /* Remove special sizing for cards 3 & 4 on mobile */
+    .premium-card:nth-child(3),
+    .premium-card:nth-child(4) {
+        padding: 28px 24px 24px;
+        min-height: auto;
+        border-radius: 22px;
+    }
+    
+    .premium-card:nth-child(3) .premium-icon,
+    .premium-card:nth-child(4) .premium-icon {
+        width: 56px;
+        height: 56px;
+        font-size: 26px;
+        margin-bottom: 18px;
+        border-radius: 18px;
+    }
+    
+    .premium-card:nth-child(3) h3,
+    .premium-card:nth-child(4) h3 {
+        font-size: 22px;
+        margin-bottom: 16px;
+    }
+    
+    .premium-card:nth-child(3) p,
+    .premium-card:nth-child(4) p {
+        font-size: 14px;
+        line-height: 1.8;
+        margin-bottom: 18px;
+    }
+    
+    .premium-card:nth-child(3) .premium-number,
+    .premium-card:nth-child(4) .premium-number {
+        font-size: 40px;
+        top: 16px;
+        right: 18px;
+    }
+    
+    .premium-card:nth-child(3) .premium-link,
+    .premium-card:nth-child(4) .premium-link {
+        font-size: 13px;
+        gap: 10px;
+    }
+    
+    .premium-card:nth-child(3) .premium-link::after,
+    .premium-card:nth-child(4) .premium-link::after {
+        font-size: 16px;
+    }
+    
+    .cta-wrapper{
+        padding:45px 30px;
+    }
+    
+    .cta-wrapper h2{
+        font-size:34px;
+    }
+    
+    .cta-wrapper p{
+        font-size:16px;
+    }
+    
+    /* Why Choose Futuremax Responsive */
+    .why-premium {
+        padding: 50px 0;
+    }
+    
+    .why-premium .section-header h2 {
+        font-size: 30px;
+    }
+    
+    .why-premium .section-header p {
+        font-size: 14px;
+    }
+    
+    .feature-cube {
+        width: 160px;
+        min-height: 180px;
+        padding: 18px 14px 16px;
+    }
+    
+    .cube-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+        margin: 2px auto 10px;
+    }
+    
+    .feature-cube h3 {
+        font-size: 13px;
+    }
+    
+    .feature-cube p {
+        font-size: 11px;
+        line-height: 1.4;
+    }
+    
+    .cube-number {
+        font-size: 10px;
+        top: 8px;
+        right: 10px;
+    }
+    
+    .scroll-wrapper {
+        padding: 6px 0 14px 0;
+        margin-top: 14px;
+    }
+    
+    .cards-scroll {
+        gap: 12px;
+    }
+}
+
+@media(max-width:480px){
+    .container{
+        width:92%;
+    }
+    
+    .about-hero{
+        height:60vh;
+        min-height:400px;
+    }
+    
+    .hero-content h1{
+        font-size:32px;
+    }
+    
+    .hero-content p{
+        font-size:14px;
+        line-height:1.6;
+        margin-bottom:20px;
+    }
+    
+    .primary-btn{
+        padding:14px 28px;
+        font-size:14px;
+    }
+    
+    .about-image img{
+        height:280px;
+    }
+    
+    .about-content h2{
+        font-size:28px;
+    }
+    
+    .about-content p{
+        font-size:15px;
+    }
+    
+    .section-header h2{
+        font-size:28px;
+    }
+    
+    .section-header{
+        margin-bottom:40px;
+    }
+    
+    .expertise-premium{
+        padding: 50px 0;
+    }
+    
+    .premium-card{
+        padding: 24px 20px 20px;
+        border-radius:18px;
+    }
+    
+    .premium-number{
+        font-size:34px;
+        top:14px;
+        right:16px;
+    }
+    
+    .premium-card h3{
+        font-size:20px;
+        margin-bottom:12px;
+    }
+    
+    .premium-icon{
+        width:48px;
+        height:48px;
+        font-size:22px;
+        border-radius:14px;
+        margin-bottom:16px;
+    }
+    
+    .premium-card p{
+        font-size:13px;
+        line-height:1.6;
+        margin-bottom:14px;
+    }
+    
+    .premium-link{
+        font-size:12px;
+    }
+    
+    .premium-link::after{
+        font-size:14px;
+    }
+    
+    .premium-card:nth-child(2),
+    .premium-card:nth-child(3),
+    .premium-card:nth-child(4){
+        margin-top:0;
+        margin-bottom:0;
+    }
+    
+    /* Remove special sizing for cards 3 & 4 on mobile */
+    .premium-card:nth-child(3),
+    .premium-card:nth-child(4) {
+        padding: 24px 20px 20px;
+        min-height: auto;
+        border-radius: 18px;
+    }
+    
+    .premium-card:nth-child(3) .premium-icon,
+    .premium-card:nth-child(4) .premium-icon {
+        width: 48px;
+        height: 48px;
+        font-size: 22px;
+        margin-bottom: 16px;
+        border-radius: 14px;
+    }
+    
+    .premium-card:nth-child(3) h3,
+    .premium-card:nth-child(4) h3 {
+        font-size: 20px;
+        margin-bottom: 12px;
+    }
+    
+    .premium-card:nth-child(3) p,
+    .premium-card:nth-child(4) p {
+        font-size: 13px;
+        line-height: 1.6;
+        margin-bottom: 14px;
+    }
+    
+    .premium-card:nth-child(3) .premium-number,
+    .premium-card:nth-child(4) .premium-number {
+        font-size: 34px;
+        top: 14px;
+        right: 16px;
+    }
+    
+    .premium-card:nth-child(3) .premium-link,
+    .premium-card:nth-child(4) .premium-link {
+        font-size: 12px;
+    }
+    
+    .premium-card:nth-child(3) .premium-link::after,
+    .premium-card:nth-child(4) .premium-link::after {
+        font-size: 14px;
+    }
+    
+    .cta-wrapper{
+        padding:30px 20px;
+    }
+    
+    .cta-wrapper h2{
+        font-size:28px;
+    }
+    
+    .cta-wrapper p{
+        font-size:15px;
+    }
+    
+    /* Why Choose Futuremax Mobile */
+    .why-premium {
+        padding: 40px 0;
+    }
+    
+    .why-premium .section-header h2 {
+        font-size: 26px;
+    }
+    
+    .why-premium .section-header p {
+        font-size: 13px;
+    }
+    
+    .feature-cube {
+        width: 140px;
+        min-height: 160px;
+        padding: 14px 10px 12px;
+        border-radius: 12px;
+    }
+    
+    .cube-icon {
+        width: 34px;
+        height: 34px;
+        font-size: 16px;
+        border-radius: 8px;
+        margin: 2px auto 8px;
+    }
+    
+    .feature-cube h3 {
+        font-size: 12px;
+        margin-bottom: 4px;
+    }
+    
+    .feature-cube p {
+        font-size: 10px;
+        line-height: 1.3;
+    }
+    
+    .cube-number {
+        font-size: 9px;
+        top: 6px;
+        right: 8px;
+    }
+    
+    .cards-scroll {
+        gap: 10px;
+    }
+}
