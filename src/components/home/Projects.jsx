@@ -2,12 +2,20 @@ import React, { useEffect, useRef, useState } from "react";
 import { ArrowRight, MapPin, Building2 } from "lucide-react";
 import "./Projects.css";
 
+/* Projects */
+import project1 from "../../assets/project1.jpeg";
+import project2 from "../../assets/project2.jpeg";
+import project3 from "../../assets/project3.jpeg";
+import project4 from "../../assets/project4.jpeg";
+import project5 from "../../assets/project5.jpeg";
+import project6 from "../../assets/project6.jpeg";
+
 const projects = [
   {
     category: "Hospitality",
     title: "Hotel & Resort Wireless Coverage",
     description: "Designed reliable indoor mobile coverage solutions for hotels and resorts, ensuring uninterrupted voice and data connectivity across guest rooms, lobbies, restaurants, banquet halls, and recreational spaces.",
-    image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80",
+    image: project1,
     stats: "50+ Hotels",
     location: "Pan India",
   },
@@ -15,7 +23,7 @@ const projects = [
     category: "Healthcare",
     title: "Hospital Communication Infrastructure",
     description: "Implemented RF-engineered mobile signal enhancement systems for hospitals and healthcare facilities to eliminate dead zones and improve communication across emergency departments, ICUs, operation theatres, and patient wards.",
-    image: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=800&q=80",
+    image: project2,
     stats: "30+ Hospitals",
     location: "Metro Cities",
   },
@@ -23,7 +31,7 @@ const projects = [
     category: "Corporate",
     title: "Enterprise Office Connectivity",
     description: "Delivered enterprise-grade wireless connectivity for corporate offices, IT parks, and commercial buildings, ensuring seamless mobile coverage across workspaces, meeting rooms, and business floors.",
-    image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80",
+    image: project3,
     stats: "100+ Offices",
     location: "15 Cities",
   },
@@ -31,7 +39,7 @@ const projects = [
     category: "Industrial",
     title: "Factory & Warehouse Signal Enhancement",
     description: "Designed robust RF infrastructure for manufacturing plants, warehouses, and logistics centres, enabling reliable communication in large industrial environments.",
-    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80",
+    image: project4,
     stats: "40+ Facilities",
     location: "Industrial Zones",
   },
@@ -39,7 +47,7 @@ const projects = [
     category: "Residential",
     title: "Residential Mobile Coverage Solutions",
     description: "Enhanced indoor mobile signal strength for villas, apartments, and gated communities by eliminating weak signal areas and improving overall network performance.",
-    image: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&q=80",
+    image: project5,
     stats: "200+ Projects",
     location: "Premium Locations",
   },
@@ -47,7 +55,7 @@ const projects = [
     category: "Education",
     title: "Campus Connectivity Solutions",
     description: "Provided wireless coverage solutions for schools, colleges, and universities, supporting uninterrupted communication across classrooms, libraries, auditoriums, and administrative blocks.",
-    image: "https://images.unsplash.com/photo-1562774053-701939374585?w=800&q=80",
+    image: project6,
     stats: "25+ Campuses",
     location: "Major Cities",
   },

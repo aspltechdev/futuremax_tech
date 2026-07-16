@@ -105,16 +105,9 @@ const Impact = () => {
                 <div className="impact-card-number">
                   <span className="impact-number-line" />
                   <h3>
-                    {isVisible && (
-                      <CountUp
-                        end={item.number}
-                        duration={2.5}
-                        delay={index * 0.2}
-                        useEasing={true}
-                      />
-                    )}
-                    <span className="impact-suffix">{item.suffix}</span>
-                  </h3>
+  {item.number}
+  <span className="impact-suffix">{item.suffix}</span>
+</h3>
                 </div>
               </div>
               <h4 className="impact-card-title">{item.title}</h4>
