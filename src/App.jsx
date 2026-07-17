@@ -7,7 +7,7 @@ import Footer from "./components/layout/Footer";
 
 // Pages
 import Home from "./pages/Home";
-import About from "./pages/About";
+
 import Solutions from "./pages/Solutions";
 import Products from "./pages/Products";
 import Technology from "./pages/Technology";
@@ -17,6 +17,8 @@ import Resources from "./pages/Resources";
 import Support from "./pages/Support";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
+import About from "./pages/About";
+import IndustriesPage from "./pages/IndustriesPage";
 
 // Global CSS
 
@@ -31,15 +33,15 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
 
-        <Route path="/about" element={<About />} />
+        <Route path="/about" element={<About/>} />
 
         <Route path="/solutions" element={<Solutions />} />
 
         <Route path="/products" element={<Products />} />
 
-        <Route path="/technology" element={<Technology />} />
+        <Route path="/technology" element={<Technology/>} />
 
-        <Route path="/industries" element={<Industries />} />
+        <Route path="/industries" element={<IndustriesPage />} />
 
         <Route path="/projects" element={<Projects />} />
 

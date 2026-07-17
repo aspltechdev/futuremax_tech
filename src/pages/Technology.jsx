@@ -1,376 +1,405 @@
-import React from "react";
-import {
-  Radio,
-  Network,
-  RadioTower,
-  SignalHigh,
-  Gauge,
-  Wifi,
+import React, { useEffect, useRef, useState } from "react";
+import { 
+  ArrowRight, 
+  CheckCircle2, 
+  Search,
+  Layers,
   ClipboardCheck,
-  Radar,
-  PencilRuler,
-  Wrench,
-  Settings2,
-  CheckCircle2,
-  ArrowRight,
-  MapPin,
+  Settings,
+  Microscope,
+  Headphones,
+  Phone,
+  Mail,
+  ChevronRight,
+  ChevronLeft,
 } from "lucide-react";
-import "../styles/technology.css";
+import "./Technologies.css";
 
-/* -------------------------------------------------------------------- */
-/*  Data                                                                  */
-/* -------------------------------------------------------------------- */
+import techHeroImg from "../assets/hero1.png";
+import rfSurveyImg from "../assets/hero1.png";
+import dasImg from "../assets/hero1.png";
+import boosterTechImg from "../assets/hero1.png";
+import testingImg from "../assets/hero1.png";
 
-const expertiseCards = [
+const tgyTechnologies = [
   {
-    icon: Radio,
-    title: "RF Engineering",
-    description: "Professional RF planning and wireless system design.",
+    id: "01",
+    icon: <Search size={24} strokeWidth={1.5} />,
+    title: "RF Site Survey & Analysis",
+    subtitle: "Professional Signal Assessment",
+    description:
+      "Our certified RF engineers use advanced spectrum analyzers and signal measurement tools to conduct comprehensive on-site surveys. We evaluate signal strength, identify dead zones, analyze building materials, and map coverage requirements before designing any solution.",
+    features: [
+      "Spectrum Analysis",
+      "Signal Strength Mapping",
+      "Dead Zone Identification",
+      "Building Material Analysis",
+      "Coverage Requirement Assessment",
+      "Operator Frequency Analysis",
+    ],
+    tools: ["Spectrum Analyzers", "Signal Meters", "RF Mapping Software", "Coverage Prediction Tools"],
+    image: rfSurveyImg,
+    accentColor: "#0755A3",
+    bgLight: "#E8F1FA",
   },
   {
-    icon: Network,
-    title: "Wireless Network Design",
-    description: "Scalable enterprise wireless infrastructure.",
+    id: "02",
+    icon: <Layers size={24} strokeWidth={1.5} />,
+    title: "Coverage Planning & RF Design",
+    subtitle: "Network Architecture & Planning",
+    description:
+      "Using advanced RF engineering techniques, we analyze operator frequencies, signal propagation, interference levels, and user density to design an optimized indoor wireless coverage solution with proper DAS architecture.",
+    features: [
+      "Operator Frequency Analysis",
+      "Signal Propagation Modeling",
+      "Interference Assessment",
+      "User Density Planning",
+      "DAS Architecture Design",
+      "Coverage Heat Mapping",
+    ],
+    tools: ["RF Planning Software", "Coverage Simulators", "CAD Tools", "Network Analyzers"],
+    image: dasImg,
+    accentColor: "#19AB3F",
+    bgLight: "#E8F7EA",
   },
   {
-    icon: RadioTower,
-    title: "RF Site Survey",
-    description: "Coverage analysis, signal measurement, and optimization.",
+    id: "03",
+    icon: <ClipboardCheck size={24} strokeWidth={1.5} />,
+    title: "Product Selection & Solution Design",
+    subtitle: "i Booster & Component Selection",
+    description:
+      "Based on your building size and coverage requirements, we recommend the right i Booster (23 dBm, 25 dBm, or 27 dBm), Distributed Antenna System (DAS), antennas, RF accessories, and cable routing for maximum performance.",
+    features: [
+      "i Booster Selection (23/25/27 dBm)",
+      "DAS Component Sizing",
+      "Antenna Type Selection",
+      "Cable Routing Design",
+      "Budget Optimization",
+      "Scalability Planning",
+    ],
+    tools: ["Product Configurator", "Bill of Materials", "Design Documentation", "Compliance Checks"],
+    image: boosterTechImg,
+    accentColor: "#7C3AED",
+    bgLight: "#F5F3FF",
   },
   {
-    icon: SignalHigh,
-    title: "Signal Optimization",
-    description: "Improve indoor mobile signal and eliminate dead zones.",
+    id: "04",
+    icon: <Settings size={24} strokeWidth={1.5} />,
+    title: "Professional Installation",
+    subtitle: "Certified Deployment Team",
+    description:
+      "Our certified engineers install the complete wireless infrastructure with precision, ensuring optimal antenna placement, proper cable management, and seamless integration with existing mobile networks.",
+    features: [
+      "Antenna Mounting & Placement",
+      "Cable Routing & Management",
+      "Booster Configuration",
+      "Network Integration",
+      "Quality Assurance Checks",
+      "Minimal Disruption Process",
+    ],
+    tools: ["Installation Kits", "Mounting Hardware", "Cable Testers", "Safety Equipment"],
+    image: techHeroImg,
+    accentColor: "#EA580C",
+    bgLight: "#FFF7ED",
   },
   {
-    icon: Gauge,
-    title: "4G & 5G Infrastructure",
-    description: "Future-ready wireless communication systems.",
+    id: "05",
+    icon: <Microscope size={24} strokeWidth={1.5} />,
+    title: "Testing & Optimization",
+    subtitle: "Performance Verification",
+    description:
+      "After installation, we conduct detailed signal testing, coverage verification, and system optimization to eliminate dead zones and ensure reliable 4G & 5G connectivity throughout your property.",
+    features: [
+      "Signal Strength Measurement",
+      "Coverage Area Verification",
+      "Gain & Power Optimization",
+      "Interference Mitigation",
+      "QoS Testing & Validation",
+      "Performance Documentation",
+    ],
+    tools: ["Signal Meters", "Spectrum Analyzers", "Coverage Mappers", "QoS Testers"],
+    image: testingImg,
+    accentColor: "#DC2626",
+    bgLight: "#FEF2F2",
   },
   {
-    icon: Wifi,
-    title: "Enterprise Wireless Infrastructure",
-    description: "Reliable connectivity solutions for modern organizations.",
+    id: "06",
+    icon: <Headphones size={24} strokeWidth={1.5} />,
+    title: "AMC & Technical Support",
+    subtitle: "Long-Term Network Reliability",
+    description:
+      "Our commitment continues after deployment with Annual Maintenance Contracts (AMC), preventive maintenance, troubleshooting, upgrades, and dedicated technical support to ensure long-term wireless performance.",
+    features: [
+      "Preventive Maintenance",
+      "Remote System Monitoring",
+      "Troubleshooting Support",
+      "Firmware & System Updates",
+      "Performance Audits",
+      "24/7 NOC Support",
+    ],
+    tools: ["Remote Monitoring", "Diagnostic Tools", "Performance Analytics", "Support Portal"],
+    image: techHeroImg,
+    accentColor: "#0891B2",
+    bgLight: "#ECFEFF",
   },
 ];
 
-const timelineSteps = [
-  {
-    icon: ClipboardCheck,
-    title: "Site Assessment",
-    description: "Understanding your space and connectivity needs.",
-  },
-  {
-    icon: Radar,
-    title: "RF Analysis",
-    description: "Measuring signal strength and identifying gaps.",
-  },
-  {
-    icon: PencilRuler,
-    title: "Solution Design",
-    description: "Engineering the right coverage and network plan.",
-  },
-  {
-    icon: Wrench,
-    title: "Installation & Testing",
-    description: "Deploying equipment and validating performance.",
-  },
-  {
-    icon: Settings2,
-    title: "Optimization & Ongoing Support",
-    description: "Fine-tuning performance with continued support.",
-  },
-];
+const Technology = () => {
+  const [tgyScrollY, setTgyScrollY] = useState(0);
+  const [tgyMousePos, setTgyMousePos] = useState({ x: 50, y: 50 });
+  const [tgyVisible, setTgyVisible] = useState({ hero: false, process: false, technologies: false, cta: false });
+  const [tgyActiveTech, setTgyActiveTech] = useState(0);
+  const tgySectionRef = useRef(null);
+  const tgyProcessRef = useRef(null);
 
-const whyTechnology = [
-  "Advanced RF Engineering",
-  "Optimized Wireless Coverage",
-  "Enterprise-grade Infrastructure",
-  "Scalable Network Design",
-  "Future-ready 4G & 5G Solutions",
-  "Professional Technical Support",
-];
+  useEffect(() => {
+    const handleTgyScroll = () => setTgyScrollY(window.scrollY);
+    const handleTgyMouse = (e) => {
+      if (!tgySectionRef.current) return;
+      const rect = tgySectionRef.current.getBoundingClientRect();
+      setTgyMousePos({ x: ((e.clientX - rect.left) / rect.width) * 100, y: ((e.clientY - rect.top) / rect.height) * 100 });
+    };
+    window.addEventListener("scroll", handleTgyScroll, { passive: true });
+    window.addEventListener("mousemove", handleTgyMouse);
+    return () => { window.removeEventListener("scroll", handleTgyScroll); window.removeEventListener("mousemove", handleTgyMouse); };
+  }, []);
 
-/* -------------------------------------------------------------------- */
-/*  Illustrations                                                        */
-/* -------------------------------------------------------------------- */
+  useEffect(() => {
+    const tgyObserverOptions = { threshold: 0.12, rootMargin: "0px 0px -60px 0px" };
+    const handleIntersect = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const sectionName = entry.target.dataset.tgySection;
+          if (sectionName) setTgyVisible((prev) => ({ ...prev, [sectionName]: true }));
+        }
+      });
+    };
+    const tgyObserver = new IntersectionObserver(handleIntersect, tgyObserverOptions);
+    const tgyElements = tgySectionRef.current?.querySelectorAll("[data-tgy-section]");
+    tgyElements?.forEach((el) => tgyObserver.observe(el));
+    setTimeout(() => { setTgyVisible((prev) => ({ ...prev, hero: true })); }, 100);
+    return () => tgyObserver.disconnect();
+  }, []);
 
-function HeroSignalPanel() {
+  // Auto-rotate technologies
+  useEffect(() => {
+    if (!tgyVisible.technologies) return;
+    const interval = setInterval(() => {
+      setTgyActiveTech((prev) => (prev + 1) % tgyTechnologies.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [tgyVisible.technologies]);
+
+  const handleProcessPrev = () => setTgyActiveTech((prev) => (prev > 0 ? prev - 1 : tgyTechnologies.length - 1));
+  const handleProcessNext = () => setTgyActiveTech((prev) => (prev + 1) % tgyTechnologies.length);
+
   return (
-    <div className="tech-hero-panel">
-      <svg
-        className="tech-hero-panel-svg"
-        viewBox="0 0 560 480"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        role="img"
-        aria-label="Abstract wireless signal graphic in Futuremax brand colors"
-      >
-        <defs>
-          <linearGradient id="techHeroGradient" x1="0" y1="0" x2="560" y2="480" gradientUnits="userSpaceOnUse">
-            <stop offset="0%" stopColor="#0B5CAD" />
-            <stop offset="100%" stopColor="#0A3D62" />
-          </linearGradient>
-          <radialGradient id="techHeroGlow" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stopColor="#1BA64B" stopOpacity="0.35" />
-            <stop offset="100%" stopColor="#1BA64B" stopOpacity="0" />
-          </radialGradient>
-        </defs>
-
-        <rect x="0" y="0" width="560" height="480" rx="24" fill="url(#techHeroGradient)" />
-
-        <g opacity="0.18">
-          {Array.from({ length: 7 }).map((_, row) =>
-            Array.from({ length: 8 }).map((_, col) => (
-              <circle
-                key={`${row}-${col}`}
-                cx={40 + col * 68}
-                cy={30 + row * 65}
-                r="2"
-                fill="#FFFFFF"
-              />
-            ))
-          )}
-        </g>
-
-        <circle cx="280" cy="240" r="150" fill="url(#techHeroGlow)" />
-
-        <circle className="signal-ring ring-1" cx="280" cy="240" r="46" stroke="#FFFFFF" strokeWidth="2.5" fill="none" opacity="0.9" />
-        <circle className="signal-ring ring-2" cx="280" cy="240" r="80" stroke="#1BA64B" strokeWidth="2.5" fill="none" opacity="0.85" />
-        <circle className="signal-ring ring-3" cx="280" cy="240" r="114" stroke="#FFFFFF" strokeWidth="2" fill="none" opacity="0.6" />
-        <circle cx="280" cy="240" r="150" stroke="#1BA64B" strokeWidth="1.5" fill="none" opacity="0.35" />
-
-        <circle cx="280" cy="240" r="10" fill="#1BA64B" />
-        <circle cx="280" cy="240" r="18" fill="none" stroke="#FFFFFF" strokeWidth="1.5" opacity="0.7" />
-      </svg>
-    </div>
-  );
-}
-
-function NetworkAbstractIllustration() {
-  return (
-    <svg
-      className="tech-why-illustration"
-      viewBox="0 0 480 440"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      role="img"
-      aria-label="Abstract illustration of a connected RF network"
-    >
-      <circle cx="240" cy="220" r="190" fill="#F8FAFC" />
-
-      {/* network nodes and connecting lines */}
-      <g stroke="#0B5CAD" strokeWidth="1.5" strokeDasharray="3 6" opacity="0.55">
-        <line x1="140" y1="150" x2="240" y2="220" />
-        <line x1="240" y1="220" x2="340" y2="140" />
-        <line x1="240" y1="220" x2="330" y2="290" />
-        <line x1="240" y1="220" x2="150" y2="300" />
-        <line x1="340" y1="140" x2="380" y2="200" />
-      </g>
-
-      <circle cx="240" cy="220" r="20" fill="#0B5CAD" />
-      <circle cx="140" cy="150" r="10" fill="#1BA64B" />
-      <circle cx="340" cy="140" r="10" fill="#1BA64B" />
-      <circle cx="330" cy="290" r="10" fill="#1BA64B" />
-      <circle cx="150" cy="300" r="10" fill="#1BA64B" />
-      <circle cx="380" cy="200" r="8" fill="#0A3D62" />
-
-      <circle className="signal-ring ring-1" cx="240" cy="220" r="46" stroke="#0B5CAD" strokeWidth="2" fill="none" opacity="0.7" />
-      <circle className="signal-ring ring-2" cx="240" cy="220" r="70" stroke="#1BA64B" strokeWidth="2" fill="none" opacity="0.5" />
-
-      <line x1="60" y1="380" x2="420" y2="380" stroke="#E2E8F0" strokeWidth="2" />
-    </svg>
-  );
-}
-
-/* -------------------------------------------------------------------- */
-/*  Sections                                                              */
-/* -------------------------------------------------------------------- */
-
-function Hero() {
-  return (
-    <section className="tech-hero">
-      <div className="container tech-hero-grid">
-        <div className="tech-hero-copy">
-          <span className="tech-eyebrow">TECHNOLOGY</span>
-          <h1>
-            Powering Reliable Wireless Connectivity Through Advanced RF
-            Engineering
-          </h1>
-          <p className="tech-hero-paragraph">
-            Futuremax Technology combines RF engineering expertise with
-            modern wireless technologies to design, optimize, and deploy
-            reliable communication infrastructure. Our solutions improve
-            mobile coverage, network performance, and enterprise
-            connectivity for businesses across Kerala.
-          </p>
-          <div className="tech-hero-actions">
-            <button className="btn btn-primary">
-              Explore Technologies
-              <ArrowRight size={18} strokeWidth={2.4} />
-            </button>
-            <button className="btn btn-outline-white">
-              Request Site Survey
-            </button>
+    <main className="tgy-page" ref={tgySectionRef}>
+      {/* Hero Section */}
+      <section className="tgy-hero">
+        <div className="tgy-hero__bg">
+          <div className="tgy-hero__image" style={{ backgroundImage: `url(${techHeroImg})` }} />
+          <div className="tgy-hero__overlay" />
+          <div className="tgy-hero__grid" />
+          <div className="tgy-hero__glow" style={{ background: `radial-gradient(600px circle at ${tgyMousePos.x}% ${tgyMousePos.y}%, rgba(255,255,255,0.04) 0%, transparent 50%)` }} />
+        </div>
+        <div className="tgy-container">
+          <div className={`tgy-hero__content ${tgyVisible.hero ? 'tgy-hero__content--visible' : ''}`} data-tgy-section="hero">
+            <span className="tgy-hero__tag">Our Technology</span>
+            <h1 className="tgy-hero__title">
+              Advanced RF Engineering &
+              <span className="tgy-hero__accent"> Wireless Technology</span>
+            </h1>
+            <p className="tgy-hero__desc">
+              Futuremax Technology leverages advanced RF engineering techniques, professional-grade 
+              equipment, and systematic deployment processes to deliver reliable indoor mobile coverage 
+              using i Booster Series, Distributed Antenna Systems (DAS), and enterprise wireless solutions.
+            </p>
+            <div className="tgy-hero__actions">
+              <a href="/contact" className="tgy-hero__btn tgy-hero__btn--primary">
+                <span>Request Free RF Site Survey</span>
+                <ArrowRight size={16} />
+              </a>
+              <a href="#tgy-process" className="tgy-hero__btn tgy-hero__btn--secondary">Our Process</a>
+            </div>
           </div>
         </div>
-        <div className="tech-hero-visual">
-          <HeroSignalPanel />
-        </div>
-      </div>
-    </section>
-  );
-}
+      </section>
 
-function TechnologyExpertise() {
-  return (
-    <section className="tech-section tech-section-light">
-      <div className="container">
-        <div className="tech-section-heading">
-          <h2>Core Technologies We Specialize In</h2>
-        </div>
-
-        <div className="tech-card-grid">
-          {expertiseCards.map(({ icon: Icon, title, description }) => (
-            <div className="tech-expertise-card" key={title}>
-              <div className="tech-expertise-icon">
-                <Icon size={26} strokeWidth={1.8} />
-              </div>
-              <h3>{title}</h3>
-              <p>{description}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function EngineeringApproach() {
-  return (
-    <section className="tech-section tech-section-white">
-      <div className="container">
-        <div className="tech-section-heading">
-          <h2>How We Deliver Reliable Connectivity</h2>
-        </div>
-
-        <div className="timeline">
-          {timelineSteps.map(({ icon: Icon, title, description }, index) => (
-            <div className="timeline-step" key={title}>
-              <div className="timeline-icon-wrap">
-                <div className="timeline-icon">
-                  <Icon size={24} strokeWidth={1.8} />
-                </div>
-                {index < timelineSteps.length - 1 && (
-                  <span className="timeline-connector" />
-                )}
-              </div>
-              <h3>{title}</h3>
-              <p>{description}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function WhyOurTechnology() {
-  return (
-    <section className="tech-section tech-section-light">
-      <div className="container tech-why-grid">
-        <div className="tech-why-visual">
-          <NetworkAbstractIllustration />
-        </div>
-
-        <div className="tech-why-copy">
-          <h2>Built for Performance, Reliability &amp; Growth</h2>
-
-          <ul className="tech-checklist">
-            {whyTechnology.map((item) => (
-              <li key={item}>
-                <CheckCircle2 size={20} strokeWidth={2} className="tech-check-icon" />
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
-
-          <div className="tech-highlight-box">
-            <MapPin size={22} strokeWidth={2} />
-            <p>
-              Futuremax Technology delivers RF Engineering and Wireless
-              Connectivity solutions across all 14 districts of Kerala, with
-              dedicated support in Kochi (Ernakulam), Kozhikode, and
-              Thiruvananthapuram.
+      {/* Engineering Process - Horizontal Card Flow */}
+      <section className="tgy-process" id="tgy-process" ref={tgyProcessRef}>
+        <div className="tgy-container">
+          <div className={`tgy-process__header ${tgyVisible.process ? 'tgy-process__header--visible' : ''}`} data-tgy-section="process">
+            <span className="tgy-process__tag">Our Engineering Process</span>
+            <h2 className="tgy-process__title">
+              Systematic RF Deployment
+              <span className="tgy-process__accent"> Methodology</span>
+            </h2>
+            <p className="tgy-process__subtitle">
+              A proven 6-step approach that ensures optimal wireless coverage for every project
             </p>
           </div>
+
+          {/* Active Step Display */}
+          <div className={`tgy-process__display ${tgyVisible.process ? 'tgy-process__display--visible' : ''}`} data-tgy-section="process">
+            <div className="tgy-process__display-card" style={{ '--tgy-accent': tgyTechnologies[tgyActiveTech]?.accentColor, '--tgy-bg-light': tgyTechnologies[tgyActiveTech]?.bgLight }}>
+              {/* Step Number Badge */}
+              <div className="tgy-process__display-badge" style={{ background: tgyTechnologies[tgyActiveTech]?.accentColor }}>
+                Step {tgyTechnologies[tgyActiveTech]?.id}
+              </div>
+
+              <div className="tgy-process__display-grid">
+                {/* Left: Image */}
+                <div className="tgy-process__display-image-wrap">
+                  <img src={tgyTechnologies[tgyActiveTech]?.image} alt={tgyTechnologies[tgyActiveTech]?.title} className="tgy-process__display-image" />
+                  <div className="tgy-process__display-image-overlay" />
+                  <div className="tgy-process__display-icon" style={{ background: tgyTechnologies[tgyActiveTech]?.bgLight, color: tgyTechnologies[tgyActiveTech]?.accentColor }}>
+                    {tgyTechnologies[tgyActiveTech]?.icon}
+                  </div>
+                </div>
+
+                {/* Right: Content */}
+                <div className="tgy-process__display-content">
+                  <span className="tgy-process__display-subtitle" style={{ color: tgyTechnologies[tgyActiveTech]?.accentColor }}>
+                    {tgyTechnologies[tgyActiveTech]?.subtitle}
+                  </span>
+                  <h3 className="tgy-process__display-title">{tgyTechnologies[tgyActiveTech]?.title}</h3>
+                  <p className="tgy-process__display-desc">{tgyTechnologies[tgyActiveTech]?.description}</p>
+
+                  <div className="tgy-process__display-features">
+                    {tgyTechnologies[tgyActiveTech]?.features.map((feature, i) => (
+                      <span key={i} className="tgy-process__display-feature">
+                        <CheckCircle2 size={14} style={{ color: tgyTechnologies[tgyActiveTech]?.accentColor }} />
+                        {feature}
+                      </span>
+                    ))}
+                  </div>
+
+                  <div className="tgy-process__display-tools">
+                    <span className="tgy-process__display-tools-label">Tools & Equipment</span>
+                    <div className="tgy-process__display-tools-list">
+                      {tgyTechnologies[tgyActiveTech]?.tools.map((tool, i) => (
+                        <span key={i} className="tgy-process__display-tool" style={{ borderColor: tgyTechnologies[tgyActiveTech]?.accentColor, color: tgyTechnologies[tgyActiveTech]?.accentColor }}>
+                          {tool}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Step Navigation Cards */}
+            <div className="tgy-process__steps">
+              <button className="tgy-process__steps-arrow" onClick={handleProcessPrev}>
+                <ChevronLeft size={20} />
+              </button>
+              <div className="tgy-process__steps-track">
+                {tgyTechnologies.map((tech, index) => (
+                  <button
+                    key={tech.id}
+                    className={`tgy-process__steps-card ${index === tgyActiveTech ? 'tgy-process__steps-card--active' : ''} ${index < tgyActiveTech ? 'tgy-process__steps-card--done' : ''}`}
+                    onClick={() => setTgyActiveTech(index)}
+                    style={{ '--tgy-step-color': tech.accentColor }}
+                  >
+                    <div className="tgy-process__steps-card-num">
+                      {index < tgyActiveTech ? <CheckCircle2 size={16} strokeWidth={2.5} /> : tech.id}
+                    </div>
+                    <div className="tgy-process__steps-card-icon">{tech.icon}</div>
+                    <span className="tgy-process__steps-card-title">{tech.title.split(' & ')[0]}</span>
+                    <div className={`tgy-process__steps-card-line ${index <= tgyActiveTech ? 'tgy-process__steps-card-line--active' : ''}`} style={{ background: tech.accentColor }} />
+                  </button>
+                ))}
+              </div>
+              <button className="tgy-process__steps-arrow" onClick={handleProcessNext}>
+                <ChevronRight size={20} />
+              </button>
+            </div>
+
+            {/* Progress Bar */}
+            <div className="tgy-process__progress">
+              <div className="tgy-process__progress-track">
+                <div
+                  className="tgy-process__progress-fill"
+                  style={{ width: `${((tgyActiveTech + 1) / tgyTechnologies.length) * 100}%` }}
+                />
+              </div>
+              <span className="tgy-process__progress-text">
+                Step {tgyActiveTech + 1} of {tgyTechnologies.length} — {tgyActiveTech < tgyTechnologies.length - 1 ? 'In Progress' : 'Complete'}
+              </span>
+            </div>
+          </div>
         </div>
-      </div>
-    </section>
-  );
-}
+      </section>
 
-function CallToAction() {
-  return (
-    <section className="tech-cta">
-      <div className="tech-cta-bg">
-        <svg
-          className="tech-cta-network"
-          viewBox="0 0 1200 400"
-          preserveAspectRatio="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <g opacity="0.35">
-            <line x1="60" y1="90" x2="270" y2="170" stroke="#FFFFFF" strokeWidth="1" />
-            <line x1="270" y1="170" x2="470" y2="80" stroke="#FFFFFF" strokeWidth="1" />
-            <line x1="470" y1="80" x2="690" y2="210" stroke="#FFFFFF" strokeWidth="1" />
-            <line x1="690" y1="210" x2="930" y2="110" stroke="#FFFFFF" strokeWidth="1" />
-            <line x1="930" y1="110" x2="1140" y2="230" stroke="#FFFFFF" strokeWidth="1" />
-            <line x1="270" y1="170" x2="470" y2="290" stroke="#FFFFFF" strokeWidth="1" />
-            <line x1="690" y1="210" x2="520" y2="320" stroke="#FFFFFF" strokeWidth="1" />
-          </g>
-          {[
-            [60, 90], [270, 170], [470, 80], [690, 210],
-            [930, 110], [1140, 230], [470, 290], [520, 320],
-          ].map(([cx, cy], i) => (
-            <circle key={i} cx={cx} cy={cy} r="4" fill="#1BA64B" opacity="0.8" />
-          ))}
-          <circle className="signal-ring ring-1" cx="880" cy="90" r="26" stroke="#FFFFFF" strokeWidth="1.5" fill="none" opacity="0.5" />
-          <circle className="signal-ring ring-2" cx="880" cy="90" r="48" stroke="#FFFFFF" strokeWidth="1.5" fill="none" opacity="0.35" />
-        </svg>
-      </div>
+      {/* Technologies Grid */}
+      <section className="tgy-tech" id="tgy-technologies">
+        <div className="tgy-container">
+          <div className={`tgy-tech__header ${tgyVisible.technologies ? 'tgy-tech__header--visible' : ''}`} data-tgy-section="technologies">
+            <span className="tgy-tech__tag">Core Technologies</span>
+            <h2 className="tgy-tech__title">
+              Professional RF Engineering
+              <span className="tgy-tech__accent"> & Infrastructure</span>
+            </h2>
+          </div>
 
-      <div className="container tech-cta-content">
-        <h2>Ready to Strengthen Your Wireless Infrastructure?</h2>
-        <p>
-          From RF engineering and site surveys to enterprise wireless
-          deployments and signal optimization, Futuremax Technology helps
-          businesses build reliable, high-performance communication
-          networks.
-        </p>
-        <div className="tech-cta-actions">
-          <button className="btn btn-primary">Request Site Survey</button>
-          <button className="btn btn-outline-white">
-            Contact Our Engineers
-          </button>
+          <div className={`tgy-tech__grid ${tgyVisible.technologies ? 'tgy-tech__grid--visible' : ''}`} data-tgy-section="technologies">
+            {tgyTechnologies.map((tech, index) => (
+              <div
+                key={tech.id}
+                className={`tgy-tech__card ${index === tgyActiveTech ? 'tgy-tech__card--active' : ''}`}
+                onClick={() => setTgyActiveTech(index)}
+                style={{ '--tgy-accent': tech.accentColor, '--tgy-bg-light': tech.bgLight, transitionDelay: `${index * 0.06}s` }}
+              >
+                <div className="tgy-tech__card-image-wrap">
+                  <img src={tech.image} alt={tech.title} className="tgy-tech__card-image" />
+                  <div className="tgy-tech__card-image-shade" />
+                  <div className="tgy-tech__card-icon" style={{ background: tech.bgLight, color: tech.accentColor }}>{tech.icon}</div>
+                </div>
+                <div className="tgy-tech__card-body">
+                  <span className="tgy-tech__card-subtitle" style={{ color: tech.accentColor }}>{tech.subtitle}</span>
+                  <h3 className="tgy-tech__card-title">{tech.title}</h3>
+                  <p className="tgy-tech__card-desc">{tech.description}</p>
+                  <div className="tgy-tech__card-features">
+                    {tech.features.slice(0, 3).map((feature, i) => (
+                      <span key={i} className="tgy-tech__card-feature"><CheckCircle2 size={12} style={{ color: tech.accentColor }} />{feature}</span>
+                    ))}
+                    {tech.features.length > 3 && <span className="tgy-tech__card-more" style={{ color: tech.accentColor }}>+{tech.features.length - 3}</span>}
+                  </div>
+                  <div className="tgy-tech__card-tools">
+                    {tech.tools.map((tool, i) => (<span key={i} className="tgy-tech__card-tool">{tool}</span>))}
+                  </div>
+                </div>
+                <div className="tgy-tech__card-line" style={{ background: tech.accentColor }} />
+              </div>
+            ))}
+          </div>
+
+          <div className="tgy-tech__nav">
+            {tgyTechnologies.map((tech, index) => (
+              <button key={tech.id} className={`tgy-tech__nav-dot ${index === tgyActiveTech ? 'tgy-tech__nav-dot--active' : ''}`} onClick={() => setTgyActiveTech(index)} style={{ '--tgy-dot-color': tech.accentColor }} />
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
-  );
-}
+      </section>
 
-/* -------------------------------------------------------------------- */
-/*  Page                                                                  */
-/* -------------------------------------------------------------------- */
-
-export default function Technology() {
-  return (
-    <main className="tech-page">
-      <Hero />
-      <TechnologyExpertise />
-      <EngineeringApproach />
-      <WhyOurTechnology />
-      <CallToAction />
+      {/* CTA Section */}
+      <section className="tgy-cta">
+        <div className="tgy-container">
+          <div className={`tgy-cta__card ${tgyVisible.cta ? 'tgy-cta__card--visible' : ''}`} data-tgy-section="cta" style={{ transform: `translateY(${tgyScrollY * -0.01}px)` }}>
+            <div className="tgy-cta__content"><h2 className="tgy-cta__title">Ready to Deploy Professional RF Solutions?</h2><p className="tgy-cta__desc">Let our engineering team assess your site and design the optimal wireless coverage solution.</p></div>
+            <div className="tgy-cta__actions">
+              <a href="/contact" className="tgy-cta__btn"><span>Request Free RF Site Survey</span><ArrowRight size={16} /></a>
+              <div className="tgy-cta__contact">
+                <a href="tel:+919876543210" className="tgy-cta__contact-link"><Phone size={14} />+91 98765 43210</a>
+                <a href="mailto:info@futuremax.com" className="tgy-cta__contact-link"><Mail size={14} />info@futuremax.com</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
   );
-}
+};
+
+export default Technology;

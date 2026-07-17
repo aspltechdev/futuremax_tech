@@ -350,9 +350,9 @@ const WhyFuturemax = () => {
           }}
         />
       </div>
-
+{/* 
       <div className="wf-container">
-        {/* Section Header */}
+    
         <div
           className={`wf-header ${wfVisibleSections["header"] ? "wf-header-visible" : ""}`}
           data-wf-section="header"
@@ -372,9 +372,9 @@ const WhyFuturemax = () => {
           </p>
         </div>
 
-        {/* Main Content: Image + Features */}
+        
         <div className="wf-main-content">
-          {/* Left: Image with Experience Box */}
+       
           <div
             className={`wf-image-section ${wfVisibleSections["image"] ? "wf-image-visible" : ""}`}
             data-wf-section="image"
@@ -388,7 +388,7 @@ const WhyFuturemax = () => {
               />
               <div className="wf-image-overlay" />
               
-              {/* Experience Box */}
+        
               <div className="wf-experience-box">
                 <span className="wf-exp-number">15+</span>
                 <p className="wf-exp-text">
@@ -399,7 +399,7 @@ const WhyFuturemax = () => {
                 <div className="wf-exp-dot" />
               </div>
 
-              {/* Floating Mini Badge */}
+          
               <div className="wf-floating-badge">
                 <FaAward className="wf-floating-icon" />
                 <span>ISO 9001:2015 Certified</span>
@@ -407,7 +407,7 @@ const WhyFuturemax = () => {
             </div>
           </div>
 
-          {/* Right: Feature Cards */}
+      
           <div
             className={`wf-features-grid ${wfVisibleSections["features"] ? "wf-features-visible" : ""}`}
             data-wf-section="features"
@@ -424,29 +424,29 @@ const WhyFuturemax = () => {
                 onMouseEnter={() => setWfHoveredCard(index)}
                 onMouseLeave={() => setWfHoveredCard(null)}
               >
-                {/* Icon */}
+        
                 <div className="wf-feature-icon-wrap" style={{ background: feature.bgLight, color: feature.accentColor }}>
                   {feature.icon}
                   <div className="wf-feature-icon-glow" style={{ background: feature.accentColor }} />
                 </div>
 
-                {/* Content */}
+             
                 <div className="wf-feature-content">
                   <h3 className="wf-feature-title">{feature.title}</h3>
                   <p className="wf-feature-desc">{feature.description}</p>
                 </div>
 
-                {/* Hover Line */}
+          
                 <div className="wf-feature-line" style={{ background: feature.accentColor }} />
 
-                {/* Corner Accent */}
+               
                 <div className="wf-feature-corner" style={{ borderTopColor: feature.accentColor, borderRightColor: feature.accentColor }} />
               </div>
             ))}
           </div>
         </div>
 
-        {/* Statistics Bar */}
+
         <div
           className={`wf-stats ${wfVisibleSections["stats"] ? "wf-stats-visible" : ""}`}
           data-wf-section="stats"
@@ -463,14 +463,14 @@ const WhyFuturemax = () => {
           </div>
         </div>
 
-        {/* Bottom CTA */}
+      
         <div
           className={`wf-bottom ${wfVisibleSections["bottom"] ? "wf-bottom-visible" : ""}`}
           data-wf-section="bottom"
           style={{ transform: `translateY(${wfScrollY * -0.01}px)` }}
         >
           <div className="wf-bottom-card">
-            {/* Decorative Elements */}
+       
             <div className="wf-bottom-orb wf-bottom-orb-1" />
             <div className="wf-bottom-orb wf-bottom-orb-2" />
             
@@ -508,7 +508,7 @@ const WhyFuturemax = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </section>
   );
 };

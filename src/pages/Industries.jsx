@@ -233,44 +233,7 @@ const Industries = () => {
           </div>
         </div>
 
-        {/* Bottom CTA */}
-        <div
-          className="ind-bottom"
-          style={{ transform: `translateY(${indScrollY * -0.01}px)` }}
-        >
-          <div className="ind-bottom-card">
-            <div className="ind-bottom-content">
-              <h3 className="ind-bottom-title">
-                Need a Mobile Signal Solution for Your Facility?
-              </h3>
-              <p className="ind-bottom-desc">
-                Whether you're planning connectivity for a home, hotel, hospital, commercial building, 
-                educational campus, factory, or corporate office, our RF engineers will design the ideal 
-                i Booster or DAS solution based on your building structure and coverage requirements.
-              </p>
-            </div>
-            <div className="ind-bottom-actions">
-              <a href="/contact" className="ind-bottom-btn">
-                <span>Request Free RF Site Survey</span>
-                <ArrowRight size={16} />
-              </a>
-              <div className="ind-bottom-trust">
-                <div className="ind-bottom-trust-item">
-                  <Shield size={14} strokeWidth={1.5} />
-                  <span>Enterprise RF Engineering</span>
-                </div>
-                <div className="ind-bottom-trust-item">
-                  <Zap size={14} strokeWidth={1.5} />
-                  <span>4G & 5G Compatible</span>
-                </div>
-                <div className="ind-bottom-trust-item">
-                  <Award size={14} strokeWidth={1.5} />
-                  <span>Pan India Installation</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+   
       </div>
     </section>
   );

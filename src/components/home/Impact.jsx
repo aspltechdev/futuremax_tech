@@ -194,32 +194,7 @@ const Impact = () => {
         </div>
 
         {/* Bottom CTA */}
-        <div
-          className={`impact-cta ${isVisible ? "visible" : ""}`}
-          style={{ transform: `translateY(${scrollY * -0.01}px)` }}
-        >
-          <div className="impact-cta-card">
-            <div className="impact-cta-content">
-              <h3 className="impact-cta-title">
-                Need Reliable Mobile Signal Coverage?
-              </h3>
-              <p className="impact-cta-desc">
-                Our RF engineering experts will analyze your building, recommend the right
-                i Booster solution, and provide complete installation, testing, and technical
-                support for uninterrupted wireless connectivity.
-              </p>
-            </div>
-            <div className="impact-cta-actions">
-              <a href="/contact" className="impact-cta-primary">
-                <span>Request Free RF Site Survey</span>
-                <ArrowRight size={18} />
-              </a>
-              <a href="/contact" className="impact-cta-secondary">
-                Talk to an RF Expert
-              </a>
-            </div>
-          </div>
-        </div>
+   
       </div>
     </section>
   );
