@@ -1,7 +1,4 @@
-// Projects.jsx — Part 1
-
-import { useMemo, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React, { useMemo, useState, useEffect, useRef } from "react";
 import {
   ArrowRight,
   Building2,
@@ -13,7 +10,6 @@ import {
   ShieldCheck,
   ArrowUpRight,
 } from "lucide-react";
-
 import "./Projects.css";
 
 import project1 from "../../assets/project1.jpeg";
@@ -23,7 +19,7 @@ import project4 from "../../assets/project4.jpeg";
 import project5 from "../../assets/project5.jpeg";
 import project6 from "../../assets/project6.jpeg";
 
-const filters = [
+const hpFilters = [
   "All",
   "Hospitality",
   "Healthcare",
@@ -33,7 +29,7 @@ const filters = [
   "Education",
 ];
 
-const processTimeline = [
+const hpTimeline = [
   "RF Site Survey",
   "Coverage Analysis",
   "Network Planning",
@@ -43,704 +39,343 @@ const processTimeline = [
   "Optimization",
 ];
 
-const projects = [
+const hpProjects = [
   {
     id: 1,
     image: project1,
     category: "Hospitality",
-    location: "Luxury Hospitality Environment",
-    title: "Hospitality Wireless Coverage Project",
-
+    location: "5-Star Hotel",
+    title: "Hotel Mobile Signal Enhancement",
     requirement:
-      "Provide uninterrupted indoor mobile connectivity across guest rooms, banquet halls, conference spaces and service areas.",
-
+      "Provide uninterrupted mobile coverage across guest rooms, banquet halls, restaurants, conference rooms, and service areas.",
     challenge:
-      "Complex building materials, multiple floors and inconsistent RF signal distribution reduced user experience.",
-
+      "Concrete structures and multiple floors caused weak indoor mobile signals and frequent call drops.",
     solution:
-      "Engineered an optimized Distributed Antenna System with strategic antenna placement and RF balancing to achieve uniform signal performance.",
-
+      "Installed a 25 dBm i Booster system with Distributed Antenna System (DAS) to ensure seamless indoor 4G & 5G connectivity.",
     technologies: [
-      "RF Engineering",
+      "25 dBm i Booster",
       "Distributed Antenna System",
+      "RF Engineering",
+      "Indoor Antennas",
       "Coverage Analysis",
-      "Signal Enhancement",
-      "Enterprise Wireless",
-      "4G & 5G Infrastructure",
+      "4G & 5G",
     ],
-
     results: [
-      "Improved indoor signal consistency",
-      "Reliable voice & data coverage",
-      "Reduced dead zones",
-      "Enhanced customer experience",
+      "100% indoor coverage",
+      "Improved guest experience",
+      "Reduced call drops",
+      "Reliable high-speed data",
     ],
-
     implementation: [
-      "Complete RF audit",
-      "Passive DAS design",
-      "Cable routing",
-      "Antenna optimization",
-      "Performance validation",
+      "RF Site Survey",
+      "Coverage Planning",
+      "System Design",
+      "Installation",
+      "Performance Testing",
     ],
+    accentColor: "#19AB3F",
   },
-
   {
     id: 2,
     image: project2,
     category: "Healthcare",
-    location: "Healthcare Facility",
-    title: "Healthcare Signal Enhancement Project",
-
+    location: "Multi-Speciality Hospital",
+    title: "Hospital Wireless Connectivity",
     requirement:
-      "Deliver dependable indoor connectivity for medical staff, emergency response teams and patient communication.",
-
+      "Reliable mobile communication for doctors, emergency teams, patients, and hospital staff.",
     challenge:
-      "Critical departments required uninterrupted wireless coverage despite reinforced construction and equipment interference.",
-
+      "Medical equipment and reinforced walls reduced signal penetration in critical departments.",
     solution:
-      "Designed RF coverage with optimized antenna positioning and network balancing for reliable communication.",
-
+      "Designed a complete DAS infrastructure with RF optimization and enterprise-grade indoor antennas.",
     technologies: [
       "RF Engineering",
+      "DAS",
+      "Indoor Antennas",
       "Coverage Analysis",
-      "Signal Enhancement",
-      "Enterprise Wireless",
-      "Wireless Network Design",
+      "Signal Optimization",
     ],
-
     results: [
-      "Reliable clinical connectivity",
-      "Improved communication quality",
-      "Expanded coverage",
-      "Operational continuity",
+      "Reliable emergency communication",
+      "Complete floor coverage",
+      "Improved operational efficiency",
+      "Better patient experience",
     ],
-
     implementation: [
-      "RF survey",
-      "Coverage mapping",
-      "Engineering design",
-      "Deployment",
+      "Signal Survey",
+      "RF Design",
+      "Antenna Installation",
+      "Testing",
       "Optimization",
     ],
+    accentColor: "#0755A3",
   },
-
   {
     id: 3,
     image: project3,
     category: "Commercial",
-    location: "Commercial Office Environment",
-    title: "Commercial DAS Deployment",
-
+    location: "Corporate Office",
+    title: "Enterprise Office Connectivity",
     requirement:
-      "Deliver enterprise-grade indoor mobile connectivity throughout office towers and shared workspaces.",
-
+      "Deliver seamless mobile connectivity across office floors, meeting rooms, and workspaces.",
     challenge:
-      "Dense work environments and structural attenuation caused inconsistent mobile performance.",
-
+      "Glass partitions and dense office layouts caused inconsistent indoor signal strength.",
     solution:
-      "Implemented scalable DAS architecture supporting improved RF performance and future expansion.",
-
+      "Installed a 27 dBm enterprise i Booster solution with optimized antenna placement.",
     technologies: [
-      "Distributed Antenna System",
+      "27 dBm i Booster",
       "RF Engineering",
-      "Coverage Analysis",
       "Enterprise Wireless",
+      "Coverage Planning",
     ],
-
     results: [
-      "High-quality indoor coverage",
-      "Improved productivity",
-      "Future-ready network",
+      "Reliable office-wide coverage",
+      "Improved employee productivity",
+      "High-speed mobile internet",
     ],
-
     implementation: [
-      "Planning",
-      "RF simulation",
-      "Installation",
-      "Commissioning",
-      "Testing",
-    ],
-  },
-
-  {
-    id: 4,
-    image: project4,
-    category: "Industrial",
-    location: "Industrial Manufacturing Facility",
-    title: "Industrial RF Connectivity",
-
-    requirement:
-      "Provide stable wireless communication throughout production floors and operational zones.",
-
-    challenge:
-      "Heavy machinery and metallic infrastructure introduced RF reflections and signal degradation.",
-
-    solution:
-      "Designed industrial-grade RF infrastructure with optimized antenna distribution.",
-
-    technologies: [
-      "RF Engineering",
-      "Signal Enhancement",
-      "Coverage Analysis",
-      "Enterprise Wireless",
-    ],
-
-    results: [
-      "Reliable operational communication",
-      "Improved workforce mobility",
-      "Reduced communication interruptions",
-    ],
-
-    implementation: [
-      "RF inspection",
-      "Design",
-      "Installation",
-      "Validation",
-    ],
-  },
-
-  {
-    id: 5,
-    image: project5,
-    category: "Residential",
-    location: "Residential Community",
-    title: "Residential Indoor Coverage",
-
-    requirement:
-      "Improve indoor mobile coverage for apartments and common areas.",
-
-    challenge:
-      "Building density and reinforced structures limited signal penetration.",
-
-    solution:
-      "Optimized indoor antenna placement and RF tuning for improved residential connectivity.",
-
-    technologies: [
-      "Coverage Analysis",
-      "RF Engineering",
-      "Signal Enhancement",
-      "Wireless Network Design",
-    ],
-
-    results: [
-      "Enhanced indoor coverage",
-      "Better user experience",
-      "Reduced call drops",
-    ],
-
-    implementation: [
-      "Survey",
+      "Site Survey",
       "Planning",
       "Deployment",
       "Testing",
-    ],
-  },
-
-  {
-    id: 6,
-    image: project6,
-    category: "Education",
-    location: "Educational Campus",
-    title: "Educational Campus Connectivity",
-
-    requirement:
-      "Deliver dependable indoor connectivity across classrooms, auditoriums and administrative facilities.",
-
-    challenge:
-      "Large campus layouts required balanced RF distribution and scalable wireless planning.",
-
-    solution:
-      "Designed an RF infrastructure focused on coverage consistency and long-term scalability.",
-
-    technologies: [
-      "Wireless Network Design",
-      "RF Engineering",
-      "Coverage Analysis",
-      "4G & 5G Infrastructure",
-    ],
-
-    results: [
-      "Reliable campus-wide connectivity",
-      "Improved learning environment",
-      "Consistent indoor performance",
-    ],
-
-    implementation: [
-      "Site survey",
-      "Network planning",
-      "Installation",
       "Optimization",
     ],
+    accentColor: "#7C3AED",
   },
 ];
 
-const fadeUp = {
-  hidden: {
-    opacity: 0,
-    y: 40,
-  },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.65,
-    },
-  },
-};
+const Projects = () => {
+  const [hpActiveFilter, setHpActiveFilter] = useState("All");
+  const [hpSelectedProject, setHpSelectedProject] = useState(null);
+  const [hpScrollY, setHpScrollY] = useState(0);
+  const [hpHoveredCard, setHpHoveredCard] = useState(null);
+  const hpSectionRef = useRef(null);
 
-export default function Projects() {
-  const [activeFilter, setActiveFilter] = useState("All");
-  const [selectedProject, setSelectedProject] = useState(null);
+  useEffect(() => {
+    const handleHpScroll = () => setHpScrollY(window.scrollY);
+    window.addEventListener("scroll", handleHpScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleHpScroll);
+  }, []);
 
-  const filteredProjects = useMemo(() => {
-    if (activeFilter === "All") return projects;
+  useEffect(() => {
+    if (hpSelectedProject) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [hpSelectedProject]);
 
-    return projects.filter(
-      (project) => project.category === activeFilter
-    );
-  }, [activeFilter]);
-
-  const featuredProject = projects[0];
+  const hpFilteredProjects = useMemo(() => {
+    if (hpActiveFilter === "All") return hpProjects;
+    return hpProjects.filter((project) => project.category === hpActiveFilter);
+  }, [hpActiveFilter]);
 
   return (
-    <section className="projects-section" id="case-studies">
-      <div className="projects-container">
+    <section className="hp-section" ref={hpSectionRef} id="case-studies">
+      {/* Background */}
+      <div className="hp-bg">
+        <div className="hp-bg__grid" />
+        <div className="hp-bg__orb hp-bg__orb--1" style={{ transform: `translate(${hpScrollY * 0.02}px, ${-hpScrollY * 0.03}px)` }} />
+        <div className="hp-bg__orb hp-bg__orb--2" style={{ transform: `translate(${-hpScrollY * 0.02}px, ${hpScrollY * 0.04}px)` }} />
+      </div>
 
-        {/* Header */}
-
-        <motion.div
-          className="projects-header"
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true }}
-        >
-          <span className="projects-tag">
-            CASE STUDIES
-          </span>
-
-          <h2>
-            Engineering Success Stories
-            <br />
-            Across Diverse Industries
+      <div className="hp-container">
+        {/* Section Header */}
+        <div className="hp-header" style={{ transform: `translateY(${hpScrollY * -0.03}px)` }}>
+          <span className="hp-header__tag">CASE STUDIES</span>
+          <h2 className="hp-header__title">
+            Engineering Successful
+            <span className="hp-header__accent"> Wireless Connectivity Projects</span>
           </h2>
-
-          <p>
-            Discover how Futuremax Technology delivers
-            advanced RF Engineering, Distributed Antenna
-            Systems, Wireless Network Design, Signal
-            Enhancement, Coverage Analysis and 4G & 5G
-            infrastructure solutions to achieve reliable
-            indoor mobile coverage across enterprise
-            environments.
+          <p className="hp-header__desc">
+            Discover how Futuremax Technology has transformed mobile connectivity across residential 
+            communities, hotels, hospitals, educational institutions, commercial buildings, factories, 
+            and enterprise campuses using i Booster Mobile Signal Boosters, Distributed Antenna Systems 
+            (DAS), and advanced RF Engineering solutions.
           </p>
-        </motion.div>
+        </div>
 
-        {/* Featured Case Study */}
-
-        <motion.div
-          className="featured-project"
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true }}
-        >
-          <div className="featured-image">
-            <img
-              src={featuredProject.image}
-              alt={featuredProject.title}
-            />
-          </div>
-
-          <div className="featured-content">
-
-            <span className="industry-chip">
-              <Building2 size={16} />
-              {featuredProject.category}
-            </span>
-
-            <h3>{featuredProject.title}</h3>
-
-            <div className="featured-meta">
-
-              <div>
-                <strong>Requirement</strong>
-                <p>{featuredProject.requirement}</p>
-              </div>
-
-              <div>
-                <strong>Challenge</strong>
-                <p>{featuredProject.challenge}</p>
-              </div>
-
-              <div>
-                <strong>Solution</strong>
-                <p>{featuredProject.solution}</p>
-              </div>
-                          <div>
-              <strong>Technologies</strong>
-
-              <div className="tech-stack">
-                {featuredProject.technologies.map((tech) => (
-                  <span key={tech} className="tech-chip">
-                    {tech}
-                  </span>
-                ))}
-              </div>
-            </div>
-
-            <div>
-              <strong>Project Results</strong>
-
-              <ul className="featured-results">
-                {featuredProject.results.map((item) => (
-                  <li key={item}>
-                    <CheckCircle2 size={16} />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <button
-              className="primary-project-btn"
-              onClick={() => setSelectedProject(featuredProject)}
-            >
-              View Complete Case Study
-              <ArrowRight size={18} />
-            </button>
-          </div>
-          </div>
-        </motion.div>
-
-        {/* ===========================
-            FILTERS
-        =========================== */}
-
-        <motion.div
-          className="project-filters"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-        >
-          {filters.map((filter) => (
+        {/* Filter Pills */}
+        <div className="hp-filters">
+          {hpFilters.map((filter) => (
             <button
               key={filter}
-              onClick={() => setActiveFilter(filter)}
-              className={`filter-pill ${
-                activeFilter === filter ? "active" : ""
-              }`}
+              onClick={() => setHpActiveFilter(filter)}
+              className={`hp-filters__pill ${hpActiveFilter === filter ? 'hp-filters__pill--active' : ''}`}
             >
               {filter}
             </button>
           ))}
-        </motion.div>
+        </div>
 
-        {/* ===========================
-            PROJECT GRID
-        =========================== */}
-
-        <motion.div
-          className="projects-grid"
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true }}
-          variants={{
-            hidden: {},
-            show: {
-              transition: {
-                staggerChildren: 0.12,
-              },
-            },
-          }}
-        >
-          {filteredProjects.map((project) => (
-            <motion.article
+        {/* Projects Grid - 3 Cards */}
+        <div className="hp-grid">
+          {hpFilteredProjects.slice(0, 3).map((project) => (
+            <div
               key={project.id}
-              className="project-card"
-              variants={fadeUp}
-              whileHover={{ y: -10 }}
+              className={`hp-card ${hpHoveredCard === project.id ? 'hp-card--hovered' : ''}`}
+              style={{ '--hp-accent': project.accentColor }}
+              onMouseEnter={() => setHpHoveredCard(project.id)}
+              onMouseLeave={() => setHpHoveredCard(null)}
             >
-              <div className="project-image-wrapper">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="project-image"
-                />
-
-                <span className="industry-badge">
+              {/* Image */}
+              <div className="hp-card__image-wrap">
+                <img src={project.image} alt={project.title} className="hp-card__image" />
+                <div className="hp-card__image-shade" />
+                <span className="hp-card__badge" style={{ background: project.accentColor }}>
+                  <Building2 size={12} />
                   {project.category}
                 </span>
               </div>
 
-              <div className="project-content">
-
-                <div className="project-location">
-                  <MapPin size={15} />
+              {/* Content */}
+              <div className="hp-card__body">
+                <div className="hp-card__location">
+                  <MapPin size={13} />
                   <span>{project.location}</span>
                 </div>
+                <h3 className="hp-card__title">{project.title}</h3>
+                <p className="hp-card__desc">{project.requirement}</p>
 
-                <h3>{project.title}</h3>
-
-                <div className="project-info">
-
-                  <div className="info-block">
-                    <h4>Requirement</h4>
-                    <p>{project.requirement}</p>
-                  </div>
-
-                  <div className="info-block">
-                    <h4>Challenge</h4>
-                    <p>{project.challenge}</p>
-                  </div>
-
-                </div>
-
-                <div className="technology-list">
-                  {project.technologies
-                    .slice(0, 4)
-                    .map((technology) => (
-                      <span
-                        key={technology}
-                        className="technology-chip"
-                      >
-                        {technology}
-                      </span>
-                    ))}
-                </div>
-
-                <div className="results-preview">
-
-                  {project.results
-                    .slice(0, 2)
-                    .map((result) => (
-                      <div
-                        key={result}
-                        className="result-item"
-                      >
-                        <CheckCircle2 size={15} />
-                        <span>{result}</span>
-                      </div>
-                    ))}
-
-                </div>
-
-                <button
-                  className="details-button"
-                  onClick={() =>
-                    setSelectedProject(project)
-                  }
-                >
-                  View Details
-                  <ArrowUpRight size={18} />
-                </button>
-
-              </div>
-            </motion.article>
-          ))}
-        </motion.div>
-
-        {/* ===========================
-            MODAL
-        =========================== */}
-
-        <AnimatePresence>
-
-          {selectedProject && (
-
-            <motion.div
-              className="project-modal-overlay"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() =>
-                setSelectedProject(null)
-              }
-            >
-
-              <motion.div
-                className="project-modal"
-                initial={{
-                  opacity: 0,
-                  scale: 0.9,
-                  y: 40,
-                }}
-                animate={{
-                  opacity: 1,
-                  scale: 1,
-                  y: 0,
-                }}
-                exit={{
-                  opacity: 0,
-                  scale: 0.9,
-                  y: 40,
-                }}
-                transition={{
-                  duration: 0.35,
-                }}
-                onClick={(e) =>
-                  e.stopPropagation()
-                }
-              >
-
-                <button
-                  className="modal-close"
-                  onClick={() =>
-                    setSelectedProject(null)
-                  }
-                >
-                  <X size={22} />
-                </button>
-
-                <div className="modal-image">
-                  <img
-                    src={selectedProject.image}
-                    alt={selectedProject.title}
-                  />
-                </div>
-
-                <div className="modal-content">
-
-                  <div className="modal-header">
-
-                    <span className="industry-chip">
-                      {selectedProject.category}
+                {/* Technologies */}
+                <div className="hp-card__tech">
+                  {project.technologies.slice(0, 3).map((tech) => (
+                    <span key={tech} className="hp-card__tech-tag">{tech}</span>
+                  ))}
+                  {project.technologies.length > 3 && (
+                    <span className="hp-card__tech-more" style={{ color: project.accentColor }}>
+                      +{project.technologies.length - 3}
                     </span>
-
-                    <h2>
-                      {selectedProject.title}
-                    </h2>
-
-                    <div className="modal-location">
-                      <MapPin size={16} />
-                      {selectedProject.location}
-                    </div>
-
-                  </div>
-                  </div>   {/* Close modal-grid */}
-                  <div className="modal-grid">
-
-                    <div className="modal-card">
-                      <RadioTower size={22} />
-                      <h4>Project Requirement</h4>
-                      <p>
-                        {selectedProject.requirement}
-                      </p>
-                    </div>
-
-                    <div className="modal-card">
-                      <ShieldCheck size={22} />
-                      <h4>
-                        Engineering Challenge
-                      </h4>
-                      <p>
-                        {selectedProject.challenge}
-                      </p>
-                    </div>
-
-                    <div className="modal-card">
-                      <Wifi size={22} />
-                      <h4>Solution Provided</h4>
-                      <p>
-                        {selectedProject.solution}
-                      </p>
-                    </div>
-                                      {/* ===========================
-                      IMPLEMENTATION PROCESS
-                  =========================== */}
-
-                  <div className="modal-section">
-                    <h3>Implementation Process</h3>
-
-                    <div className="process-timeline">
-                      {processTimeline.map((step, index) => (
-                        <div
-                          className="timeline-item"
-                          key={step}
-                        >
-                          <div className="timeline-number">
-                            {index + 1}
-                          </div>
-
-                          <div className="timeline-content">
-                            <h4>{step}</h4>
-
-                            <p>
-                              {selectedProject.implementation[
-                                Math.min(
-                                  index,
-                                  selectedProject.implementation.length - 1
-                                )
-                              ]}
-                            </p>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* ===========================
-                      TECHNOLOGIES
-                  =========================== */}
-
-                  <div className="modal-section">
-                    <h3>Technology Used</h3>
-
-                    <div className="modal-technologies">
-                      {selectedProject.technologies.map(
-                        (technology) => (
-                          <span
-                            key={technology}
-                            className="technology-chip"
-                          >
-                            {technology}
-                          </span>
-                        )
-                      )}
-                    </div>
-                  </div>
-
-                  {/* ===========================
-                      RESULTS
-                  =========================== */}
-
-                  <div className="modal-section">
-                    <h3>Project Results</h3>
-
-                    <div className="modal-results">
-                      {selectedProject.results.map((result) => (
-                        <div
-                          className="modal-result"
-                          key={result}
-                        >
-                          <CheckCircle2 size={18} />
-                          <span>{result}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div className="modal-footer">
-                    <button
-                      className="primary-project-btn"
-                      onClick={() =>
-                        setSelectedProject(null)
-                      }
-                    >
-                      Close Case Study
-                    </button>
-                  </div>
-
+                  )}
                 </div>
-              </motion.div>
-            </motion.div>
-          )}
 
-        </AnimatePresence>
+                {/* Results Preview */}
+                <div className="hp-card__results">
+                  {project.results.slice(0, 2).map((result) => (
+                    <div key={result} className="hp-card__result">
+                      <CheckCircle2 size={14} style={{ color: project.accentColor }} />
+                      <span>{result}</span>
+                    </div>
+                  ))}
+                </div>
 
+                {/* View Project Button */}
+                <button
+                  className="hp-card__btn"
+                  onClick={() => setHpSelectedProject(project)}
+                  style={{ color: project.accentColor }}
+                >
+                  <span>View Project</span>
+                  <ArrowUpRight size={15} />
+                </button>
+              </div>
+
+              {/* Bottom Accent Line */}
+              <div className="hp-card__line" style={{ background: project.accentColor }} />
+            </div>
+          ))}
+        </div>
+
+        {/* Bottom CTA */}
+        <div className="hp-cta" style={{ transform: `translateY(${hpScrollY * -0.01}px)` }}>
+          <div className="hp-cta__card">
+            <div className="hp-cta__content">
+              <h3 className="hp-cta__title">Need a Similar Solution for Your Facility?</h3>
+              <p className="hp-cta__desc">
+                Our RF engineers will assess your building and recommend the right i Booster or DAS 
+                configuration for reliable indoor mobile coverage.
+              </p>
+            </div>
+            <div className="hp-cta__actions">
+              <a href="/contact" className="hp-cta__btn">
+                <span>Request Free RF Site Survey</span>
+                <ArrowRight size={16} />
+              </a>
+              <a href="/case-studies" className="hp-cta__link">
+                View All Case Studies
+                <ArrowRight size={14} />
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
+
+      {/* Modal */}
+      {hpSelectedProject && (
+        <div className="hp-modal-overlay" onClick={() => setHpSelectedProject(null)}>
+          <div className="hp-modal" onClick={(e) => e.stopPropagation()}>
+            <button className="hp-modal__close" onClick={() => setHpSelectedProject(null)}>
+              <X size={20} />
+            </button>
+
+            <div className="hp-modal__image">
+              <img src={hpSelectedProject.image} alt={hpSelectedProject.title} />
+            </div>
+
+            <div className="hp-modal__body">
+              <div className="hp-modal__header">
+                <span className="hp-modal__badge" style={{ background: hpSelectedProject.accentColor }}>
+                  {hpSelectedProject.category}
+                </span>
+                <h2 className="hp-modal__title">{hpSelectedProject.title}</h2>
+                <div className="hp-modal__location">
+                  <MapPin size={15} />
+                  {hpSelectedProject.location}
+                </div>
+              </div>
+
+              <div className="hp-modal__cards">
+                <div className="hp-modal__card">
+                  <RadioTower size={18} style={{ color: hpSelectedProject.accentColor }} />
+                  <h4>Project Requirement</h4>
+                  <p>{hpSelectedProject.requirement}</p>
+                </div>
+                <div className="hp-modal__card">
+                  <ShieldCheck size={18} style={{ color: hpSelectedProject.accentColor }} />
+                  <h4>Deployment Challenges</h4>
+                  <p>{hpSelectedProject.challenge}</p>
+                </div>
+                <div className="hp-modal__card">
+                  <Wifi size={18} style={{ color: hpSelectedProject.accentColor }} />
+                  <h4>Solution Implemented</h4>
+                  <p>{hpSelectedProject.solution}</p>
+                </div>
+              </div>
+
+              <div className="hp-modal__section">
+                <h3>Technologies Used</h3>
+                <div className="hp-modal__tech-list">
+                  {hpSelectedProject.technologies.map((tech) => (
+                    <span key={tech} className="hp-modal__tech-tag">{tech}</span>
+                  ))}
+                </div>
+              </div>
+
+              <div className="hp-modal__section">
+                <h3>Project Outcomes</h3>
+                <div className="hp-modal__outcomes">
+                  {hpSelectedProject.results.map((result) => (
+                    <div className="hp-modal__outcome" key={result}>
+                      <CheckCircle2 size={16} style={{ color: hpSelectedProject.accentColor }} />
+                      <span>{result}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="hp-modal__footer">
+                <button className="hp-modal__footer-btn" onClick={() => setHpSelectedProject(null)}>
+                  Back to Projects
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
-}
+};
+
+export default Projects;

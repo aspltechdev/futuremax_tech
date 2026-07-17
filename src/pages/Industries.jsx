@@ -4,231 +4,275 @@ import "./Industries.css";
 
 const industries = [
   {
+    image: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600&q=80",
+    title: "Residential Communities",
+    description:
+      "Reliable mobile signal booster solutions for homes, villas, apartments, gated communities, and residential towers.",
+    features: ["Homes & Villas", "Apartments", "23 dBm Coverage"],
+    productLink: "i Booster 23 dBm",
+    accentColor: "#0755A3",
+  },
+  {
     image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&q=80",
-    title: "Hospitality",
-    description: "Deliver seamless mobile connectivity across hotels, resorts, convention centres, and guest facilities.",
-    features: ["5-Star Hotel Ready", "Guest Coverage", "Banquet Halls"],
+    title: "Hotels & Hospitality",
+    description:
+      "Uninterrupted mobile connectivity for hotels, resorts, convention centres, and luxury hospitality spaces.",
+    features: ["Hotels", "Resorts", "Guest Experience"],
+    productLink: "i Booster 25 dBm",
+    accentColor: "#0A6FD4",
   },
   {
     image: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=600&q=80",
-    title: "Healthcare",
-    description: "Reliable indoor wireless coverage for hospitals, clinics, and healthcare campuses.",
-    features: ["Emergency Ready", "HIPAA Compliant", "24/7 Reliability"],
+    title: "Hospitals & Healthcare",
+    description:
+      "Professional RF engineering solutions for hospitals, clinics, and healthcare campuses.",
+    features: ["Hospitals", "Medical Centres", "Reliable Coverage"],
+    productLink: "i Booster 25 dBm",
+    accentColor: "#19AB3F",
   },
   {
     image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80",
-    title: "Corporate Offices",
-    description: "Enterprise-grade wireless infrastructure for office buildings and IT parks.",
-    features: ["Multi-Floor Coverage", "Conference Ready", "Productivity Boost"],
+    title: "Commercial Buildings",
+    description:
+      "Enterprise mobile signal boosters for office buildings, IT parks, shopping malls, and business centres.",
+    features: ["Office Spaces", "IT Parks", "Business Centres"],
+    productLink: "i Booster 25 dBm",
+    accentColor: "#7C3AED",
+  },
+  {
+    image: "https://images.unsplash.com/photo-1562774053-701939374585?w=600&q=80",
+    title: "Education & Campuses",
+    description:
+      "Campus-wide wireless connectivity for schools, colleges, and universities with scalable DAS solutions.",
+    features: ["Schools", "Colleges", "Universities"],
+    productLink: "DAS Solutions",
+    accentColor: "#EA580C",
   },
   {
     image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&q=80",
     title: "Industrial & Manufacturing",
-    description: "Robust RF engineering solutions for factories, warehouses, and logistics facilities.",
-    features: ["Heavy Duty", "Large Areas", "Machine Compatible"],
+    description:
+      "High-capacity 27 dBm enterprise boosters for factories, warehouses, and industrial facilities.",
+    features: ["Factories", "Warehouses", "Industrial Plants"],
+    productLink: "i Booster 27 dBm",
+    accentColor: "#DC2626",
   },
   {
-    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&q=80",
-    title: "Retail & Commercial",
-    description: "Reliable indoor coverage for shopping malls, supermarkets, and retail stores.",
-    features: ["Customer Experience", "POS Connectivity", "Multi-Tenant"],
-  },
-  {
-    image: "https://images.unsplash.com/photo-1562774053-701939374585?w=600&q=80",
-    title: "Education",
-    description: "Campus-wide connectivity for schools, colleges, and universities.",
-    features: ["Campus Wide", "Smart Classroom", "Research Ready"],
-  },
-  {
-    image: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600&q=80",
-    title: "Residential",
-    description: "Improve indoor mobile coverage for villas, apartments, and gated communities.",
-    features: ["4G/5G Ready", "Aesthetic Design", "Low Maintenance"],
+    image: "https://images.unsplash.com/photo-1436491865332-7a61a109bb05?w=600&q=80",
+    title: "Airports & Public Infrastructure",
+    description:
+      "Advanced RF engineering for airports, railway stations, government buildings, and public projects.",
+    features: ["Airports", "Government", "Public Projects"],
+    productLink: "Enterprise Solutions",
+    accentColor: "#0891B2",
   },
   {
     image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&q=80",
-    title: "Government & Public",
-    description: "Scalable wireless communication for government buildings and smart cities.",
-    features: ["High Security", "Scalable", "Smart City Ready"],
+    title: "Corporate Campuses",
+    description:
+      "End-to-end mobile signal enhancement for corporate headquarters and business parks.",
+    features: ["Corporate Offices", "Business Parks", "Enterprise Ready"],
+    productLink: "i Booster 27 dBm",
+    accentColor: "#4F46E5",
   },
 ];
 
 const Industries = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  const [activeIndex, setActiveIndex] = useState(0);
-  const scrollRef = useRef(null);
-  const autoScrollRef = useRef(null);
+  const [indScrollY, setIndScrollY] = useState(0);
+  const [indIsPaused, setIndIsPaused] = useState(false);
+  const [indHoveredCard, setIndHoveredCard] = useState(null);
+  const indSectionRef = useRef(null);
 
   useEffect(() => {
-    setIsVisible(true);
-    
-    // Auto scroll cards
-    const scrollContainer = scrollRef.current;
-    if (scrollContainer) {
-      let scrollAmount = 0;
-      const maxScroll = scrollContainer.scrollWidth - scrollContainer.clientWidth;
-      
-      autoScrollRef.current = setInterval(() => {
-        if (scrollAmount >= maxScroll) {
-          scrollAmount = 0;
-        } else {
-          scrollAmount += 1;
-        }
-        scrollContainer.scrollLeft = scrollAmount;
-      }, 30);
-    }
-
-    return () => {
-      if (autoScrollRef.current) {
-        clearInterval(autoScrollRef.current);
-      }
-    };
-  }, []);
-
-  // Auto rotate active card
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setActiveIndex((prev) => (prev + 1) % industries.length);
-    }, 3000);
-    return () => clearInterval(interval);
+    const handleIndScroll = () => setIndScrollY(window.scrollY);
+    window.addEventListener("scroll", handleIndScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleIndScroll);
   }, []);
 
   return (
-    <main className="industries-page">
-      {/* Hero Section */}
-      <section className="industries-hero">
-        <div className="hero-bg-animation">
-          <div className="hero-orb hero-orb-1" />
-          <div className="hero-orb hero-orb-2" />
-          <div className="hero-orb hero-orb-3" />
-        </div>
-        <div className="container">
-          <div className={`section-header ${isVisible ? 'animate' : ''}`}>
-            <span className="section-tag">Industries We Serve</span>
-            <h1 className="section-title">
-              Connectivity solutions tailored
-              <span className="section-title-accent"> for every industry</span>
-            </h1>
-            <p className="section-description">
-              Futuremax Technology designs and deploys intelligent wireless connectivity solutions 
-              across diverse industries with RF engineering expertise that ensures reliable 
-              communication where it matters most.
-            </p>
-          </div>
-        </div>
-      </section>
+    <section className="ind-section" ref={indSectionRef}>
+      {/* Background */}
+      <div className="ind-bg-layer">
+        <div className="ind-bg-grid" />
+        <div
+          className="ind-bg-orb ind-bg-orb-1"
+          style={{ transform: `translate(${indScrollY * 0.02}px, ${-indScrollY * 0.03}px)` }}
+        />
+        <div
+          className="ind-bg-orb ind-bg-orb-2"
+          style={{ transform: `translate(${-indScrollY * 0.02}px, ${indScrollY * 0.04}px)` }}
+        />
+      </div>
 
-      {/* Auto-Scrolling Cards Strip */}
-      <section className="industries-scroll-strip">
-        <div className="scroll-strip-container" ref={scrollRef}>
-          <div className="scroll-strip-track">
-            {[...industries, ...industries].map((item, index) => (
-              <div 
-                className="scroll-strip-card" 
-                key={index}
-                style={{
-                  '--card-index': index,
-                }}
-              >
-                <div className="scroll-card-image">
-                  <img src={item.image} alt={item.title} />
-                </div>
-                <div className="scroll-card-content">
-                  <span className="scroll-card-title">{item.title}</span>
-                </div>
-              </div>
-            ))}
-          </div>
+      <div className="ind-container">
+        {/* Section Header */}
+        <div
+          className="ind-header"
+          style={{ transform: `translateY(${indScrollY * -0.02}px)` }}
+        >
+          <span className="ind-header-tag">Industries We Serve</span>
+          <h2 className="ind-header-title">
+            Enterprise Wireless Connectivity
+            <span className="ind-header-title-accent"> Solutions for Every Industry</span>
+          </h2>
+          <p className="ind-header-desc">
+            Futuremax Technology delivers RF Engineering, Mobile Signal Boosters, Distributed 
+            Antenna Systems (DAS), and enterprise wireless connectivity solutions for residential 
+            communities, hotels, hospitals, educational campuses, commercial buildings, factories, 
+            corporate offices, and public infrastructure across India.
+          </p>
         </div>
-      </section>
 
-      {/* Featured Industries Grid */}
-      <section className="industries-grid-section">
-        <div className="container">
-          <div className={`section-header ${isVisible ? 'animate' : ''}`}>
-            <span className="section-tag">Industry Expertise</span>
-            <h2 className="section-title">
-              Wireless connectivity for
-              <span className="section-title-accent"> every environment</span>
-            </h2>
-            <p className="section-description">
-              Every industry has unique communication challenges. Our engineering team develops 
-              customized RF solutions that improve indoor coverage and eliminate dead zones.
-            </p>
-          </div>
-
-          <div className="industries-grid">
+        {/* Marquee Cards Strip */}
+        <div 
+          className="ind-marquee-wrapper"
+          onMouseEnter={() => setIndIsPaused(true)}
+          onMouseLeave={() => {
+            setIndIsPaused(false);
+            setIndHoveredCard(null);
+          }}
+        >
+          <div className={`ind-marquee-track ${indIsPaused ? 'ind-marquee-paused' : ''}`}>
+            {/* First set */}
             {industries.map((item, index) => (
-              <div 
-                className={`industry-card ${isVisible ? 'animate' : ''}`} 
-                key={index}
-                style={{ '--delay': `${index * 0.1}s` }}
+              <div
+                className={`ind-marquee-card ${indHoveredCard === index ? 'ind-marquee-card-active' : ''}`}
+                key={`first-${index}`}
+                style={{ '--ind-accent': item.accentColor }}
+                onMouseEnter={() => setIndHoveredCard(index)}
+                onMouseLeave={() => setIndHoveredCard(null)}
               >
-                <div className="industry-card-image">
-                  <img src={item.image} alt={item.title} />
-                  <div className="industry-card-overlay" />
+                {/* Card Image */}
+                <div className="ind-marquee-card-img-wrap">
+                  <img 
+                    src={item.image} 
+                    alt={item.title} 
+                    className="ind-marquee-card-img"
+                    loading="lazy"
+                  />
+                  <div className="ind-marquee-card-img-overlay" />
+                  <span 
+                    className="ind-marquee-card-badge" 
+                    style={{ background: item.accentColor }}
+                  >
+                    {item.productLink}
+                  </span>
                 </div>
-                <div className="industry-card-body">
-                  <h3 className="industry-card-title">{item.title}</h3>
-                  <p className="industry-card-desc">{item.description}</p>
-                  <div className="industry-card-features">
+
+                {/* Card Content */}
+                <div className="ind-marquee-card-body">
+                  <h3 className="ind-marquee-card-title">{item.title}</h3>
+                  <p className="ind-marquee-card-desc">{item.description}</p>
+                  
+                  <div className="ind-marquee-card-features">
                     {item.features.map((feature, i) => (
-                      <span key={i} className="industry-feature">
-                        <Check size={14} strokeWidth={2.5} />
+                      <span key={i} className="ind-marquee-card-feature">
+                        <Check size={12} strokeWidth={2.5} style={{ color: item.accentColor }} />
                         {feature}
                       </span>
                     ))}
                   </div>
-                  <a href="/contact" className="industry-card-link">
-                    <span>Learn More</span>
-                    <ArrowRight size={15} />
+
+                  <a href="/contact" className="ind-marquee-card-link" style={{ color: item.accentColor }}>
+                    <span>Explore Industry</span>
+                    <ArrowRight size={14} />
                   </a>
                 </div>
+
+                <div className="ind-marquee-card-line" style={{ background: item.accentColor }} />
+              </div>
+            ))}
+
+            {/* Duplicate set */}
+            {industries.map((item, index) => (
+              <div
+                className={`ind-marquee-card ${indHoveredCard === index + industries.length ? 'ind-marquee-card-active' : ''}`}
+                key={`second-${index}`}
+                style={{ '--ind-accent': item.accentColor }}
+                onMouseEnter={() => setIndHoveredCard(index + industries.length)}
+                onMouseLeave={() => setIndHoveredCard(null)}
+              >
+                <div className="ind-marquee-card-img-wrap">
+                  <img 
+                    src={item.image} 
+                    alt={item.title} 
+                    className="ind-marquee-card-img"
+                    loading="lazy"
+                  />
+                  <div className="ind-marquee-card-img-overlay" />
+                  <span 
+                    className="ind-marquee-card-badge" 
+                    style={{ background: item.accentColor }}
+                  >
+                    {item.productLink}
+                  </span>
+                </div>
+
+                <div className="ind-marquee-card-body">
+                  <h3 className="ind-marquee-card-title">{item.title}</h3>
+                  <p className="ind-marquee-card-desc">{item.description}</p>
+                  
+                  <div className="ind-marquee-card-features">
+                    {item.features.map((feature, i) => (
+                      <span key={i} className="ind-marquee-card-feature">
+                        <Check size={12} strokeWidth={2.5} style={{ color: item.accentColor }} />
+                        {feature}
+                      </span>
+                    ))}
+                  </div>
+
+                  <a href="/contact" className="ind-marquee-card-link" style={{ color: item.accentColor }}>
+                    <span>Explore Industry</span>
+                    <ArrowRight size={14} />
+                  </a>
+                </div>
+
+                <div className="ind-marquee-card-line" style={{ background: item.accentColor }} />
               </div>
             ))}
           </div>
         </div>
-      </section>
 
-      {/* CTA Section */}
-      <section className="industries-cta">
-        <div className="cta-bg-animation">
-          <div className="cta-orb cta-orb-1" />
-          <div className="cta-orb cta-orb-2" />
-        </div>
-        <div className="container">
-          <div className={`cta-content ${isVisible ? 'animate' : ''}`}>
-            <h2 className="cta-title">
-              Looking for a custom connectivity solution?
-            </h2>
-            <p className="cta-desc">
-              Speak with our RF engineering specialists to design a wireless coverage 
-              solution tailored to your industry and requirements.
-            </p>
-            <div className="cta-actions">
-              <a href="/contact" className="btn-primary">
-                <span>Request a Site Survey</span>
+        {/* Bottom CTA */}
+        <div
+          className="ind-bottom"
+          style={{ transform: `translateY(${indScrollY * -0.01}px)` }}
+        >
+          <div className="ind-bottom-card">
+            <div className="ind-bottom-content">
+              <h3 className="ind-bottom-title">
+                Need a Mobile Signal Solution for Your Facility?
+              </h3>
+              <p className="ind-bottom-desc">
+                Whether you're planning connectivity for a home, hotel, hospital, commercial building, 
+                educational campus, factory, or corporate office, our RF engineers will design the ideal 
+                i Booster or DAS solution based on your building structure and coverage requirements.
+              </p>
+            </div>
+            <div className="ind-bottom-actions">
+              <a href="/contact" className="ind-bottom-btn">
+                <span>Request Free RF Site Survey</span>
                 <ArrowRight size={16} />
               </a>
-              <div className="cta-trust">
-                <div className="cta-trust-item">
-                  <Shield size={16} strokeWidth={1.5} />
-                  <span>Enterprise Grade</span>
+              <div className="ind-bottom-trust">
+                <div className="ind-bottom-trust-item">
+                  <Shield size={14} strokeWidth={1.5} />
+                  <span>Enterprise RF Engineering</span>
                 </div>
-                <div className="cta-trust-item">
-                  <Zap size={16} strokeWidth={1.5} />
-                  <span>5G Ready</span>
+                <div className="ind-bottom-trust-item">
+                  <Zap size={14} strokeWidth={1.5} />
+                  <span>4G & 5G Compatible</span>
                 </div>
-                <div className="cta-trust-item">
-                  <Award size={16} strokeWidth={1.5} />
-                  <span>Certified Engineers</span>
+                <div className="ind-bottom-trust-item">
+                  <Award size={14} strokeWidth={1.5} />
+                  <span>Pan India Installation</span>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </section>
-    </main>
+      </div>
+    </section>
   );
 };
 
