@@ -1,36 +1,40 @@
 /* ===========================================================
-   Technology page — navy banner + light blue body sections
+   Technology page — one continuous blue gradient, matches Home
    =========================================================== */
 .technology-page {
-  --navy-950: #071630;
-  --navy-900: #6992c8;
-  --navy-800: #538ac1;
-  --ink-900: #6b91c0;
-  --ink-600: #4b6584;
-  --green-400: #22c55e;
-  --green-500: #16a34a;
-  --green-600: #15803d;
-  --sky-50: #eaf4ff;
-  --sky-100: #dcecfd;
-  --sky-200: #c3ddf7;
-  --border-glass: rgba(255, 255, 255, 0.12);
-  --border-sky: #cfe3f7;
+  --green-400: #34d67a;
+  --green-500: #22c55e;
+  --green-600: #16a34a;
+  --ink-100: #eef2f8;
+  --muted: #b9cbe4;
+  --border-glass: rgba(255, 255, 255, 0.14);
   --mono: "IBM Plex Mono", "Roboto Mono", ui-monospace, monospace;
-  background: var(--sky-50);
+
+  position: relative;
+  background: linear-gradient(160deg, #0d2748 0%, #123a63 30%, #1a5487 65%, #0f3766 100%);
 }
 
-/* ---------- banner (stays navy) ---------- */
-.technology-page .page-banner {
+/* single texture layer sits behind the whole page, not per-section */
+.technology-page::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+  background-size: 26px 26px;
+  pointer-events: none;
+}
+
+.technology-page > * {
   position: relative;
-  overflow: hidden;
+  z-index: 1;
+}
+
+/* ---------- banner ---------- */
+.technology-page .page-banner {
   padding-top: 140px;
   padding-bottom: 56px;
-  background: linear-gradient(135deg, #4f8cdc 0%, #267fd8 45%, #0a2044 100%);
-}
-
-.technology-page .page-banner .container {
-  position: relative;
-  z-index: 2;
+  background: transparent;
 }
 
 .technology-page .page-banner .section-tag {
@@ -42,33 +46,22 @@
 }
 
 .technology-page .page-banner h1 {
-  color: #ffffff;
+  color: #ffffff !important;
   font-size: 44px;
   margin: 14px 0 12px;
 }
 
 .technology-page .page-banner p {
-  color: #c3d3ea;
+  color: var(--muted) !important;
   font-size: 17px;
   max-width: 640px;
 }
 
-.technology-page .grid-overlay {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  background-image: radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px);
-  background-size: 26px 26px;
-  mask-image: radial-gradient(ellipse at 60% 20%, black 40%, transparent 80%);
-  pointer-events: none;
-}
-
 .technology-page .hero-blob {
   position: absolute;
-  z-index: 0;
   border-radius: 50%;
   filter: blur(70px);
-  opacity: 0.3;
+  opacity: 0.28;
   pointer-events: none;
 }
 
@@ -83,7 +76,7 @@
 .technology-page .hero-blob--2 {
   width: 260px;
   height: 260px;
-  background: #2a6fb0;
+  background: #ffffff;
   bottom: -140px;
   left: 8%;
 }
@@ -95,14 +88,12 @@
   gap: 9px;
   padding: 8px 18px;
   border-radius: 999px;
-  background: #ffffff;
-  border: 1px solid var(--border-sky);
-  color: var(--ink-900);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--border-glass);
+  color: #ffffff !important;
   font-size: 13.5px;
   font-weight: 600;
-  letter-spacing: 0.01em;
   margin-bottom: 22px;
-  box-shadow: 0 2px 8px rgba(11, 37, 69, 0.06);
 }
 
 .technology-page .pill-badge__dot {
@@ -110,20 +101,21 @@
   height: 8px;
   border-radius: 50%;
   background: var(--green-400);
-  box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.18);
+  box-shadow: 0 0 0 4px rgba(52, 214, 122, 0.2);
   animation: pulse-dot 2.2s ease-in-out infinite;
 }
 
 @keyframes pulse-dot {
-  0%, 100% { box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.18); }
-  50% { box-shadow: 0 0 0 7px rgba(34, 197, 94, 0.05); }
+  0%, 100% { box-shadow: 0 0 0 4px rgba(52, 214, 122, 0.2); }
+  50% { box-shadow: 0 0 0 7px rgba(52, 214, 122, 0.05); }
 }
 
-/* ---------- stat strip (light blue) ---------- */
+/* ---------- stat strip ---------- */
 .technology-page .stat-strip {
   padding: 44px 0;
-  background: var(--sky-50);
-  border-bottom: 1px solid var(--border-sky);
+  background: transparent;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .technology-page .stat-strip__grid {
@@ -135,36 +127,31 @@
 .technology-page .stat-card {
   padding: 20px 22px;
   border-radius: 14px;
-  background: #ffffff;
-  border: 1px solid var(--border-sky);
-  box-shadow: 0 4px 14px rgba(11, 37, 69, 0.05);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border-glass);
 }
 
 .technology-page .stat-card strong {
   display: block;
   font-size: 30px;
-  color: var(--ink-900);
+  color: #ffffff !important;
 }
 
 .technology-page .stat-card span {
   display: block;
   margin-top: 6px;
   font-size: 13px;
-  color: var(--ink-600);
+  color: var(--muted) !important;
 }
 
-/* ---------- capability blocks (light blue) ---------- */
+/* ---------- capability blocks ---------- */
 .technology-page .capabilities {
-  background: var(--sky-50);
+  background: transparent;
 }
 
 .technology-page .cap-block {
   padding: 88px 0;
   scroll-margin-top: 24px;
-}
-
-.technology-page .cap-block:nth-child(even) {
-  background: var(--sky-100);
 }
 
 .technology-page .cap-block__inner {
@@ -181,20 +168,20 @@
 .technology-page .cap-block__text h2 {
   font-size: 40px;
   line-height: 1.18;
-  color: var(--ink-900);
+  color: #ffffff !important;
   font-weight: 800;
   margin: 0 0 20px;
   letter-spacing: -0.01em;
 }
 
 .technology-page .cap-block__text h2 span {
-  color: var(--green-500);
+  color: var(--green-400) !important;
 }
 
 .technology-page .cap-block__text p {
   font-size: 16.5px;
   line-height: 1.7;
-  color: var(--ink-600);
+  color: var(--muted) !important;
   max-width: 520px;
   margin: 0 0 26px;
 }
@@ -210,20 +197,21 @@
 
 .technology-page .cap-block__pills li {
   font-size: 13px;
-  color: var(--ink-900);
-  background: #ffffff;
-  border: 1px solid var(--border-sky);
+  color: #ffffff !important;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid var(--border-glass);
   padding: 8px 14px;
   border-radius: 999px;
 }
 
-/* ---------- floating card ---------- */
+/* ---------- floating glass card ---------- */
 .technology-page .glass-card {
   border-radius: 24px;
-  background: #ffffff;
-  border: 1px solid var(--border-sky);
-  box-shadow: 0 24px 50px -20px rgba(11, 37, 69, 0.18);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--border-glass);
+  box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.4);
   overflow: hidden;
+  backdrop-filter: blur(8px);
 }
 
 .technology-page .glass-card__art {
@@ -231,14 +219,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #0d2748 0%, #123a63 100%);
+  background: rgba(0, 0, 0, 0.15);
+  border-bottom: 1px solid var(--border-glass);
 }
 
 .technology-page .glass-card__icon {
   width: 64px;
   height: 64px;
   color: var(--green-400);
-  filter: drop-shadow(0 6px 16px rgba(34, 197, 94, 0.35));
+  filter: drop-shadow(0 6px 16px rgba(52, 214, 122, 0.4));
 }
 
 .technology-page .glass-card__icon svg {
@@ -262,16 +251,16 @@
   font-family: var(--mono);
   font-size: 11.5px;
   letter-spacing: 0.08em;
-  color: var(--green-500);
+  color: var(--green-400) !important;
   font-weight: 600;
 }
 
 .technology-page .glass-card__tag {
   font-size: 11.5px;
   font-weight: 700;
-  color: var(--green-600);
-  background: #e9f9ef;
-  border: 1px solid #bfe8cc;
+  color: var(--green-400) !important;
+  background: rgba(52, 214, 122, 0.16);
+  border: 1px solid rgba(52, 214, 122, 0.35);
   padding: 4px 11px;
   border-radius: 999px;
   white-space: nowrap;
@@ -279,14 +268,14 @@
 
 .technology-page .glass-card__body h3 {
   font-size: 22px;
-  color: var(--ink-900);
+  color: #ffffff !important;
   margin: 0 0 10px;
 }
 
 .technology-page .glass-card__body p {
   font-size: 14.5px;
   line-height: 1.6;
-  color: var(--ink-600);
+  color: var(--muted) !important;
   margin: 0 0 18px;
 }
 
@@ -294,23 +283,31 @@
   display: inline-block;
   font-family: var(--mono);
   font-size: 12.5px;
-  color: var(--ink-900);
-  border-top: 1px solid var(--border-sky);
+  color: #ffffff !important;
+  border-top: 1px solid var(--border-glass);
   padding-top: 14px;
   width: 100%;
   opacity: 0.85;
 }
 
-/* ---------- closing CTA (stays navy for contrast) ---------- */
+/* ---------- closing CTA ---------- */
 .technology-page .tech-cta {
   padding: 80px 0 96px;
-  background: linear-gradient(135deg, #1169dd 0%, #2085e9 100%);
+  background: transparent;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.technology-page .tech-cta .pill-badge {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 255, 255, 0.16);
-  color: #fff;
+.technology-page .tech-cta h2 {
+  color: #ffffff !important;
+  font-size: 32px;
+  margin: 10px 0 10px;
+  max-width: 480px;
+}
+
+.technology-page .tech-cta p {
+  color: var(--muted) !important;
+  max-width: 440px;
+  margin: 0;
 }
 
 .technology-page .tech-cta__inner {
@@ -321,22 +318,9 @@
   flex-wrap: wrap;
 }
 
-.technology-page .tech-cta h2 {
-  color: #fff;
-  font-size: 32px;
-  margin: 10px 0 10px;
-  max-width: 480px;
-}
-
-.technology-page .tech-cta p {
-  color: #b7c2d6;
-  max-width: 440px;
-  margin: 0;
-}
-
 .technology-page .tech-cta .btn-primary {
-  background: var(--green-400);
-  color: #fff;
+  background: var(--green-500);
+  color: #fff !important;
   border: none;
   padding: 14px 26px;
   border-radius: 10px;
@@ -350,7 +334,7 @@
 }
 
 .technology-page .tech-cta .btn-primary:hover {
-  background: var(--green-500);
+  background: var(--green-600);
   transform: translateY(-1px);
 }
 
@@ -366,19 +350,15 @@
     grid-template-columns: 1fr;
     gap: 36px;
   }
-
   .technology-page .cap-block--reverse .cap-block__text {
     order: 0;
   }
-
   .technology-page .cap-block {
     padding: 56px 0;
   }
-
   .technology-page .cap-block__text h2 {
     font-size: 30px;
   }
-
   .technology-page .page-banner {
     padding-top: 110px;
   }
@@ -391,10 +371,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .technology-page .pill-badge__dot {
-    animation: none;
-  }
-  .technology-page .tech-cta .btn-primary {
-    transition: none;
-  }
+  .technology-page .pill-badge__dot { animation: none; }
+  .technology-page .tech-cta .btn-primary { transition: none; }
 }
