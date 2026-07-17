@@ -19,6 +19,7 @@ import WhyFuturemax from "../components/home/WhyFuturemax";
 import Products from "./Products";
 import Industries from "./Industries";
 import Impact from "../components/home/Impact";
+import Clients from "../components/home/Clients";
 
 const Home = () => {
   return (
@@ -32,7 +33,8 @@ const Home = () => {
       <Products />
 
       {/* <Technologies /> */}
-      <Impact/>
+      <Impact/> 
+      <Clients/>
 
       <Industries />
 
