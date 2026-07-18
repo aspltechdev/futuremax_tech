@@ -1,8 +1,3 @@
-/* ============================================
-   Futuremax Products Page
-   Complete CSS - prd-* prefix
-   ============================================ */
-
 :root {
   --prd-bg: #FFFFFF;
   --prd-surface: #F8FAFC;
@@ -84,9 +79,28 @@
 .prd-card--visible { opacity: 1; transform: translateY(0); }
 .prd-card:hover { border-color: var(--prd-accent); box-shadow: var(--prd-shadow-xl); transform: translateY(-6px); }
 
-.prd-card__image-wrap { position: relative; height: 200px; overflow: hidden; }
-.prd-card__image { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s var(--prd-ease-out); }
-.prd-card:hover .prd-card__image { transform: scale(1.06); }
+.prd-card__image-wrap {
+  position: relative;
+  height: 290px;
+  overflow: hidden;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.prd-card__image {
+  width: 170%;
+  height: 170%;
+  padding: 0;
+  object-fit: contain;
+  object-position: center;
+  transition: transform 0.6s var(--prd-ease-out);
+}
+
+.prd-card:hover .prd-card__image {
+  transform: scale(1.12);
+}
 .prd-card__image-shade { position: absolute; inset: 0; background: linear-gradient(180deg, transparent 40%, rgba(0,0,0,0.4) 100%); pointer-events: none; }
 .prd-card__badge { position: absolute; top: 14px; right: 14px; font-size: 0.62rem; font-weight: 700; color: white; padding: 5px 12px; border-radius: 100px; letter-spacing: 0.5px; z-index: 2; }
 
@@ -147,6 +161,8 @@
   .prd-features { grid-template-columns: 1fr; gap: 10px; }
   .prd-grid__wrapper { grid-template-columns: 1fr; gap: 16px; }
   .prd-grid-section { padding: 70px 0; }
+  .prd-card__image-wrap { height: 250px; }
+  .prd-card__image { width: 150%; height: 150%; }
   .prd-card__specs { grid-template-columns: repeat(2, 1fr); }
   .prd-card__spec:nth-child(2) { border-right: none; }
   .prd-cta { padding: 0 0 70px; }
@@ -155,7 +171,8 @@
   .prd-hero__actions { flex-direction: column; }
   .prd-hero__btn { width: 100%; justify-content: center; }
   .prd-cta__contact { flex-direction: column; align-items: center; }
-  .prd-card__image-wrap { height: 160px; }
+  .prd-card__image-wrap { height: 220px; }
+  .prd-card__image { width: 145%; height: 145%; }
 }
 
 /* Reduced Motion */
@@ -239,14 +256,21 @@
 .prd-modal__image-wrap {
   position: relative;
   width: 100%;
-  height: 220px;
+  height: 420px;
   overflow: hidden;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .prd-modal__image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  width: 170%;
+  height: 170%;
+  padding: 0;
+  object-fit: contain;
+  object-position: center;
+  background: #ffffff;
 }
 
 .prd-modal__image-shade {
@@ -447,7 +471,11 @@
     padding: 20px 18px 24px;
   }
   .prd-modal__image-wrap {
-    height: 170px;
+    height: 300px;
+  }
+  .prd-modal__image {
+    width: 150%;
+    height: 150%;
   }
   .prd-modal__specs-grid {
     grid-template-columns: 1fr;
@@ -470,7 +498,11 @@
     padding: 16px 14px 20px;
   }
   .prd-modal__image-wrap {
-    height: 140px;
+    height: 240px;
+  }
+  .prd-modal__image {
+    width: 140%;
+    height: 140%;
   }
   .prd-modal__title {
     font-size: 1.05rem;
