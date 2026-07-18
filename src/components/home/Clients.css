@@ -70,19 +70,33 @@
   );
 }
 
+/* Space between the two rows */
+.cl-marquee-wrapper + .cl-marquee-wrapper {
+  margin-top: 20px;
+}
+
 .cl-marquee-track {
   display: flex;
   align-items: center;
   gap: 28px;
   width: max-content;
-  animation: cl-scroll 55s linear infinite;
+}
+
+/* Row 1: scrolls toward the right */
+.cl-marquee-track--right {
+  animation: cl-scroll-right 55s linear infinite;
+}
+
+/* Row 2: scrolls toward the left */
+.cl-marquee-track--left {
+  animation: cl-scroll-left 55s linear infinite;
 }
 
 .cl-marquee-wrapper:hover .cl-marquee-track {
   animation-play-state: paused;
 }
 
-@keyframes cl-scroll {
+@keyframes cl-scroll-left {
   0% {
     transform: translateX(0);
   }
@@ -90,6 +104,17 @@
     /* Track holds two identical logo sets back-to-back,
        so shifting exactly half its width creates a seamless loop */
     transform: translateX(-50%);
+  }
+}
+
+@keyframes cl-scroll-right {
+  0% {
+    /* Start shifted so the loop point matches the left-scrolling row,
+       then move toward 0 (visually: moving right) */
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
   }
 }
 
@@ -132,7 +157,15 @@
 
   .cl-marquee-track {
     gap: 18px;
+  }
+
+  .cl-marquee-track--right,
+  .cl-marquee-track--left {
     animation-duration: 40s;
+  }
+
+  .cl-marquee-wrapper + .cl-marquee-wrapper {
+    margin-top: 14px;
   }
 
   .cl-logo-card {
@@ -151,6 +184,10 @@
 
   .cl-marquee-track {
     gap: 14px;
+  }
+
+  .cl-marquee-track--right,
+  .cl-marquee-track--left {
     animation-duration: 32s;
   }
 }

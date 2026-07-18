@@ -751,8 +751,8 @@ import {
 } from "lucide-react";
 import "./About.css";
 
-import aboutHeroImg from "../assets/hero1.png";
-import teamImg from "../assets/hero1.png";
+import aboutHeroImg from "../assets/abouthero.jpeg";
+import teamImg from "../assets/about.jpeg";
 
 const futStats = [
   { value: "15+", label: "Years of RF Engineering", icon: <Award size={22} strokeWidth={1.5} /> },

@@ -19,13 +19,13 @@ import {
 } from "lucide-react";
 import "./Projects.css";
 
-import projectsHeroImg from "../assets/hero1.png";
-import project1Img from "../assets/hero1.png";
-import project2Img from "../assets/hero1.png";
-import project3Img from "../assets/hero1.png";
-import project4Img from "../assets/hero1.png";
-import project5Img from "../assets/hero1.png";
-import project6Img from "../assets/hero1.png";
+import projectsHeroImg from "../assets/projecthero.jpeg";
+import project1Img from "../assets/p1.png";
+import project2Img from "../assets/p2.png";
+import project3Img from "../assets/p3.png";
+import project4Img from "../assets/p4.png";
+import project5Img from "../assets/p5.png";
+import project6Img from "../assets/p6.png";
 
 const prjProjects = [
   {
