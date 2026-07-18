@@ -396,9 +396,10 @@ import {
 } from "lucide-react";
 import "./Projects.css";
 
-import project1 from "../../assets/project1.jpeg";
-import project2 from "../../assets/project2.jpeg";
-import project3 from "../../assets/project3.jpeg";
+import project1 from "../../assets/p1.png";
+import project2 from "../../assets/p2.png";
+import project3 from "../../assets/p3.png";
+
 
 const hpFilters = [
   "All",

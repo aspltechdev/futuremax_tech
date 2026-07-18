@@ -15,11 +15,13 @@ import {
 } from "lucide-react";
 import "./Technologies.css";
 
-import techHeroImg from "../assets/hero1.png";
-import rfSurveyImg from "../assets/hero1.png";
-import dasImg from "../assets/hero1.png";
-import boosterTechImg from "../assets/hero1.png";
-import testingImg from "../assets/hero1.png";
+import HeroImg from "../assets/thero.jpeg";
+import rfSurveyImg from "../assets/t1.png";
+import dasImg from "../assets/t2.png";
+import boosterTechImg from "../assets/t3.png";
+import tImg from "../assets/t4.png";
+import testingImg from "../assets/t5.png";
+import techImg from "../assets/t6.png";
 
 const tgyTechnologies = [
   {
@@ -98,7 +100,7 @@ const tgyTechnologies = [
       "Minimal Disruption Process",
     ],
     tools: ["Installation Kits", "Mounting Hardware", "Cable Testers", "Safety Equipment"],
-    image: techHeroImg,
+    image: tImg,
     accentColor: "#EA580C",
     bgLight: "#FFF7ED",
   },
@@ -138,7 +140,7 @@ const tgyTechnologies = [
       "24/7 NOC Support",
     ],
     tools: ["Remote Monitoring", "Diagnostic Tools", "Performance Analytics", "Support Portal"],
-    image: techHeroImg,
+    image: techImg,
     accentColor: "#0891B2",
     bgLight: "#ECFEFF",
   },
@@ -198,7 +200,7 @@ const Technology = () => {
       {/* Hero Section */}
       <section className="tgy-hero">
         <div className="tgy-hero__bg">
-          <div className="tgy-hero__image" style={{ backgroundImage: `url(${techHeroImg})` }} />
+          <div className="tgy-hero__image" style={{ backgroundImage: `url(${HeroImg})` }} />
           <div className="tgy-hero__overlay" />
           <div className="tgy-hero__grid" />
           <div className="tgy-hero__glow" style={{ background: `radial-gradient(600px circle at ${tgyMousePos.x}% ${tgyMousePos.y}%, rgba(255,255,255,0.04) 0%, transparent 50%)` }} />
