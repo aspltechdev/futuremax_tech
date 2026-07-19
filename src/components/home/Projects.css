@@ -34,7 +34,14 @@
 .hp-container { position: relative; z-index: 1; max-width: 1050px; margin: 0 auto; padding: 0 40px; }
 
 /* Header */
-.hp-header { text-align: center; margin-bottom: 40px; transition: transform 0.1s linear; will-change: transform; }
+/* FIX: this element no longer receives a scroll-linked inline transform.
+   It used raw window.scrollY (page-wide, unbounded) to parallax-shift the
+   heading upward — by the time a user scrolled far enough down the page to
+   reach this section, the offset was large enough to push the heading's
+   top edge outside .hp-section's overflow:hidden, clipping the text. The
+   parallax transform was removed from Projects.jsx; this element is now
+   static (no transform, no transition needed). */
+.hp-header { text-align: center; margin-bottom: 40px; }
 .hp-header__tag { display: inline-block; font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 3px; color: var(--hp-blue); margin-bottom: 12px; padding: 6px 16px; background: rgba(7,85,163,0.05); border-radius: 100px; }
 .hp-header__title { font-size: clamp(1.8rem, 3vw, 2.4rem); font-weight: 800; color: var(--hp-text); letter-spacing: -0.8px; line-height: 1.2; margin-bottom: 12px; }
 .hp-header__accent { color: var(--hp-green); }
@@ -95,7 +102,10 @@
 /* ==================== */
 /* CTA                  */
 /* ==================== */
-.hp-cta { transition: transform 0.1s linear; will-change: transform; }
+/* FIX: same reasoning as .hp-header above — this element also receives a
+   scroll-linked inline transform (translateY based on hpScrollY) from
+   Projects.jsx, so it must not have a CSS transition on `transform`. */
+.hp-cta { will-change: transform; }
 .hp-cta__card { background: linear-gradient(135deg, #0F172A 0%, #1A2740 50%, #0F1D2E 100%); border-radius: var(--hp-radius-xl); padding: 40px 44px; display: flex; align-items: center; justify-content: space-between; gap: 36px; border: 1px solid rgba(255,255,255,0.06); position: relative; overflow: hidden; }
 .hp-cta__card::before { content: ''; position: absolute; top: -80px; right: -40px; width: 240px; height: 240px; border-radius: 50%; background: rgba(25,171,63,0.03); pointer-events: none; }
 .hp-cta__content { flex: 1; position: relative; z-index: 1; }

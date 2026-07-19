@@ -19,7 +19,7 @@ import {
 } from "lucide-react";
 import "./Contact.css";
 
-import contactHeroImg from "../assets/hero1.png";
+import contactHeroImg from "../assets/contacthero.png";
 
 const cntInfo = [
   {

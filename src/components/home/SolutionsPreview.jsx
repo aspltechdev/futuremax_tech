@@ -261,12 +261,12 @@ import React, { useEffect, useRef, useState } from "react";
 import "./SolutionsPreview.css";
 
 // Import your images
-import residentialImg from "../../assets/hero1.png";
-import commercialImg from "../../assets/hero1.png";
-import enterpriseImg from "../../assets/hero1.png";
-import dasImg from "../../assets/hero1.png";
-import rfImg from "../../assets/hero1.png";
-import supportImg from "../../assets/hero1.png";
+import residentialImg from "../../assets/s1.png";
+import commercialImg from "../../assets/s2.png";
+import enterpriseImg from "../../assets/s3.png";
+import dasImg from "../../assets/s4.png";
+import rfImg from "../../assets/s5.png";
+import supportImg from "../../assets/s6.png";
 
 const SolutionsPreview = () => {
   const [scrollY, setScrollY] = useState(0);

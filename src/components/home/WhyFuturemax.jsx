@@ -1,236 +1,3 @@
-// import React, { useEffect, useRef, useState } from "react";
-// import {
-//   FaBroadcastTower,
-//   FaTools,
-//   FaUsers,
-//   FaAward,
-//   FaArrowRight,
-// } from "react-icons/fa";
-// import "./WhyFuturemax.css";
-// import engineeringImg from "../../assets/project2.jpeg";
-
-// const features = [
-//   {
-//     icon: <FaBroadcastTower />,
-//     title: "Certified RF Engineering",
-//     description:
-//       "Our experienced RF engineers perform detailed site surveys, signal analysis, and coverage planning to deliver reliable indoor mobile connectivity for residential, commercial, and enterprise environments.",
-//   },
-//   {
-//     icon: <FaTools />,
-//     title: "Customized Deployment",
-//     description:
-//       "Every solution is designed based on building structure, floor layout, user density, and network requirements to ensure maximum signal strength and long-term performance.",
-//   },
-//   {
-//     icon: <FaAward />,
-//     title: "Premium i Booster Solutions",
-//     description:
-//       "From 23 dBm residential boosters to 25 dBm commercial and 27 dBm enterprise systems, we provide high-performance products engineered for every coverage requirement.",
-//   },
-//   {
-//     icon: <FaUsers />,
-//     title: "End-to-End Technical Support",
-//     description:
-//       "From consultation and installation to testing, optimization, AMC, and ongoing technical assistance, our team ensures uninterrupted wireless connectivity throughout the product lifecycle.",
-//   },
-// ];
-
-// const stats = [
-//   { value: "250+", label: "Successful Installations" },
-//   { value: "15+", label: "Years RF Experience" },
-//   { value: "50+", label: "Enterprise Clients" },
-//   { value: "Pan India", label: "Installation Support" },
-// ];
-
-// const WhyFuturemax = () => {
-//   const [scrollY, setScrollY] = useState(0);
-//   const [mousePos, setMousePos] = useState({ x: 50, y: 50 });
-//   const [visibleSections, setVisibleSections] = useState({});
-//   const sectionRef = useRef(null);
-
-//   useEffect(() => {
-//     const handleScroll = () => setScrollY(window.scrollY);
-//     const handleMouseMove = (e) => {
-//       if (!sectionRef.current) return;
-//       const rect = sectionRef.current.getBoundingClientRect();
-//       setMousePos({
-//         x: ((e.clientX - rect.left) / rect.width) * 100,
-//         y: ((e.clientY - rect.top) / rect.height) * 100,
-//       });
-//     };
-
-//     window.addEventListener("scroll", handleScroll, { passive: true });
-//     window.addEventListener("mousemove", handleMouseMove);
-//     return () => {
-//       window.removeEventListener("scroll", handleScroll);
-//       window.removeEventListener("mousemove", handleMouseMove);
-//     };
-//   }, []);
-
-//   // Intersection Observer for scroll-triggered animations
-//   useEffect(() => {
-//     const observerOptions = { threshold: 0.15, rootMargin: "0px 0px -40px 0px" };
-    
-//     const observer = new IntersectionObserver((entries) => {
-//       entries.forEach((entry) => {
-//         if (entry.isIntersecting) {
-//           setVisibleSections((prev) => ({
-//             ...prev,
-//             [entry.target.dataset.section]: true,
-//           }));
-//         }
-//       });
-//     }, observerOptions);
-
-//     const elements = sectionRef.current?.querySelectorAll("[data-section]");
-//     elements?.forEach((el) => observer.observe(el));
-
-//     return () => observer.disconnect();
-//   }, []);
-
-//   return (
-//     <section className="why-futuremax" ref={sectionRef}>
-//       {/* Background Elements */}
-//       <div className="why-bg-layer">
-//         <div className="why-bg-grid" />
-//         <div
-//           className="why-bg-orb why-bg-orb-1"
-//           style={{ transform: `translate(${scrollY * 0.02}px, ${-scrollY * 0.04}px)` }}
-//         />
-//         <div
-//           className="why-bg-orb why-bg-orb-2"
-//           style={{ transform: `translate(${-scrollY * 0.03}px, ${scrollY * 0.05}px)` }}
-//         />
-//         <div
-//           className="why-bg-mouse-glow"
-//           style={{
-//             background: `radial-gradient(500px circle at ${mousePos.x}% ${mousePos.y}%, rgba(7,85,163,0.03) 0%, transparent 50%)`,
-//           }}
-//         />
-//       </div>
-
-//       <div className="why-container">
-//         {/* Section Header */}
-//         <div
-//           className={`why-header ${visibleSections["header"] ? "visible" : ""}`}
-//           data-section="header"
-//           style={{ transform: `translateY(${scrollY * -0.03}px)` }}
-//         >
-//           <span className="why-header-tag">WHY FUTUREMAX TECHNOLOGY</span>
-//           <h2 className="why-header-title">
-//             Engineering Reliable Mobile
-//             <span className="why-header-accent"> Connectivity for Every Environment</span>
-//           </h2>
-//           <p className="why-header-desc">
-//             Futuremax Technology specializes in Mobile Signal Boosters, RF Engineering, 
-//             Distributed Antenna Systems (DAS), and enterprise wireless connectivity solutions. 
-//             We help homes, hotels, hospitals, educational institutions, commercial buildings, 
-//             factories, and corporate campuses eliminate weak mobile signals through professionally 
-//             engineered coverage solutions designed for today's 4G and 5G networks.
-//           </p>
-//         </div>
-
-//         {/* Main Content: Image + Features */}
-//         <div className="why-main-content">
-//           {/* Left: Image with Experience Box */}
-//           <div
-//             className={`why-image-section ${visibleSections["image"] ? "visible" : ""}`}
-//             data-section="image"
-//             style={{ transform: `translateY(${scrollY * -0.02}px)` }}
-//           >
-//             <div className="why-image-wrapper">
-//               <img
-//                 src={engineeringImg}
-//                 alt="Futuremax RF Engineers performing site survey"
-//                 className="why-image"
-//               />
-//               <div className="why-image-overlay" />
-              
-//               {/* Experience Box */}
-//               <div className="why-experience-box">
-//                 <span className="exp-number">15+</span>
-//                 <p className="exp-text">
-//                   Years of RF Engineering
-//                   <br />
-//                   Experience
-//                 </p>
-//               </div>
-//             </div>
-//           </div>
-
-//           {/* Right: Feature Cards */}
-//           <div
-//             className={`why-features-grid ${visibleSections["features"] ? "visible" : ""}`}
-//             data-section="features"
-//           >
-//             {features.map((feature, index) => (
-//               <div
-//                 key={index}
-//                 className="why-feature-card"
-//                 style={{
-//                   transitionDelay: `${index * 0.08}s`,
-//                 }}
-//               >
-//                 <div className="why-feature-icon">
-//                   {feature.icon}
-//                 </div>
-//                 <div className="why-feature-content">
-//                   <h3 className="why-feature-title">{feature.title}</h3>
-//                   <p className="why-feature-desc">{feature.description}</p>
-//                 </div>
-//                 <div className="why-feature-line" />
-//               </div>
-//             ))}
-//           </div>
-//         </div>
-
-//         {/* Statistics Bar */}
-//         <div
-//           className={`why-stats ${visibleSections["stats"] ? "visible" : ""}`}
-//           data-section="stats"
-//           style={{ transform: `translateY(${scrollY * -0.015}px)` }}
-//         >
-//           {stats.map((stat, index) => (
-//             <div key={index} className="why-stat-item">
-//               <span className="why-stat-value">{stat.value}</span>
-//               <span className="why-stat-label">{stat.label}</span>
-//             </div>
-//           ))}
-//         </div>
-
-//         {/* Bottom CTA */}
-//         <div
-//           className={`why-bottom ${visibleSections["bottom"] ? "visible" : ""}`}
-//           data-section="bottom"
-//           style={{ transform: `translateY(${scrollY * -0.01}px)` }}
-//         >
-//           <div className="why-bottom-card">
-//             <div className="why-bottom-content">
-//               <h3 className="why-bottom-title">
-//                 Complete RF Engineering & Mobile Signal Booster Solutions
-//               </h3>
-//               <p className="why-bottom-desc">
-//                 From RF site surveys and wireless network planning to i Booster installation, 
-//                 Distributed Antenna Systems (DAS), signal optimization, and Annual Maintenance 
-//                 Contracts (AMC), Futuremax provides complete end-to-end connectivity solutions 
-//                 tailored for residential, commercial, healthcare, hospitality, industrial, and 
-//                 enterprise projects across India.
-//               </p>
-//             </div>
-//             <a href="/contact" className="why-bottom-cta">
-//               <span>Request Free RF Site Survey</span>
-//               <FaArrowRight />
-//             </a>
-//           </div>
-//         </div>
-//       </div>
-//     </section>
-//   );
-// };
-
-// export default WhyFuturemax;
-
 import React, { useEffect, useRef, useState } from "react";
 import {
   FaBroadcastTower,
@@ -285,14 +52,20 @@ const wfStats = [
 ];
 
 const WhyFuturemax = () => {
-  const [wfScrollY, setWfScrollY] = useState(0);
   const [wfMousePos, setWfMousePos] = useState({ x: 50, y: 50 });
   const [wfVisibleSections, setWfVisibleSections] = useState({});
   const [wfHoveredCard, setWfHoveredCard] = useState(null);
   const wfSectionRef = useRef(null);
 
+  // NOTE: the scroll-linked parallax transforms that used to be applied to
+  // wf-header / wf-image-section / wf-stats / wf-bottom have been removed.
+  // They used raw window.scrollY (unbounded, page-wide), which pushed those
+  // elements outside .wf-section's overflow:hidden clip box the further
+  // down the page a user scrolled — the same bug that was clipping/
+  // overlapping the Process and Projects headings. The background orbs
+  // (wf-bg-orb-1/2) keep their parallax since they're purely decorative and
+  // contained within the absolutely-positioned, overflow-hidden wf-bg-layer.
   useEffect(() => {
-    const handleWfScroll = () => setWfScrollY(window.scrollY);
     const handleWfMouseMove = (e) => {
       if (!wfSectionRef.current) return;
       const rect = wfSectionRef.current.getBoundingClientRect();
@@ -301,18 +74,31 @@ const WhyFuturemax = () => {
         y: ((e.clientY - rect.top) / rect.height) * 100,
       });
     };
-
-    window.addEventListener("scroll", handleWfScroll, { passive: true });
     window.addEventListener("mousemove", handleWfMouseMove);
-    return () => {
-      window.removeEventListener("scroll", handleWfScroll);
-      window.removeEventListener("mousemove", handleWfMouseMove);
+    return () => window.removeEventListener("mousemove", handleWfMouseMove);
+  }, []);
+
+  // Background-orb scroll parallax only — throttled via requestAnimationFrame
+  // so it doesn't trigger a React re-render on every raw scroll event.
+  const [wfScrollY, setWfScrollY] = useState(0);
+  useEffect(() => {
+    let ticking = false;
+    const handleWfScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          setWfScrollY(window.scrollY);
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
+    window.addEventListener("scroll", handleWfScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleWfScroll);
   }, []);
 
   useEffect(() => {
     const wfObserverOptions = { threshold: 0.12, rootMargin: "0px 0px -50px 0px" };
-    
+
     const wfObserver = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
@@ -350,13 +136,12 @@ const WhyFuturemax = () => {
           }}
         />
       </div>
-{/* 
+
       <div className="wf-container">
-    
+        {/* Section Header */}
         <div
           className={`wf-header ${wfVisibleSections["header"] ? "wf-header-visible" : ""}`}
           data-wf-section="header"
-          style={{ transform: `translateY(${wfScrollY * -0.03}px)` }}
         >
           <span className="wf-header-tag">WHY FUTUREMAX TECHNOLOGY</span>
           <h2 className="wf-header-title">
@@ -364,21 +149,20 @@ const WhyFuturemax = () => {
             <span className="wf-header-title-accent"> Connectivity for Every Environment</span>
           </h2>
           <p className="wf-header-desc">
-            Futuremax Technology specializes in Mobile Signal Boosters, RF Engineering, 
-            Distributed Antenna Systems (DAS), and enterprise wireless connectivity solutions. 
-            We help homes, hotels, hospitals, educational institutions, commercial buildings, 
-            factories, and corporate campuses eliminate weak mobile signals through professionally 
+            Futuremax Technology specializes in Mobile Signal Boosters, RF Engineering,
+            Distributed Antenna Systems (DAS), and enterprise wireless connectivity solutions.
+            We help homes, hotels, hospitals, educational institutions, commercial buildings,
+            factories, and corporate campuses eliminate weak mobile signals through professionally
             engineered coverage solutions designed for today's 4G and 5G networks.
           </p>
         </div>
 
-        
+        {/* Main Content: Image + Features */}
         <div className="wf-main-content">
-       
+          {/* Left: Image with Experience Box */}
           <div
             className={`wf-image-section ${wfVisibleSections["image"] ? "wf-image-visible" : ""}`}
             data-wf-section="image"
-            style={{ transform: `translateY(${wfScrollY * -0.02}px)` }}
           >
             <div className="wf-image-wrapper">
               <img
@@ -387,8 +171,8 @@ const WhyFuturemax = () => {
                 className="wf-image"
               />
               <div className="wf-image-overlay" />
-              
-        
+
+              {/* Experience Box */}
               <div className="wf-experience-box">
                 <span className="wf-exp-number">15+</span>
                 <p className="wf-exp-text">
@@ -399,7 +183,7 @@ const WhyFuturemax = () => {
                 <div className="wf-exp-dot" />
               </div>
 
-          
+              {/* Floating Badge */}
               <div className="wf-floating-badge">
                 <FaAward className="wf-floating-icon" />
                 <span>ISO 9001:2015 Certified</span>
@@ -407,7 +191,7 @@ const WhyFuturemax = () => {
             </div>
           </div>
 
-      
+          {/* Right: Feature Cards */}
           <div
             className={`wf-features-grid ${wfVisibleSections["features"] ? "wf-features-visible" : ""}`}
             data-wf-section="features"
@@ -424,33 +208,32 @@ const WhyFuturemax = () => {
                 onMouseEnter={() => setWfHoveredCard(index)}
                 onMouseLeave={() => setWfHoveredCard(null)}
               >
-        
+                {/* Icon */}
                 <div className="wf-feature-icon-wrap" style={{ background: feature.bgLight, color: feature.accentColor }}>
                   {feature.icon}
                   <div className="wf-feature-icon-glow" style={{ background: feature.accentColor }} />
                 </div>
 
-             
+                {/* Content */}
                 <div className="wf-feature-content">
                   <h3 className="wf-feature-title">{feature.title}</h3>
                   <p className="wf-feature-desc">{feature.description}</p>
                 </div>
 
-          
+                {/* Line */}
                 <div className="wf-feature-line" style={{ background: feature.accentColor }} />
 
-               
+                {/* Corner */}
                 <div className="wf-feature-corner" style={{ borderTopColor: feature.accentColor, borderRightColor: feature.accentColor }} />
               </div>
             ))}
           </div>
         </div>
 
-
+        {/* Statistics Bar */}
         <div
           className={`wf-stats ${wfVisibleSections["stats"] ? "wf-stats-visible" : ""}`}
           data-wf-section="stats"
-          style={{ transform: `translateY(${wfScrollY * -0.015}px)` }}
         >
           <div className="wf-stats-inner">
             {wfStats.map((stat, index) => (
@@ -463,26 +246,25 @@ const WhyFuturemax = () => {
           </div>
         </div>
 
-      
+        {/* Bottom CTA */}
         <div
           className={`wf-bottom ${wfVisibleSections["bottom"] ? "wf-bottom-visible" : ""}`}
           data-wf-section="bottom"
-          style={{ transform: `translateY(${wfScrollY * -0.01}px)` }}
         >
           <div className="wf-bottom-card">
-       
+            {/* Decorative Orbs */}
             <div className="wf-bottom-orb wf-bottom-orb-1" />
             <div className="wf-bottom-orb wf-bottom-orb-2" />
-            
+
             <div className="wf-bottom-content">
               <h3 className="wf-bottom-title">
                 Complete RF Engineering & Mobile Signal Booster Solutions
               </h3>
               <p className="wf-bottom-desc">
-                From RF site surveys and wireless network planning to i Booster installation, 
-                Distributed Antenna Systems (DAS), signal optimization, and Annual Maintenance 
-                Contracts (AMC), Futuremax provides complete end-to-end connectivity solutions 
-                tailored for residential, commercial, healthcare, hospitality, industrial, and 
+                From RF site surveys and wireless network planning to i Booster installation,
+                Distributed Antenna Systems (DAS), signal optimization, and Annual Maintenance
+                Contracts (AMC), Futuremax provides complete end-to-end connectivity solutions
+                tailored for residential, commercial, healthcare, hospitality, industrial, and
                 enterprise projects across India.
               </p>
             </div>
@@ -508,7 +290,7 @@ const WhyFuturemax = () => {
             </div>
           </div>
         </div>
-      </div> */}
+      </div>
     </section>
   );
 };

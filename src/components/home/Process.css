@@ -34,7 +34,12 @@
 .prc-container { position: relative; z-index: 1; max-width: 1050px; margin: 0 auto; padding: 0 40px; }
 
 /* Header */
-.prc-header { text-align: center; margin-bottom: 44px; opacity: 0; transform: translateY(30px); transition: opacity 0.8s var(--prc-ease-out), transform 0.8s var(--prc-ease-out), margin 0.1s linear; will-change: transform; }
+/* FIX: this element no longer receives a scroll-linked inline transform
+   (the unbounded window.scrollY parallax was removed from Process.jsx —
+   it was clipping the heading against .prc-section's overflow:hidden on
+   long pages). Now `transform` here is only ever driven by the
+   .prc-header--visible class toggle, so it's safe to transition again. */
+.prc-header { text-align: center; margin-bottom: 44px; opacity: 0; transform: translateY(30px); transition: opacity 0.8s var(--prc-ease-out), transform 0.8s var(--prc-ease-out); }
 .prc-header--visible { opacity: 1; transform: translateY(0); }
 .prc-header__tag { display: inline-block; font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 3px; color: var(--prc-blue); margin-bottom: 12px; padding: 6px 16px; background: rgba(7,85,163,0.05); border-radius: 100px; }
 .prc-header__title { font-size: clamp(2rem, 3.5vw, 2.6rem); font-weight: 800; color: var(--prc-text); letter-spacing: -1px; line-height: 1.2; margin-bottom: 14px; }
@@ -345,7 +350,11 @@
 /* ==================== */
 /* CTA                  */
 /* ==================== */
-.prc-cta { opacity: 0; transform: translateY(30px); transition: opacity 0.8s var(--prc-ease-out), transform 0.8s var(--prc-ease-out), margin 0.1s linear; transition-delay: 0.3s; will-change: transform; }
+/* FIX: same ghosting issue as .prc-header — removed `transform` from the
+   transition list (this element has no scroll-linked inline transform in
+   the current markup, but keeping the transition here was still a latent
+   footgun if one is ever added; opacity-only transition is safe either way). */
+.prc-cta { opacity: 0; transform: translateY(30px); transition: opacity 0.8s var(--prc-ease-out); transition-delay: 0.3s; will-change: transform; }
 .prc-cta--visible { opacity: 1; transform: translateY(0); }
 
 .prc-cta__card {
