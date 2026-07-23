@@ -40,7 +40,7 @@ const instagramPosts = [
 
 const facebookPosts = [
 
-  "https://www.facebook.com/futuremaxtechnology/posts/pfbid0ev6axCQjWggfHUAGuJuLMdZNM4WQNxAZpFHjsdUyqScGWHkshSt8ZS4XKtq8pWPNl",
+  "",
 
   "https://www.facebook.com/futuremaxtechnology/posts/pfbid04ZtMq8XzCM1tFcStz6HvYMQEjJ4SD3c2p77vgppeBhhiWWWWNvVGN6noZHFxRF52l",
 

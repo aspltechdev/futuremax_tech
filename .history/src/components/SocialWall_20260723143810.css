@@ -469,8 +469,8 @@
 .socialToggleBtn.active:last-child {
   color: #fff;
   border-color: transparent;
-  background: #1877f2;
-  box-shadow: 0 12px 30px rgba(24, 119, 242, 0.28);
+  background: #19ab3f;
+  box-shadow: 0 12px 30px rgba(25, 171, 63, 0.28);
 }
 
 @media (max-width: 480px) {

@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 
 import {
   FaInstagram,
-  FaFacebook,
 } from "react-icons/fa6";
 
 import {
@@ -12,7 +11,6 @@ import {
 
 import {
   InstagramEmbed,
-  FacebookEmbed,
 } from "react-social-media-embed";
 
 import "./SocialWall.css";
@@ -21,7 +19,7 @@ import "./SocialWall.css";
    INSTAGRAM POSTS
 ========================================================= */
 
-const instagramPosts = [
+const posts = [
 
   "https://www.instagram.com/p/Bo4IFb5nUjm/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
 
@@ -34,31 +32,10 @@ const instagramPosts = [
 ];
 
 /* =========================================================
-   FACEBOOK POSTS
-   (replace these with your actual Facebook post/video URLs)
-========================================================= */
-
-const facebookPosts = [
-
-  "https://www.facebook.com/futuremaxtechnology/posts/pfbid0ev6axCQjWggfHUAGuJuLMdZNM4WQNxAZpFHjsdUyqScGWHkshSt8ZS4XKtq8pWPNl",
-
-  "https://www.facebook.com/futuremaxtechnology/posts/pfbid04ZtMq8XzCM1tFcStz6HvYMQEjJ4SD3c2p77vgppeBhhiWWWWNvVGN6noZHFxRF52l",
-
-  "https://www.facebook.com/futuremaxtechnology/posts/pfbid02gA4jKJEx3DLhzifvvaLpgGLYnWxHfAQQ9gXrDaq5N9pa9JAbzFDPtXhkejWo9Wxnl",
-
-  "https://www.facebook.com/photo/?fbid=827858496021859&set=a.449517227189323",
-
-];
-
-/* =========================================================
    COMPONENT
 ========================================================= */
 
 export default function SocialWall() {
-
-  const [activeTab, setActiveTab] = useState("instagram");
-
-  const posts = activeTab === "instagram" ? instagramPosts : facebookPosts;
 
   return (
 
@@ -114,40 +91,6 @@ export default function SocialWall() {
 
         </div>
 
-        {/* =========================================================
-            SOCIAL TOGGLE BUTTONS
-        ========================================================== */}
-
-        <div className="socialToggleWrapper">
-
-          <button
-            className={`socialToggleBtn ${
-              activeTab === "instagram" ? "active" : ""
-            }`}
-            onClick={() => setActiveTab("instagram")}
-          >
-
-            <FaInstagram />
-
-            Instagram
-
-          </button>
-
-          <button
-            className={`socialToggleBtn ${
-              activeTab === "facebook" ? "active" : ""
-            }`}
-            onClick={() => setActiveTab("facebook")}
-          >
-
-            <FaFacebook />
-
-            Facebook
-
-          </button>
-
-        </div>
-
       </div>
 
       {/* =========================================================
@@ -156,17 +99,14 @@ export default function SocialWall() {
 
       <div className="instagramMarqueeWrapper">
 
-        <div
-          className="instagramMarqueeTrack"
-          key={activeTab}
-        >
+        <div className="instagramMarqueeTrack">
 
           {[...posts, ...posts].map(
             (url, index) => (
 
               <div
                 className="instagramCard"
-                key={`${activeTab}-${index}`}
+                key={index}
               >
 
                 {/* TOP */}
@@ -177,15 +117,7 @@ export default function SocialWall() {
 
                     <div className="instagramIcon">
 
-                      {activeTab === "instagram" ? (
-
-                        <FaInstagram />
-
-                      ) : (
-
-                        <FaFacebook />
-
-                      )}
+                      <FaInstagram />
 
                     </div>
 
@@ -224,21 +156,10 @@ export default function SocialWall() {
 
                 <div className="instagramEmbedWrapper">
 
-                  {activeTab === "instagram" ? (
-
-                    <InstagramEmbed
-                      url={url}
-                      width="100%"
-                    />
-
-                  ) : (
-
-                    <FacebookEmbed
-                      url={url}
-                      width="100%"
-                    />
-
-                  )}
+                  <InstagramEmbed
+                    url={url}
+                    width="100%"
+                  />
 
                 </div>
 
