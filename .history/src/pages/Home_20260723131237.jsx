@@ -18,7 +18,6 @@ import ProductsPreview from "../components/home/ProductsPreview";
 import Impact from "../components/home/Impact";
 import Clients from "../components/home/Clients";
 import SocialWall from "../components/SocialWall";
-import IndustriesPreview from "../components/home/IndustriesPreview";
 
 const Home = () => {
   return (
