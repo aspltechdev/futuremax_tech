@@ -17,7 +17,7 @@ const instagramPosts = [
 ];
 
 /* =========================================================
-   FACEBOOK POSTS
+   FACEBOOK POSTS — replace with your real post/video URLs
 ========================================================= */
 const facebookPosts = [
   "https://www.facebook.com/facebook/posts/10153231379946729",
