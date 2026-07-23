@@ -1,0 +1,209 @@
+/* ============================================
+   Futuremax Industries Preview (Home section only)
+   Full alternating layout lives on the /industries page
+   ============================================ */
+
+:root {
+  --ipw-bg: #FAFBFC;
+  --ipw-surface: #FFFFFF;
+  --ipw-text: #0F172A;
+  --ipw-text-secondary: #475569;
+  --ipw-border: #E8ECF0;
+  --ipw-blue: #0755A3;
+  --ipw-green: #19AB3F;
+  --ipw-radius-sm: 8px;
+  --ipw-radius-md: 14px;
+  --ipw-radius-lg: 20px;
+  --ipw-shadow-sm: 0 2px 8px rgba(0,0,0,0.04);
+  --ipw-shadow-xl: 0 20px 60px rgba(0,0,0,0.1);
+  --ipw-ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ipw-section {
+  padding: 100px 0 80px;
+  background: var(--ipw-bg);
+}
+
+.ipw-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+/* Header */
+.ipw-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 40px;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s var(--ipw-ease-out), transform 0.8s var(--ipw-ease-out);
+}
+
+.ipw-header.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.ipw-tag {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: var(--ipw-blue);
+  margin-bottom: 12px;
+}
+
+.ipw-title {
+  font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+  font-weight: 800;
+  color: var(--ipw-text);
+  letter-spacing: -1px;
+  line-height: 1.2;
+}
+
+.ipw-accent {
+  color: var(--ipw-green);
+}
+
+.ipw-view-all {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--ipw-green);
+  text-decoration: none;
+  white-space: nowrap;
+  padding-bottom: 6px;
+  transition: gap 0.3s ease;
+}
+
+.ipw-view-all:hover {
+  gap: 14px;
+}
+
+/* Grid */
+.ipw-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.ipw-card {
+  background: var(--ipw-surface);
+  border: 1px solid var(--ipw-border);
+  border-radius: var(--ipw-radius-lg);
+  overflow: hidden;
+  transition: all 0.4s var(--ipw-ease-out);
+  opacity: 0;
+  transform: translateY(30px);
+  box-shadow: var(--ipw-shadow-sm);
+}
+
+.ipw-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.ipw-card:hover {
+  border-color: var(--ipw-accent);
+  box-shadow: var(--ipw-shadow-xl);
+  transform: translateY(-6px);
+}
+
+.ipw-card-image-wrap {
+  position: relative;
+  width: 100%;
+  height: 160px;
+  overflow: hidden;
+  background: #0F172A;
+}
+
+.ipw-card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s var(--ipw-ease-out);
+}
+
+.ipw-card:hover .ipw-card-image {
+  transform: scale(1.06);
+}
+
+.ipw-card-image-shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.05) 60%);
+}
+
+.ipw-card-icon {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  width: 38px;
+  height: 38px;
+  border-radius: var(--ipw-radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ipw-card-body {
+  padding: 18px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.ipw-card-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--ipw-text);
+  letter-spacing: -0.2px;
+}
+
+.ipw-card-desc {
+  font-size: 0.83rem;
+  line-height: 1.5;
+  color: var(--ipw-text-secondary);
+}
+
+.ipw-card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-decoration: none;
+  margin-top: 6px;
+  transition: gap 0.3s ease;
+}
+
+.ipw-card-link:hover {
+  gap: 10px;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .ipw-container { padding: 0 32px; }
+  .ipw-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .ipw-section { padding: 70px 0 60px; }
+  .ipw-container { padding: 0 20px; }
+  .ipw-header { flex-direction: column; align-items: flex-start; gap: 14px; }
+  .ipw-grid { grid-template-columns: 1fr; gap: 16px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ipw-header, .ipw-card {
+    transition: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+}

@@ -1,0 +1,377 @@
+/* =========================================================
+   SECTION
+========================================================= */
+
+.instagramWallSection {
+  position: relative;
+
+  padding: 130px 0;
+
+  background: #ffffff;
+
+  overflow: hidden;
+}
+
+/* =========================================================
+   GLOW
+========================================================= */
+
+.socialGlow {
+  position: absolute;
+
+  width: 500px;
+  height: 500px;
+
+  border-radius: 50%;
+
+  filter: blur(120px);
+
+  opacity: 0.08;
+}
+
+.glowLeft {
+  top: -150px;
+  left: -120px;
+
+  background: #ffb86b;
+}
+
+.glowRight {
+  bottom: -150px;
+  right: -120px;
+
+  background: #ffff1a;
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.instagramWallHeader {
+  position: relative;
+  z-index: 2;
+
+  padding: 0 7%;
+
+  margin-bottom: 20px;
+}
+
+/* BADGE */
+
+
+
+/* HEADER GRID */
+
+.instagramHeaderGrid {
+  display: grid;
+
+  grid-template-rows:
+    1fr 0.8fr;
+
+  /* gap: 20px; */
+}
+
+/* LEFT */
+
+.instagramHeaderLeft h2 {
+  font-size: 56px;
+  line-height: 0.92;
+  font-weight: 700;
+  letter-spacing: -3px;
+
+  color: #0f172a;
+}
+
+/* RIGHT */
+
+.instagramHeaderRight {
+  display: flex;
+  align-items: flex-end;
+}
+
+.instagramHeaderRight p {
+  color: #64748b;
+
+  font-size: 26px;
+  line-height: 2;
+}
+
+/* =========================================================
+   MARQUEE
+========================================================= */
+
+.instagramMarqueeWrapper {
+  position: relative;
+
+  overflow: hidden;
+}
+
+/* TRACK */
+
+.instagramMarqueeTrack {
+  display: flex;
+  gap: 28px;
+
+  width: max-content;
+
+  animation:
+    marqueeScroll 45s linear infinite;
+}
+
+.instagramMarqueeTrack:hover {
+  animation-play-state: paused;
+}
+
+/* =========================================================
+   CARD
+========================================================= */
+
+.instagramCard {
+  width: 430px;
+
+  flex-shrink: 0;
+
+  background:
+    rgba(255,255,255,0.76);
+
+  backdrop-filter: blur(20px);
+
+  border:
+    1px solid rgba(255,255,255,0.7);
+
+  border-radius: 34px;
+
+  overflow: hidden;
+
+  box-shadow:
+    0 30px 90px rgba(15,23,42,0.06);
+
+  transition:
+    transform 0.7s ease,
+    box-shadow 0.7s ease;
+}
+
+/* HOVER */
+
+.instagramCard:hover {
+  transform:
+    translateY(-10px);
+
+  box-shadow:
+    0 40px 100px rgba(15,23,42,0.12);
+}
+
+/* =========================================================
+   TOP
+========================================================= */
+
+.instagramCardTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 22px 22px 16px;
+}
+
+/* PROFILE */
+
+.instagramProfile {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+/* ICON */
+
+.instagramIcon {
+  width: 50px;
+  height: 50px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background:
+    linear-gradient(
+      135deg,
+      #f58529,
+      #dd2a7b,
+      #8134af,
+      #515bd4
+    );
+
+  color: white;
+
+  font-size: 18px;
+}
+
+/* TEXT */
+
+.instagramProfile h4 {
+  color: #0f172a;
+
+  font-size: 15px;
+  font-weight: 700;
+
+  margin-bottom: 4px;
+}
+
+.instagramProfile span {
+  color: #64748b;
+
+  font-size: 12px;
+}
+
+/* BUTTON */
+
+.visitBtn {
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background:
+    rgba(15,23,42,0.05);
+
+  color: #0f172a;
+
+  text-decoration: none;
+
+  transition:
+    all 0.4s ease;
+}
+
+.visitBtn:hover {
+  background: #00a6d6;
+
+  color: white;
+
+  transform: rotate(45deg);
+}
+
+/* =========================================================
+   EMBED
+========================================================= */
+
+.instagramEmbedWrapper {
+  padding: 0 16px 16px;
+}
+
+.instagramEmbedWrapper iframe {
+  border-radius: 24px !important;
+}
+
+/* =========================================================
+   ANIMATION
+========================================================= */
+
+@keyframes marqueeScroll {
+
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1200px) {
+
+  .instagramHeaderGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .instagramHeaderLeft h2 {
+    font-size: 4rem;
+  }
+
+}
+
+@media (max-width: 768px) {
+
+  .instagramWallSection {
+    padding: 90px 0;
+  }
+
+  .instagramWallHeader {
+    padding: 0 20px;
+
+    margin-bottom: 50px;
+  }
+
+  .instagramHeaderLeft h2 {
+    font-size: 2.8rem;
+
+    line-height: 1;
+  }
+
+  .instagramHeaderRight p {
+    font-size: 1rem;
+
+    line-height: 1.8;
+  }
+
+  .instagramMarqueeTrack {
+    gap: 18px;
+  }
+
+  .instagramCard {
+    width: 320px;
+
+    border-radius: 24px;
+  }
+
+  .instagramCardTop {
+    padding: 18px 18px 14px;
+  }
+
+  .instagramEmbedWrapper {
+    padding: 0 12px 12px;
+  }
+
+}
+
+@media (max-width: 480px) {
+
+  .instagramHeaderLeft h2 {
+    font-size: 2.2rem;
+  }
+
+  .socialBadge {
+    padding: 10px 18px;
+
+    font-size: 12px;
+  }
+
+  .instagramCard {
+    width: 280px;
+  }
+
+  .instagramIcon {
+    width: 44px;
+    height: 44px;
+
+    font-size: 16px;
+  }
+
+  .instagramProfile h4 {
+    font-size: 14px;
+  }
+
+  .instagramProfile span {
+    font-size: 11px;
+  }
+
+}

@@ -1,0 +1,268 @@
+/* ============================================
+   Futuremax Products Preview (Home section only)
+   Full catalogue lives on the /products page
+   ============================================ */
+
+:root {
+  --pvw-bg: #FFFFFF;
+  --pvw-surface: #F8FAFC;
+  --pvw-text: #0F172A;
+  --pvw-text-secondary: #475569;
+  --pvw-text-muted: #94A3B8;
+  --pvw-border: #E2E8F0;
+  --pvw-blue: #0755A3;
+  --pvw-green: #19AB3F;
+  --pvw-radius-sm: 8px;
+  --pvw-radius-md: 14px;
+  --pvw-radius-lg: 20px;
+  --pvw-shadow-sm: 0 2px 8px rgba(0,0,0,0.04);
+  --pvw-shadow-md: 0 8px 30px rgba(0,0,0,0.08);
+  --pvw-shadow-xl: 0 20px 60px rgba(0,0,0,0.12);
+  --pvw-ease: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --pvw-ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.pvw-section {
+  padding: 100px 0 80px;
+  background: var(--pvw-bg);
+}
+
+.pvw-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+/* Header */
+.pvw-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 40px;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s var(--pvw-ease-out), transform 0.8s var(--pvw-ease-out);
+}
+
+.pvw-header.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.pvw-tag {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: var(--pvw-blue);
+  margin-bottom: 12px;
+}
+
+.pvw-title {
+  font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+  font-weight: 800;
+  color: var(--pvw-text);
+  letter-spacing: -1px;
+  line-height: 1.2;
+}
+
+.pvw-accent {
+  color: var(--pvw-green);
+}
+
+.pvw-view-all {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--pvw-green);
+  text-decoration: none;
+  white-space: nowrap;
+  padding-bottom: 6px;
+  transition: gap 0.3s ease;
+}
+
+.pvw-view-all:hover {
+  gap: 14px;
+}
+
+/* Grid */
+.pvw-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.pvw-card {
+  background: var(--pvw-bg);
+  border: 1px solid var(--pvw-border);
+  border-radius: var(--pvw-radius-lg);
+  overflow: hidden;
+  position: relative;
+  transition: all 0.4s var(--pvw-ease-out);
+  opacity: 0;
+  transform: translateY(30px);
+  box-shadow: var(--pvw-shadow-sm);
+}
+
+.pvw-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.pvw-card:hover {
+  border-color: var(--pvw-accent);
+  box-shadow: var(--pvw-shadow-xl);
+  transform: translateY(-6px);
+}
+
+/* FIX: image holder was 180px tall with object-fit: cover, which cropped
+   the product photos (e.g. the ruler/dimension label and top of the
+   booster casing were getting cut off). Increased the height, added inner
+   padding so photos get breathing room instead of touching the edges, and
+   switched to object-fit: contain so the whole product is always visible
+   instead of being cropped to fill the box. */
+.pvw-card-image-wrap {
+  position: relative;
+  width: 100%;
+  height: 240px;
+  background: var(--pvw-surface);
+  overflow: hidden;
+  padding: 16px;
+  box-sizing: border-box;
+}
+
+.pvw-card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.6s var(--pvw-ease-out);
+}
+
+.pvw-card:hover .pvw-card-image {
+  transform: scale(1.06);
+}
+
+.pvw-card-image-shade {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background: linear-gradient(to top, rgba(0,0,0,0.25), transparent);
+  pointer-events: none;
+}
+
+.pvw-card-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: white;
+  padding: 5px 12px;
+  border-radius: 100px;
+  letter-spacing: 0.4px;
+}
+
+.pvw-card-body {
+  padding: 20px 20px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.pvw-card-subtitle {
+  font-size: 0.66rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.4px;
+}
+
+.pvw-card-title {
+  font-size: 1.02rem;
+  font-weight: 700;
+  color: var(--pvw-text);
+  letter-spacing: -0.2px;
+  line-height: 1.3;
+}
+
+.pvw-card-desc {
+  font-size: 0.83rem;
+  line-height: 1.55;
+  color: var(--pvw-text-secondary);
+}
+
+.pvw-card-features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 2px;
+}
+
+.pvw-card-feature {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--pvw-text-secondary);
+  background: var(--pvw-surface);
+  border-radius: 100px;
+  padding: 4px 10px;
+}
+
+.pvw-card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-decoration: none;
+  margin-top: 8px;
+  transition: gap 0.3s ease;
+}
+
+.pvw-card-link:hover {
+  gap: 10px;
+}
+
+.pvw-card-line {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s var(--pvw-ease);
+}
+
+.pvw-card:hover .pvw-card-line {
+  transform: scaleX(1);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .pvw-container { padding: 0 32px; }
+  .pvw-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .pvw-section { padding: 70px 0 60px; }
+  .pvw-container { padding: 0 20px; }
+  .pvw-header { flex-direction: column; align-items: flex-start; gap: 14px; }
+  .pvw-grid { grid-template-columns: 1fr; gap: 16px; }
+  .pvw-card-image-wrap { height: 200px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pvw-header, .pvw-card {
+    transition: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+}
