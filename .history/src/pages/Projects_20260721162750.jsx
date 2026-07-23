@@ -302,7 +302,7 @@ const Projects = () => {
             <div className="prj-cta__actions">
               <a href="/contact" className="prj-cta__btn"><span>Request Free RF Site Survey</span><ArrowRight size={16} /></a>
               <div className="prj-cta__contact">
-                <a href="tel:+919876543210" className="prj-cta__contact-link"><Phone size={14} />+91 98765 43210</a>
+                <a href="tel:+919876543210" className="prj-cta__contact-link"><Phone size={14} />94478671740</a>
                 <a href="mailto:info@futuremax.com" className="prj-cta__contact-link"><Mail size={14} />info@futuremax.com</a>
               </div>
             </div>

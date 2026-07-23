@@ -360,7 +360,7 @@ const Solutions = () => {
               <div className="sol-cta__contact">
                 <a href="tel:+919876543210" className="sol-cta__contact-link">
                   <Phone size={14} />
-                  +91 98765 43210
+                  94478671740
                 </a>
                 <a href="mailto:info@futuremax.com" className="sol-cta__contact-link">
                   <Mail size={14} />

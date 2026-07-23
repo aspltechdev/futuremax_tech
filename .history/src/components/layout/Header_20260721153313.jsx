@@ -60,20 +60,20 @@ const Header = () => {
             <span className="hdr-utility__item">Pan India Service Network</span>
           </div>
           <div className="hdr-utility__right">
-            <a href="tel:+919876543210" className="hdr-utility__link">
-              <svg viewBox="0 0 16 16" fill="none" className="hdr-utility__icon">
-                <path d="M3 1h3l1 3-2 1.5a9 9 0 005.5 5.5L12 9l3 1v3a2 2 0 01-2 2A13 13 0 011 3a2 2 0 012-2z" stroke="currentColor" strokeWidth="1.2" fill="none"/>
-              </svg>
-              +91 98765 43210
-            </a>
-            <span className="hdr-utility__divider">|</span>
-            <a href="mailto:info@futuremaxtech.in" className="hdr-utility__link">
-              <svg viewBox="0 0 16 16" fill="none" className="hdr-utility__icon">
-                <rect x="1" y="3" width="14" height="10" rx="1.5" stroke="currentColor" strokeWidth="1.2" fill="none"/>
-                <path d="M1.5 3.5L8 9l6.5-5.5" stroke="currentColor" strokeWidth="1.2" fill="none"/>
-              </svg>
-              info@futuremaxtech.in
-            </a>
+            <a href="tel:+918848749897" className="hdr-utility__link">
+  <svg viewBox="0 0 16 16" fill="none" className="hdr-utility__icon">
+    <path d="M3 1h3l1 3-2 1.5a9 9 0 005.5 5.5L12 9l3 1v3a2 2 0 01-2 2A13 13 0 011 3a2 2 0 012-2z" stroke="currentColor" strokeWidth="1.2" fill="none"/>
+  </svg>
+  +91 88487 49897
+</a>
+<span className="hdr-utility__divider">|</span>
+<a href="mailto:futuremaxtech@hotmail.com" className="hdr-utility__link">
+  <svg viewBox="0 0 16 16" fill="none" className="hdr-utility__icon">
+    <rect x="1" y="3" width="14" height="10" rx="1.5" stroke="currentColor" strokeWidth="1.2" fill="none"/>
+    <path d="M1.5 3.5L8 9l6.5-5.5" stroke="currentColor" strokeWidth="1.2" fill="none"/>
+  </svg>
+  futuremaxtech@hotmail.com
+</a>
           </div>
         </div>
       </div>
@@ -179,19 +179,19 @@ const Header = () => {
               </svg>
             </Link>
             <div className="hdr-mobile-panel__contact">
-              <a href="tel:+919876543210" className="hdr-mobile-panel__contact-link">
-                <svg viewBox="0 0 16 16" fill="none">
-                  <path d="M3 1h3l1 3-2 1.5a9 9 0 005.5 5.5L12 9l3 1v3a2 2 0 01-2 2A13 13 0 011 3a2 2 0 012-2z" stroke="currentColor" strokeWidth="1.2" fill="none"/>
-                </svg>
-                +91 98765 43210
-              </a>
-              <a href="mailto:info@futuremaxtech.in" className="hdr-mobile-panel__contact-link">
-                <svg viewBox="0 0 16 16" fill="none">
-                  <rect x="1" y="3" width="14" height="10" rx="1.5" stroke="currentColor" strokeWidth="1.2" fill="none"/>
-                  <path d="M1.5 3.5L8 9l6.5-5.5" stroke="currentColor" strokeWidth="1.2" fill="none"/>
-                </svg>
-                info@futuremaxtech.in
-              </a>
+              <a href="tel:+918848749897" className="hdr-mobile-panel__contact-link">
+  <svg viewBox="0 0 16 16" fill="none">
+    <path d="M3 1h3l1 3-2 1.5a9 9 0 005.5 5.5L12 9l3 1v3a2 2 0 01-2 2A13 13 0 011 3a2 2 0 012-2z" stroke="currentColor" strokeWidth="1.2" fill="none"/>
+  </svg>
+  +91 88487 49897
+</a>
+<a href="mailto:futuremaxtech@hotmail.com" className="hdr-mobile-panel__contact-link">
+  <svg viewBox="0 0 16 16" fill="none">
+    <rect x="1" y="3" width="14" height="10" rx="1.5" stroke="currentColor" strokeWidth="1.2" fill="none"/>
+    <path d="M1.5 3.5L8 9l6.5-5.5" stroke="currentColor" strokeWidth="1.2" fill="none"/>
+  </svg>
+  futuremaxtech@hotmail.com
+</a>
             </div>
           </div>
         </div>

@@ -297,7 +297,7 @@ const IndustriesPage = () => {
                 <ArrowRight size={16} />
               </a>
               <div className="ind-cta__contact">
-                <a href="tel:+919876543210" className="ind-cta__contact-link"><Phone size={14} />+91 98765 43210</a>
+                <a href="tel:+919876543210" className="ind-cta__contact-link"><Phone size={14} />94478671740</a>
                 <a href="mailto:info@futuremax.com" className="ind-cta__contact-link"><Mail size={14} />info@futuremax.com</a>
               </div>
             </div>

@@ -932,7 +932,7 @@ const Products = () => {
               <div className="prd-cta__contact">
                 <a href="tel:+919876543210" className="prd-cta__contact-link">
                   <Phone size={14} />
-                  +91 98765 43210
+                  94478671740
                 </a>
                 <a href="mailto:info@futuremax.com" className="prd-cta__contact-link">
                   <Mail size={14} />

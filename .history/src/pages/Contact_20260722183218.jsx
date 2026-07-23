@@ -30,7 +30,7 @@ const cntInfo = [
     icon: <Phone size={22} strokeWidth={1.5} />,
     title: "Call Us",
     details: [
-      { label: "Sales & Support", value: "+91 98765 43210" },
+      { label: "Sales & Support", value: "94478671740" },
       { label: "Technical Support", value: "+91 87654 32109" },
     ],
     accentColor: "#0755A3",
@@ -39,7 +39,7 @@ const cntInfo = [
     icon: <Mail size={22} strokeWidth={1.5} />,
     title: "Email Us",
     details: [
-      { label: "General Inquiries", value: "info@futuremaxtech.in" },
+      { label: "General Inquiries", value: "futuremaxtech@hotmail.com" },
       { label: "Technical Support", value: "support@futuremaxtech.in" },
       { label: "Sales", value: "sales@futuremaxtech.in" },
     ],
@@ -202,8 +202,8 @@ const Contact = () => {
               specific coverage challenge, our team is ready to help with a free consultation.
             </p>
             <div className="cnt-hero__actions">
-              <a href="tel:+919876543210" className="cnt-hero__btn cnt-hero__btn--primary"><Phone size={16} /><span>+91 98765 43210</span></a>
-              <a href="mailto:info@futuremaxtech.in" className="cnt-hero__btn cnt-hero__btn--secondary"><Mail size={16} /><span>info@futuremaxtech.in</span></a>
+              <a href="tel:+919876543210" className="cnt-hero__btn cnt-hero__btn--primary"><Phone size={16} /><span>94478671740</span></a>
+              <a href="mailto:futuremaxtech@hotmail.com" className="cnt-hero__btn cnt-hero__btn--secondary"><Mail size={16} /><span>futuremaxtech@hotmail.com</span></a>
             </div>
           </div>
         </div>
@@ -281,14 +281,14 @@ const Contact = () => {
                   <Phone size={16} />
                   <div>
                     <span className="cnt-quick-contact__label">Call Us</span>
-                    <span className="cnt-quick-contact__value">+91 98765 43210</span>
+                    <span className="cnt-quick-contact__value">94478671740</span>
                   </div>
                 </div>
                 <div className="cnt-quick-contact__item">
                   <Mail size={16} />
                   <div>
                     <span className="cnt-quick-contact__label">Email Us</span>
-                    <span className="cnt-quick-contact__value">info@futuremaxtech.in</span>
+                    <span className="cnt-quick-contact__value">futuremaxtech@hotmail.com</span>
                   </div>
                 </div>
               </div>
@@ -334,7 +334,7 @@ const Contact = () => {
                           <Phone size={16} />
                           Phone *
                         </label>
-                        <input type="tel" name="phone" className={`cnt-form-modern__input ${cntFocusedField === 'phone' ? 'cnt-form-modern__input--focused' : ''}`} placeholder="+91 98765 43210" value={cntFormData.phone} onChange={handleCntInputChange} onFocus={() => setCntFocusedField('phone')} onBlur={() => setCntFocusedField(null)} required />
+                        <input type="tel" name="phone" className={`cnt-form-modern__input ${cntFocusedField === 'phone' ? 'cnt-form-modern__input--focused' : ''}`} placeholder="94478671740" value={cntFormData.phone} onChange={handleCntInputChange} onFocus={() => setCntFocusedField('phone')} onBlur={() => setCntFocusedField(null)} required />
                       </div>
                     </div>
 
@@ -404,7 +404,7 @@ const Contact = () => {
               <p className="cnt-bottom__dark-desc">Our technical support team is available for urgent inquiries and emergency support.</p>
               <a href="tel:+919876543210" className="cnt-bottom__dark-btn">
                 <Phone size={16} />
-                <span>+91 98765 43210</span>
+                <span>94478671740</span>
               </a>
             </div>
           </div>

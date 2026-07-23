@@ -331,7 +331,7 @@
 // //               <div className="abt-cta__contact">
 // //                 <a href="tel:+919876543210" className="abt-cta__contact-link">
 // //                   <Phone size={14} />
-// //                   +91 98765 43210
+// //                   94478671740
 // //                 </a>
 // //                 <a href="mailto:info@futuremax.com" className="abt-cta__contact-link">
 // //                   <Mail size={14} />
@@ -681,7 +681,7 @@
 //               <div className="fut-cta__contact">
 //                 <a href="tel:+919876543210" className="fut-cta__contact-link">
 //                   <Phone size={14} />
-//                   +91 98765 43210
+//                   94478671740
 //                 </a>
 //                 <a href="mailto:info@futuremax.com" className="fut-cta__contact-link">
 //                   <Mail size={14} />
@@ -1131,7 +1131,7 @@ const About = () => {
               <div className="fut-cta__contact">
                 <a href="tel:+919876543210" className="fut-cta__contact-link">
                   <Phone size={14} />
-                  +91 98765 43210
+                  94478671740
                 </a>
                 <a href="mailto:info@futuremax.com" className="fut-cta__contact-link">
                   <Mail size={14} />
