@@ -757,7 +757,7 @@ import teamImg from "../assets/about.jpeg";
 const futStats = [
   { value: "15+", label: "Years of RF Engineering", icon: <Award size={22} strokeWidth={1.5} /> },
   { value: "3500+", label: "Successful Installations", icon: <Building2 size={22} strokeWidth={1.5} /> },
-  { value: "250+", label: "Enterprise Clients", icon: <Users size={22} strokeWidth={1.5} /> },
+  { value: "50+", label: "Enterprise Clients", icon: <Users size={22} strokeWidth={1.5} /> },
   { value: "Pan India", label: "Service Network", icon: <Globe size={22} strokeWidth={1.5} /> },
 ];
 
