@@ -132,7 +132,7 @@ const Projects = () => {
 
   const prjStats = [
     { icon: <TrendingUp size={24} strokeWidth={1.5} />, value: "3500+", label: "Projects Completed" },
-    { icon: <Building2 size={24} strokeWidth={1.5} />, value: "250+", label: "Industries Served" },
+    { icon: <Building2 size={24} strokeWidth={1.5} />, value: "6+", label: "Industries Served" },
     { icon: <Target size={24} strokeWidth={1.5} />, value: "98%", label: "Client Satisfaction" },
     { icon: <Clock size={24} strokeWidth={1.5} />, value: "15+", label: "Years Experience" },
   ];
