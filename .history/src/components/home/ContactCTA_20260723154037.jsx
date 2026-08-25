@@ -38,8 +38,8 @@ const ContactCTA = () => {
     {
       icon: <Mail size={18} strokeWidth={1.5} />,
       label: "Email Us",
-      value: "futuremaxtechnologies@hotmail.com",
-      href: "mailto:futuremaxtechnologies@hotmail.com",
+      value: "futuremaxtech@hotmail.com",
+      href: "mailto:futuremaxtech@hotmail.com",
     },
     {
       icon: <MapPin size={18} strokeWidth={1.5} />,

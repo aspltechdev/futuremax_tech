@@ -39,9 +39,9 @@ const cntInfo = [
     icon: <Mail size={22} strokeWidth={1.5} />,
     title: "Email Us",
     details: [
-      { label: "General Inquiries", value: "futuremaxtechnologies@hotmail.com"},
-      { label: "Technical Support", value: "futuremaxtechnologies@hotmail.com"},
-      { label: "Sales", value: "futuremaxtechnologies@hotmail.com"}
+      { label: "General Inquiries", value: "futuremaxtech@hotmail.com"},
+      { label: "Technical Support", value: "futuremaxtech@hotmail.com"},
+      { label: "Sales", value: "futuremaxtech@hotmail.com"}
     ],
     accentColor: "#19AB3F",
   },
@@ -203,7 +203,7 @@ const Contact = () => {
             </p>
             <div className="cnt-hero__actions">
               <a href="tel:+919876543210" className="cnt-hero__btn cnt-hero__btn--primary"><Phone size={16} /><span>94478671740</span></a>
-              <a href="mailto:futuremaxtech@hotmail.com" className="cnt-hero__btn cnt-hero__btn--secondary"><Mail size={16} /><span>futuremaxtechnologies@hotmail.com
+              <a href="mailto:futuremaxtech@hotmail.com" className="cnt-hero__btn cnt-hero__btn--secondary"><Mail size={16} /><span>futuremaxtech@hotmail.com
             </div>
           </div>
         </div>

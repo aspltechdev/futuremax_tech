@@ -39,7 +39,7 @@ const cntInfo = [
     icon: <Mail size={22} strokeWidth={1.5} />,
     title: "Email Us",
     details: [
-      { label: "General Inquiries", value: "futuremaxtechnologies@hotmail.com
+      { label: "General Inquiries", value: "futuremaxtech@hotmail.com
       { label: "Technical Support", value: "support@futuremaxtech.in" },
       { label: "Sales", value: "sales@futuremaxtech.in" },
     ],

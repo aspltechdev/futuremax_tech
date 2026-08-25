@@ -136,7 +136,7 @@ const Footer = () => {
                 </div>
                 <div className="ftr-contact__item">
                   <Mail size={18} strokeWidth={1.5} className="ftr-contact__icon" />
-                  <a href="mailto:futuremaxtechnologies@hotmail.com">futuremaxtechnologies@hotmail.com</a>
+                  <a href="mailto:futuremaxtech@hotmail.com">futuremaxtech@hotmail.com</a>
                 </div>
               </div>
               <Link to="/contact" className="ftr-cta">
